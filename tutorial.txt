@@ -329,7 +329,7 @@ Log in to the Docker public registry on your local machine.
  
 $ docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
-Username: tsouche       
+Username: tsouche
 Password: 
 WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
 Configure a credential helper to remove this warning. See
