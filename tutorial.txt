@@ -321,6 +321,8 @@ Docker’s public registry by default.
 
 
 Log in with your Docker ID
+==========================
+
 
 If you don’t have a Docker account, sign up for one at hub.docker.com. Make
 note of your username.
@@ -341,6 +343,7 @@ Login Succeeded
 
 Tag the image
 =============
+
 
 The notation for associating a local image with a repository on a registry is
 username/repository:tag. The tag is optional, but recommended, since it is

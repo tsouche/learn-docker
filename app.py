@@ -8,6 +8,10 @@ redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 
 app = Flask(__name__)
 
+@app.route("/version")
+def version():
+    return "<b>Version 1</b> - <i>bonne année</i>"
+    
 @app.route("/")
 def hello():
     try:
