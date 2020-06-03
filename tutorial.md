@@ -249,13 +249,16 @@ Removing intermediate container 22f48e5a16cc
 Successfully built c54174fc2d78
 Successfully tagged friendlyhello:latest
 ```
+
 Where is your built image? It’s in your machine’s local Docker image registry:
 
+```
 /code$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 friendlyhello       latest              c54174fc2d78        5 minutes ago       924MB
 python              3.6                 2dfb6d103623        2 weeks ago         914MB
 hello-world         latest              bf756fb1ae65        5 months ago        13.3kB
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxODE3MjcwNSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
