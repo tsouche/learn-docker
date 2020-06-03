@@ -227,8 +227,13 @@ We are ready to build the app. Make sure you are still at the top level of your 
 
 ```
 $ cd code/
- 
+/code$ ls
+app.py                    docker-compose-part5-1.yml  docker-compose.yml  requirements.txt
+docker-compose-part3.yml  docker-compose-part5-2.yml  Dockerfile
 ```
+Now run the build command. This creates a Docker image, which we’re going to tag using:
+   `-t` = name the image (a friendly name)
+   `.`  = path to the Dockerfile
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzM3MzM0OTQ0LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbMTE2NDcyNjUzMiw5NDQxNTkzMDNdfQ==
 -->
