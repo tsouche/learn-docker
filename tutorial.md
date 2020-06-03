@@ -235,58 +235,21 @@ Now run the build command. This creates a Docker image, which we’re going to t
    `-t` = name the image (a friendly name)
    `.`  = path to the Dockerfile
 
-You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image :  
+You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many morprocess :  
 
     /code$ docker build -t friendlyhello .
     Sending build context to Docker daemon  9.728kB
     Step 1/7 : FROM python:3.6
     3.6: Pulling from library/python
     376057ac6fa1: Pull complete 
-    5a63a0a859d8: Pull complete 
-    496548a8c952: Pull complete 
-    2adae3950d4d: Pull complete 
-    0ed5a9824906: Pull complete 
-    5b382e7c893f: Pull complete 
-    caceeaa356b1: Pull complete 
-    3042686705e2: Pull complete 
+    [...]
     9ee0bf59b9af: Pull complete 
     Digest: sha256:5ad282921c5b8d811a8c589f4ee0d52ebfc98b5c88b9e098b8f1543f2ec64cc1
     Status: Downloaded newer image for python:3.6
      ---> 2dfb6d103623
     Step 2/7 : WORKDIR /app
      ---> Running in 5bb5883e062c
-    Removing intermediate container 5bb5883e062c
-     ---> 927dd3e44b1d
-    Step 3/7 : ADD . /app
-     ---> 2fe688c5fc13
-    Step 4/7 : RUN pip install --trusted-host pypi.python.org -r requirements.txt
-     ---> Running in 9ae553e067ef
-    Collecting Flask
-      Downloading Flask-1.1.2-py2.py3-none-any.whl (94 kB)
-    Collecting Redis
-      Downloading redis-3.5.3-py2.py3-none-any.whl (72 kB)
-    Collecting click>=5.1
-      Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
-    Collecting Werkzeug>=0.15
-      Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
-    Collecting Jinja2>=2.10.1
-      Downloading Jinja2-2.11.2-py2.py3-none-any.whl (125 kB)
-    Collecting itsdangerous>=0.24
-      Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
-    Collecting MarkupSafe>=0.23
-      Downloading MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl (27 kB)
-    Installing collected packages: click, Werkzeug, MarkupSafe, Jinja2, itsdangerous, Flask, Redis
-    Successfully installed Flask-1.1.2 Jinja2-2.11.2 MarkupSafe-1.1.1 Redis-3.5.3 Werkzeug-1.0.1 click-7.1.2 itsdangerous-1.1.0
-    Removing intermediate container 9ae553e067ef
-     ---> 2085e8c6cf46
-    Step 5/7 : EXPOSE 80
-     ---> Running in 7d65aa10ddee
-    Removing intermediate container 7d65aa10ddee
-     ---> 2cb31be0c73a
-    Step 6/7 : ENV NAME World
-     ---> Running in 9e1488bb34a6
-    Removing intermediate container 9e1488bb34a6
-     ---> 4e901fdbde0a
+    [...]
     Step 7/7 : CMD ["python", "app.py"]
      ---> Running in 22f48e5a16cc
     Removing intermediate container 22f48e5a16cc
@@ -295,5 +258,5 @@ You will see that Docker will take few seconds to execute the command as it need
     Successfully tagged friendlyhello:latest
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MDYyMjMzNiw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMTA0OTA1Nzg1NSw5NDQxNTkzMDNdfQ==
 -->
