@@ -259,6 +259,8 @@ friendlyhello       latest              c54174fc2d78        5 minutes ago       
 python              3.6                 2dfb6d103623        2 weeks ago         914MB
 hello-world         latest              bf756fb1ae65        5 months ago        13.3kB
 ```
+You can see the `hello-world` image which we used to test that Docker was properly install
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMjAxODIyNTc0MSwtMjQ4OTk4OTQ5LDk0ND
+E1OTMwM119
 -->
