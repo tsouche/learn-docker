@@ -259,8 +259,8 @@ friendlyhello       latest              c54174fc2d78        5 minutes ago       
 python              3.6                 2dfb6d103623        2 weeks ago         914MB
 hello-world         latest              bf756fb1ae65        5 months ago        13.3kB
 ```
-You can see the `hello-world` image which we used to test that Docker was properly install
+You can see the `hello-world` image which we used to test that Docker was properly installed, the `friendlyhello` image which you just built  - *your first Docker image ever !!!* - and a third image called `python` which you did not ask for, but Docker used as the base image on top of which friendlyhello was built.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxODIyNTc0MSwtMjQ4OTk4OTQ5LDk0ND
+eyJoaXN0b3J5IjpbLTcxNzg3ODQ3MCwtMjQ4OTk4OTQ5LDk0ND
 E1OTMwM119
 -->
