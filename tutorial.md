@@ -224,6 +224,11 @@ That’s it! You don’t need Python or anything in `requirements.txt` on your s
 #### Build the app
 
 We are ready to build the app. Make sure you are still at the top level of your new directory. Here’s what `ls` should show:
+
+```
+$ cd code/
+ 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMzM3MzM0OTQ0LDk0NDE1OTMwM119
 -->
