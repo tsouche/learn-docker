@@ -477,8 +477,9 @@ The service stack is instructed from the docker-compose file to keep at any mome
 
 ```
 $ docker service ls
-ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
-xoagyod5294j    getstartedlab_web    replicated    5/5        yourlogin/get-started:part2    *:4000->80/tcp
+ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
+xoagyod5294j        getstartedlab_web   replicated          5/5                 tsouche/get-started:part2   *:4000->80/tcp
+
 ```
 We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm reacts.
 ```
@@ -487,32 +488,29 @@ $ docker container stop 3717956b14e9
 Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
 ```
 $ docker service ls
-ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
-xoagyod5294j    getstartedlab_web    replicated    4/5        yourlogin/get-started:part2    *:4000->80/tcp
+ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
+xoagyod5294j        getstartedlab_web   replicated          4/5                 tsouche/get-started:part2   *:4000->80/tcp
 
 $ docker container ls
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-df119c85f902 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-
-d04e320efdb3 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-
-4c3229476930 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-
-14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
+df119c85f902        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+d04e320efdb3        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (`ID 23b1b1a90fe6`) to meet again the target of 5 concurrent containers for the service stack. The `REPLICAS` column now indicate 5/5 again:
 ```
 $ docker service ls
-ID NAME MODE REPLICAS IMAGE PORTS
-xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
+ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
+xoagyod5294j        getstartedlab_web   replicated          5/5                 tsouche/get-started:part2   *:4000->80/tcp
 
 $ docker container ls
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-b12b6b1d6cc4 yourlogin/get-started:part2 "python app.py" 20 seconds ago Up 8 seconds 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
-df119c85f902 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-d04e320efdb3 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
+b12b6b1d6cc4        tsouche/get-started:part2   "python app.py"     20 seconds ago      Up 8 seconds        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+df119c85f902        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+d04e320efdb3        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 
 =============
@@ -526,9 +524,9 @@ You can scale the app by changing the replicas value (e.g. from 5 to 8) in
 docker-compose-part3.yml, saving the change, and re-running the "docker
 
 stack deploy" command:
-
+```
 $ docker stack deploy -c docker-compose-part3.yml getstartedlab
-
+```
 Docker performs an in-place update, no need to tear the stack down first or
 
 kill any containers.
@@ -538,11 +536,9 @@ Now, re-run docker container ls -q to see the deployed instances
 reconfigured. If you scaled up the replicas, more tasks, and hence, more
 
 containers, are started.
-
+```
 $ docker service ls
-
 ID NAME MODE REPLICAS IMAGE PORTS
-
 xoagyod5294j getstartedlab_web replicated 8/8 yourlogin/get-started:part2 *:4000->80/tcp
 
 $ docker container ls
@@ -1696,7 +1692,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MzE2NzIwMiwtNDg0NTQ2MDc1LC0xOT
+eyJoaXN0b3J5IjpbLTY1NTAxNDExOCwtNDg0NTQ2MDc1LC0xOT
 I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
 Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
