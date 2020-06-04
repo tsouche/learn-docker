@@ -489,6 +489,7 @@ Now list again the service, and you will notice that the service is running only
 $ docker service ls
 ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
 xoagyod5294j    getstartedlab_web    replicated    4/5        yourlogin/get-started:part2    *:4000->80/tcp
+
 $ docker container ls
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 df119c85f902 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
@@ -1695,7 +1696,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5MzA5Mjk0NSwtNDg0NTQ2MDc1LC0xOT
-I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
-Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTExMTUyMDgzMTksLTQ4NDU0NjA3NSwtMT
+kyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3
+NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
