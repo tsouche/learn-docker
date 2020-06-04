@@ -295,21 +295,21 @@ Now let’s run the app in the background, in detached mode:
 
 ```
 tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
-959d6fbadbbd58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
+b3bdcd7596de58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
 ```
 You get the `long container ID` for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the `abbreviated container ID` with `docker container ls` (and both work interchangeably when running commands):
 ```
 tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
-1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
+b3bdcd7596de friendlyhello "python app.py" 28 seconds ago
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
 Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
 
 ```
-tuto@laptop:~$ docker container stop 1fa4ab2cf395
-1fa4ab2cf395
+tuto@laptop:~$ docker container stop b3bdcd7596de
+b3bdcd7596de
 ```
 
 
@@ -1446,7 +1446,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczMTI0Mzc3NCwxNDU5MjA4OTYwLDE0NT
+eyJoaXN0b3J5IjpbMjAwNjEyOTIwNSwxNDU5MjA4OTYwLDE0NT
 k5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgz
 NjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMC
 wtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0y
