@@ -513,29 +513,15 @@ d04e320efdb3        tsouche/get-started:part2   "python app.py"     8 minutes ag
 14e380d75bf0        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 
-=============
 
-Scale the app
+### 3.4 - Scale the app
 
-=============
-
-You can scale the app by changing the replicas value (e.g. from 5 to 8) in
-
-docker-compose-part3.yml, saving the change, and re-running the "docker
-
-stack deploy" command:
+You can scale the app by changing the replicas value (e.g. from 5 to 8) in docker-compose-part3.yml, saving the change, and re-running the `docker stack deploy` command:
 ```
 $ docker stack deploy -c docker-compose-part3.yml getstartedlab
 ```
-Docker performs an in-place update, no need to tear the stack down first or
-
-kill any containers.
-
-Now, re-run docker container ls -q to see the deployed instances
-
-reconfigured. If you scaled up the replicas, more tasks, and hence, more
-
-containers, are started.
+Docker performs an in-place update, no need to tear the stack down first or kill any containers.
+Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
 ```
 $ docker service ls
 ID NAME MODE REPLICAS IMAGE PORTS
@@ -560,6 +546,7 @@ d04e320efdb3 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 mi
 4c3229476930 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
 14e380d75bf0 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+```
 
 =================
 
@@ -1692,7 +1679,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NTAxNDExOCwtNDg0NTQ2MDc1LC0xOT
-I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
-Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTE1MTc2MDM1MzMsLTQ4NDU0NjA3NSwtMT
+kyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3
+NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
