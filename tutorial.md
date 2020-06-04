@@ -642,9 +642,7 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 
 #### Initialize the swarm
 
-The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using docker-machine ssh. Instruct myvm1 to become
-
-a swarm manager with docker swarm init and look for output like this:
+The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using `docker-machine ssh`. Instruct `myvm1` to become a swarm manager with `docker swarm init` and look for output like this:
 
 docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"
 
@@ -1434,8 +1432,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDM2MTc3MDEsMTU0OTQyODA4NCwxOD
-k1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2
-ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOT
-gwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OT
+U2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4
+MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5OD
+A5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
