@@ -449,21 +449,21 @@ A single container running in a service is called a task. Tasks are given unique
 ```
 $ docker service ps getstartedlab_web
 ID              NAME                   IMAGE                         NODE      DESIRED STATE    ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
-r8z7k5gw4mdg        getstartedlab_web.1   tsouche/get-started:part2   laptop              Running             Running 2 minutes ago                       
-mruh44c14hii        getstartedlab_web.2   tsouche/get-started:part2   laptop              Running             Running 2 minutes ago                       
-rketr3b5523p        getstartedlab_web.3   tsouche/get-started:part2   laptop              Running             Running 2 minutes ago                       
-sgw7n6mo152h        getstartedlab_web.4   tsouche/get-started:part2   laptop              Running             Running 2 minutes ago                       
-n984sajq0gu7        getstartedlab_web.5   tsouche/get-started:part2   laptop              Running             Running 2 minutes ago
+r8z7k5gw4mdg        getstartedlab_web.1   yourlogin/get-started:part2   laptop              Running             Running 2 minutes ago                       
+mruh44c14hii        getstartedlab_web.2   yourlogin/get-started:part2   laptop              Running             Running 2 minutes ago                       
+rketr3b5523p        getstartedlab_web.3   yourlogin/get-started:part2   laptop              Running             Running 2 minutes ago                       
+sgw7n6mo152h        getstartedlab_web.4   yourlogin/get-started:part2   laptop              Running             Running 2 minutes ago                       
+n984sajq0gu7        getstartedlab_web.5   yourlogin/get-started:part2   laptop              Running             Running 2 minutes ago
 ```
 Tasks also show up if you just list all the containers on your system, though that is not filtered by service:
 ```
 $ docker container ls -a
-df119c85f902        tsouche/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-3717956b14e9        tsouche/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
-d04e320efdb3        tsouche/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930        tsouche/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0        tsouche/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
-29568f266344        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes                  0.0.0.0:4000->80/tcp   flamboyant_goldwasser
+df119c85f902        yourlogin/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+3717956b14e9        yourlogin/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
+d04e320efdb3        yourlogin/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        yourlogin/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        yourlogin/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+29568f266344        yourlogin/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes                  0.0.0.0:4000->80/tcp   flamboyant_goldwasser
 ```
 
 ### 3.3 - Service stack resilience
@@ -478,7 +478,7 @@ The service stack is instructed from the docker-compose file to keep at any mome
 ```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
-xoagyod5294j        getstartedlab_web   replicated          5/5                 tsouche/get-started:part2   *:4000->80/tcp
+xoagyod5294j        getstartedlab_web   replicated          5/5                 yourlogin/get-started:part2   *:4000->80/tcp
 
 ```
 We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm reacts.
@@ -489,28 +489,28 @@ Now list again the service, and you will notice that the service is running only
 ```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
-xoagyod5294j        getstartedlab_web   replicated          4/5                 tsouche/get-started:part2   *:4000->80/tcp
+xoagyod5294j        getstartedlab_web   replicated          4/5                 yourlogin/get-started:part2   *:4000->80/tcp
 
 $ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
-df119c85f902        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-d04e320efdb3        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930        tsouche/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+df119c85f902        yourlogin/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+d04e320efdb3        yourlogin/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        yourlogin/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        yourlogin/get-started:part2   "python app.py"     8 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (`ID 23b1b1a90fe6`) to meet again the target of 5 concurrent containers for the service stack. The `REPLICAS` column now indicate 5/5 again:
 ```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
-xoagyod5294j        getstartedlab_web   replicated          5/5                 tsouche/get-started:part2   *:4000->80/tcp
+xoagyod5294j        getstartedlab_web   replicated          5/5                 yourlogin/get-started:part2   *:4000->80/tcp
 
 $ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
-b12b6b1d6cc4        tsouche/get-started:part2   "python app.py"     20 seconds ago      Up 8 seconds        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
-df119c85f902        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-d04e320efdb3        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0        tsouche/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+b12b6b1d6cc4        yourlogin/get-started:part2   "python app.py"     20 seconds ago      Up 8 seconds        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+df119c85f902        yourlogin/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+d04e320efdb3        yourlogin/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        yourlogin/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        yourlogin/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 
 
@@ -525,23 +525,23 @@ Now, re-run `docker container ls -q` to see the deployed instances reconfigured.
 ```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
-xoagyod5294j        getstartedlab_web   replicated          8/8                 tsouche/get-started:part2   *:4000->80/tcp
+xoagyod5294j        getstartedlab_web   replicated          8/8                 yourlogin/get-started:part2   *:4000->80/tcp
 
 $ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
-29eaeb676554        tsouche/get-started:part2   "python app.py"     11 seconds ago      Up 3 seconds        80/tcp                 getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
-e2643e1f9374        tsouche/get-started:part2   "python app.py"     11 seconds ago      Up 4 seconds        80/tcp                 getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
-076bda02c8ac        tsouche/get-started:part2   "python app.py"     11 seconds ago      Up 3 seconds        80/tcp                 getstartedlab_web.8.038y0t3sv10fw5bhpp6272n03
-b12b6b1d6cc4        tsouche/get-started:part2   "python app.py"     2 minutes ago       Up 2 minutes        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
-df119c85f902        tsouche/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-d04e320efdb3        tsouche/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930        tsouche/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0        tsouche/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+29eaeb676554        yourlogin/get-started:part2   "python app.py"     11 seconds ago      Up 3 seconds        80/tcp                 getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
+e2643e1f9374        yourlogin/get-started:part2   "python app.py"     11 seconds ago      Up 4 seconds        80/tcp                 getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
+076bda02c8ac        yourlogin/get-started:part2   "python app.py"     11 seconds ago      Up 3 seconds        80/tcp                 getstartedlab_web.8.038y0t3sv10fw5bhpp6272n03
+b12b6b1d6cc4        yourlogin/get-started:part2   "python app.py"     2 minutes ago       Up 2 minutes        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+df119c85f902        yourlogin/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+d04e320efdb3        yourlogin/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930        yourlogin/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0        yourlogin/get-started:part2   "python app.py"     10 minutes ago      Up 10 minutes       80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 
 ### 3.5 - Take the app down
 
-The instruction to take the service stack down is 'docker stack rm` followed with the name of the service.
+The instruction to take the service stack down is `docker stack rm` followed with the name of the service:
 ```
 $ docker stack rm getstartedlab
 Removing service getstartedlab_web
@@ -1642,7 +1642,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMTM4Mjk4NywtNDg0NTQ2MDc1LC0xOT
-I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
-Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMT
+kyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3
+NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
