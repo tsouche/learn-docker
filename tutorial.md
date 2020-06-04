@@ -480,7 +480,7 @@ $ docker service ls
 ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
 xoagyod5294j    getstartedlab_web    replicated    5/5        yourlogin/get-started:part2    *:4000->80/tcp
 ```
-We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm react.
+We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm reacts.
 ```
 $ docker container stop 3717956b14e9
 ```
@@ -1692,7 +1692,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjczMDg0ODQyLC0xOTI5NjgwNjIwLC0xMT
-ExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5
-ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMT
+ExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5
+OTg5NDksOTQ0MTU5MzAzXX0=
 -->
