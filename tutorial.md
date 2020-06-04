@@ -349,12 +349,12 @@ Now, let's put it all together to tag the image. Run `docker tag image` with you
 tuto@laptop:~$ docker image ls
 REPOSITORY           TAG      IMAGE ID     CREATED       SIZE
 friendlyhello        latest   d9e555c53008 3 minutes ago 195MB
-yourname/get-started part2    d9e555c53008 3 minutes ago 195MB
+account/get-started part2    d9e555c53008 3 minutes ago 195MB
 python               2.7-slim 1c7128a655f6 5 days ago    183MB
 ```
 The command to actually upload your tagged image to the repository is `docker push username/repository:tag`, so let's run it now:
 ```
-tuto@laptop:~$ docker push yourname/get-started:part2
+tuto@laptop:~$ docker push account/get-started:part2
 ```
 Once complete, the results of this upload are publicly available. If you log in to Docker Hub, you see the new image there, with its pull command.
 
@@ -362,10 +362,10 @@ Once complete, the results of this upload are publicly available. If you log in 
 
 From now on, you can use docker run and run your app on any machine with this command `docker run -p 4000:80 username/repository:tag`.
 
-So in our case `$ docker run -p 4000:80 account/get-started:part2`. If the image isn’t available locally on the machine, Docker pulls it from the repository:
+So in our case `docker run -p 4000:80 account/get-started:part2`. If the image isn’t available locally on the machine, Docker pulls it from the repository:
 
 ```
-code/$ docker run -p 4000:80 account/get-started:part2
+tuto@laptop:~$ docker run -p 4000:80 account/get-started:part2
 Unable to find image 'account/get-started:part2' locally
 part2: Pulling from account/get-started
 10a267c67f42: Already exists
@@ -1438,9 +1438,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE4NTYyODAyLDE0NTk5NjczNDQsMTkzNj
-UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
-MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
-0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
-MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTUyMjQ3MzIyMiwxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
