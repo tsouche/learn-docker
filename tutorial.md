@@ -312,9 +312,7 @@ tuto@laptop:~$ docker container stop 959d6fbadbbd
 ```
 In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
 
-![alt text](./images/part2-friendlyhello.png "friendlyhello displayed in a browser")
-
-
+![alt text](./images/part2-friendlyhello-not-responding.png "friendlyhello not reachable in a browser")
 
 
 #### Share your image
@@ -1450,7 +1448,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzUzMDY5OCwtMTc1MTQ5MjA0OCwxND
+eyJoaXN0b3J5IjpbLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxND
 U5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4
 MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NS
 wtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0x
