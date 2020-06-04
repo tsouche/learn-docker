@@ -440,28 +440,21 @@ Our single service stack is running 5 container instances of our deployed image 
 Get the `service ID` for the one service in our application:
 ```
 $ docker service ls
-ID NAME MODE REPLICAS IMAGE PORTS
-xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
+ID             NAME                MODE         REPLICAS    IMAGE                         PORTS
+xoagyod5294j   getstartedlab_web   replicated   5/5         yourlogin/get-started:part2   *:4000->80/tcp
 ```
 Look for output for the web service, prepended with your app name. If you named it the same as shown in this example, the name is getstartedlab_web. The `service ID` is listed as well, along with the number of replicas, image name, and exposed ports.
 
 A single container running in a service is called a task. Tasks are given unique IDs that numerically increment, up to the number of replicas you defined in docker-compose.yml. List the tasks for your service:
 ```
 $ docker service ps getstartedlab_web
-
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-
-r8z7k5gw4mdg getstartedlab_web.1 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
-
-mruh44c14hii getstartedlab_web.2 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
-
-rketr3b5523p getstartedlab_web.3 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
-
-sgw7n6mo152h getstartedlab_web.4 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
-
-n984sajq0gu7 getstartedlab_web.5 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
+r8z7k5gw4mdg getstartedlab_web.1 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+mruh44c14hii getstartedlab_web.2 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+rketr3b5523p getstartedlab_web.3 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+sgw7n6mo152h getstartedlab_web.4 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+n984sajq0gu7 getstartedlab_web.5 tsouche/get-started:part2 laptop Running Running 2 minutes ago
 ```
 Tasks also show up if you just list all the containers on your system, though
 
@@ -1750,7 +1743,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMjQ3NTA3MCwtMTkyOTY4MDYyMCwtMT
-ExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5
-OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbODk0ODA4MDY3LC0xOTI5NjgwNjIwLC0xMT
+ExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5
+ODk0OSw5NDQxNTkzMDNdfQ==
 -->
