@@ -673,11 +673,7 @@ We keep preciously these connection instruction: the other nodes will not be abl
 
 #### Add nodes to the swarm
 
-So, we continue logging into the next VM and joining it to the swarm. To do so, we use the docker command:
-
-docker swarm join --token <token> <myvm ip>:<port>
-
-We will use the token which is included in the response to docker swarm init:
+So, we continue logging into the next VM and joining it to the swarm. To do so, we use the docker command `docker swarm join --token <token> <myvm ip>:<port>` and we will use the token which is included in the response to docker swarm init (above).
 
 copy this command, and send it from myvm2 and myvm3 via:
 
@@ -1446,7 +1442,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MTc1NDU3NCwtOTI5NjQwMjU1LC0xNz
+eyJoaXN0b3J5IjpbMjA0NTk4NzE5NywtOTI5NjQwMjU1LC0xNz
 UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
 Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
 wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
