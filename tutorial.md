@@ -750,42 +750,31 @@ method works better for the next step because it allows you to use your local
 copy of the docker-compose.yml file (oon your laptop) to deploy the app
 
 “remotely” without having to copy it inside the VM1.
-
+```
 $ docker-machine env myvm1
-
 export DOCKER_TLS_VERIFY="1"
-
 export DOCKER_HOST="tcp://192.168.99.100:2376"
-
 export DOCKER_CERT_PATH="/home/tso/.docker/machine/machines/myvm1"
-
 export DOCKER_MACHINE_NAME="myvm1"
-
 # Run this command to configure your shell:
-
 # eval $(docker-machine env myvm1)
+```
 
 We just have to follow the instructions:
-
+```
 $ eval $(docker-machine env myvm1)
-
-Run docker-machine ls to verify that myvm1 is now the active machine, as
-
-indicated by the asterisk next to it.
-
+```
+Run docker-machine ls to verify that myvm1 is now the active machine, as indicated by the asterisk next to it.
+```
 $ docker-machine ls
+NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
+myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
+myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5   
 
-NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
+```
 
-myvm1 * virtualbox Running tcp://192.168.99.100:2376 v19.03.5
-
-myvm2 - virtualbox Running tcp://192.168.99.101:2376 v19.03.5
-
-myvm3 - virtualbox Running tcp://192.168.99.102:2376 v19.03.5
-
-Deploy the app on the swarm manager
-
-===================================
+#### Deploy the app on the swarm manager
 
 Now that you have myvm1, you can use its powers as a swarm manager to deploy
 
@@ -1530,7 +1519,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MTk4MDU2NSwxODk1NjU4MzYzLC0xMD
+eyJoaXN0b3J5IjpbLTU0MjI3ODA3MCwxODk1NjU4MzYzLC0xMD
 A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
 MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
 Q5LDk0NDE1OTMwM119
