@@ -321,7 +321,7 @@ Log in to the Docker public registry on your local machine.
 ```
 $ docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
-Username: tsouche
+Username: yourlogin
 Password:
 WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -337,7 +337,7 @@ Now, put it all together to tag the image. Run `docker tag image` with your user
 
 For example:
 ```
-code/$ docker tag friendlyhello yourlo/get-started:part2
+code/$ docker tag friendlyhello yourlogin/get-started:part2
 ```
 You may run `docker image ls` command to see your newly tagged image.
 
@@ -370,15 +370,15 @@ docker run -p 4000:80 username/repository:tag
 
 So in our case:
 
-$ docker run -p 4000:80 tsouche/get-started:part2
+$ docker run -p 4000:80 yourlogin/get-started:part2
 
 If the image isn’t available locally on the machine, Docker pulls it from the repository.
 
-$ docker run -p 4000:80 tsouche/get-started:part2
+$ docker run -p 4000:80 yourlogin/get-started:part2
 
-Unable to find image 'tsouche/get-started:part2' locally
+Unable to find image 'yourlogin/get-started:part2' locally
 
-part2: Pulling from tsouche/get-started
+part2: Pulling from yourlogin/get-started
 
 10a267c67f42: Already exists
 
@@ -396,7 +396,7 @@ fbccdcced46e: Already exists
 
 Digest: sha256:0601c866aab2adcc6498200efd0f754037e909e5fd42069adeff72d1e2439068
 
-Status: Downloaded newer image for tsouche/get-started:part2
+Status: Downloaded newer image for yourlogin/get-started:part2
 
 * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
 
@@ -536,7 +536,7 @@ $ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
-xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
 
 Look for output for the web service, prepended with your app name. If you
 
@@ -558,15 +558,15 @@ ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
 
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
 
-r8z7k5gw4mdg getstartedlab_web.1 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+r8z7k5gw4mdg getstartedlab_web.1 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
 
-mruh44c14hii getstartedlab_web.2 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+mruh44c14hii getstartedlab_web.2 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
 
-rketr3b5523p getstartedlab_web.3 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+rketr3b5523p getstartedlab_web.3 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
 
-sgw7n6mo152h getstartedlab_web.4 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+sgw7n6mo152h getstartedlab_web.4 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
 
-n984sajq0gu7 getstartedlab_web.5 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+n984sajq0gu7 getstartedlab_web.5 yourlogin/get-started:part2 laptop Running Running 2 minutes ago
 
 Tasks also show up if you just list all the containers on your system, though
 
@@ -574,17 +574,17 @@ that is not filtered by service:
 
 $ docker container ls -a
 
-df119c85f902 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+df119c85f902 yourlogin/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 
-3717956b14e9 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
+3717956b14e9 yourlogin/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
 
-d04e320efdb3 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+d04e320efdb3 yourlogin/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
 
-4c3229476930 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+4c3229476930 yourlogin/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
-14e380d75bf0 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+14e380d75bf0 yourlogin/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 
-29568f266344 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 0.0.0.0:4000->80/tcp flamboyant_goldwasser
+29568f266344 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 0.0.0.0:4000->80/tcp flamboyant_goldwasser
 
 ========================
 
@@ -614,7 +614,7 @@ $ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
-xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
 
 We see in the list above that the container 3717956b14e9 is running one of the
 
@@ -1736,19 +1736,19 @@ kb8e3d7iqj76 getstartedlab_web.1 tsouche/get-started:part2 myvm3 Running Running
 
 puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 5 minutes ago
 
-zr4jjcvrr0l5 getstartedlab_web.2 tsouche/get-started:part2 myvm1 Running Running 5 minutes ago
+zr4jjcvrr0l5 getstartedlab_web.2 yourlogin/get-started:part2 myvm1 Running Running 5 minutes ago
 
-v6a1qd49a0ka getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+v6a1qd49a0ka getstartedlab_web.3 yourlogin/get-started:part2 myvm2 Running Running 5 minutes ago
 
-x0gq7usig5y6 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+x0gq7usig5y6 getstartedlab_web.4 yourlogin/get-started:part2 myvm3 Running Running 5 minutes ago
 
-9uxjs2ve3x1s getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running 5 minutes ago
+9uxjs2ve3x1s getstartedlab_web.5 yourlogin/get-started:part2 myvm1 Running Running 5 minutes ago
 
-4r6a1dxxlh0e getstartedlab_web.6 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+4r6a1dxxlh0e getstartedlab_web.6 yourlogin/get-started:part2 myvm2 Running Running 5 minutes ago
 
-pqxvp3m14loh getstartedlab_web.7 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+pqxvp3m14loh getstartedlab_web.7 yourlogin/get-started:part2 myvm3 Running Running 5 minutes ago
 
-gs5ox6yvnumw getstartedlab_web.8 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+gs5ox6yvnumw getstartedlab_web.8 yourlogin/get-started:part2 myvm2 Running Running 5 minutes ago
 
 Check the web page at one of your nodes, such as http://192.168.99.101, and
 
@@ -1802,7 +1802,7 @@ ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
 
 tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
 
-2ythn4okhrdc getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:80->80/tcp
+2ythn4okhrdc getstartedlab_web replicated 8/8 yourlogin/get-started:part2 *:80->80/tcp
 
 tso@laptop:~$ docker stack rm getstartedlab
 
@@ -1822,7 +1822,7 @@ tso@laptop:~$ docker images -a
 
 REPOSITORY TAG IMAGE ID CREATED SIZE
 
-tsouche/get-started <none> c160e4abb8aa About an hour ago 159MB
+yourlogin/get-started <none> c160e4abb8aa About an hour ago 159MB
 
 redis <none> c33c9b2541a8 2 days ago 98.2MB
 
@@ -1855,7 +1855,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYwODc5NTIyLC0xMTExNDM0NTksLTExNT
+eyJoaXN0b3J5IjpbMTM5NjAyMzUwLC0xMTExNDM0NTksLTExNT
 k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
 MDNdfQ==
 -->
