@@ -305,12 +305,16 @@ CONTAINER ID IMAGE         COMMAND         CREATED
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done:
+```
+tuto@laptop:~$ docker container stop 959d6fbadbbd
+959d6fbadbbd
+```
+In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
 
-```
-tuto@laptop:~$ docker container stop b3bdcd7596de
-b3bdcd7596de
-```
+![alt text](./images/part2-friendlyhello.png "friendlyhello displayed in a browser")
+
+
 
 
 #### Share your image
@@ -1446,9 +1450,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxND
-U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
-MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
-AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
-MjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTIwMzUzMDY5OCwtMTc1MTQ5MjA0OCwxND
+U5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4
+MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NS
+wtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0x
+MzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
