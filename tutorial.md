@@ -297,7 +297,7 @@ CONTAINER ID IMAGE         COMMAND         CREATED
 ```
 Notice that CONTAINER ID matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the CONTAINER ID to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will d, like so:
+Now, you will use `docker container stop` to end the process, using the CONTAINER ID to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
 
 ```
 $ docker container stop 1fa4ab2cf395
@@ -327,7 +327,7 @@ pre-configured, but there are many public ones to choose from, and you
 
 can even set up your own private registry using Docker Trusted Registry.
 
-Log in with your Docker ID
+##### Log in with your Docker ID
 
 ==========================
 
@@ -1910,7 +1910,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NjQ3MDA3NCwtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbLTEwNDk0MTQyMjcsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
