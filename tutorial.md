@@ -740,20 +740,13 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 
 #### Deploy the app on the swarm manager
 
-Now that you have `myvm1`, you can use its powers as a swarm manager to deploy your app by using the same `docker stack deploy` command you used in part 3 to `myvm1`, and your local copy of `docker-compose.yml`. This command may take a few seconds to complete and the deployment takes some time to be available.
+Now that you have `myvm1`, you can use its powers as a swarm manager to deploy your app by using the same `docker stack deploy` command you used in part 3 to `myvm1`, and your local copy of `docker-compose.yml`. This command may take a few seconds to complete and the deployment takes some time to be available. Use the `docker service ps <service_name>` command on a swarm manager to verify that all services have been redeployed.
 
-Use the `docker service ps <service_name>` command on a swarm manager to verify that all services have been redeployed.
-You are connected to myvm1 by means of the docker-machine shell
+You are connected to `myvm1` by means of the docker-machine shell configuration, and you still have access to the files on your local host. Make sure you are in the same directory as before, which includes the `docker-compose.yml` file you created in part 3.
 
-configuration, and you still have access to the files on your local host.
+Just like before, run the following command to deploy the app on `myvm1`:
 
-Make sure you are in the same directory as before, which includes the
-
-docker-compose.yml file you created in part 3.
-
-Just like before, run the following command to deploy the app on myvm1.
-
-$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
 
 Creating network getstartedlab_webnet
 
@@ -1429,7 +1422,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAzMDk3NTM2LC05Mjk2NDAyNTUsLTE3NT
+eyJoaXN0b3J5IjpbMzUxNDA3MzA4LC05Mjk2NDAyNTUsLTE3NT
 E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
 ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
 00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
