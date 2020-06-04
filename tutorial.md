@@ -295,9 +295,9 @@ code/$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
 1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
 ```
+Notice that CONTAINER ID matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Notice that CONTAINER ID matches what’s on http://localhost:4000.
-Now use docker container stop to end the process, using the CONTAINER ID, like so:
+Now, you will use `docker container stop` to end the process, using the CONTAINER ID to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will d, like so:
 
 ```
 $ docker container stop 1fa4ab2cf395
@@ -1910,7 +1910,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzk4NDU0ODYsLTExMTE0MzQ1OSwtMT
-E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
-OTMwM119
+eyJoaXN0b3J5IjpbLTc0NjQ3MDA3NCwtMTExMTQzNDU5LC0xMT
+U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
+MzAzXX0=
 -->
