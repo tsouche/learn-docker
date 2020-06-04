@@ -216,11 +216,10 @@ Dockerfile defines what goes on in the environment inside your container. Access
 The files `docker-compose-part3.yml`, `app.py` and `requirements.txt` will be used now to build a Docker image and corresponding container. 
 We see that `pip install -r requirements.txt` installs the Flask and Redis libraries for Python, and the app prints the environment variable `NAME`, as well as the output of a call to `socket.gethostname()`. Finally, because Redis isn’t running (as we’ve only installed the Python library, and not Redis itself), we should expect that the attempt to use it here fails and produces the error message.
 
-> Blockquote
+> Note: accessing the name of the host when inside a container retrieves the container ID, which is like the process ID for a running executable.
 
-
-
-That’s it! You don’t need Python or anything in `requirements.txt` on your system, nor does building or running this image install them on your system. It doesn’t seem like you’ve really set up an environment with Python and Flask, but you have.
+***That’s it!***
+You don’t need Python or anything in `requirements.txt` on your system, nor does building or running this image install them on your system. It doesn’t seem like you’ve really set up an environment with Python and Flask, but you have.
 
 
 #### Build the app
@@ -229,10 +228,8 @@ We are ready to build the app. Make sure you are still at the top level of your 
 
 ```
 $ cd code/
-/code$ ls
-app.py                    docker-compose-part5-1.yml  docker-compose.yml  requirements.txt
-docker-compose-part3.yml  docker-compose-part5-2.yml  Dockerfile
-```
+/code$ ls -al
+à```
 Now run the build command. This creates a Docker image, which we’re going to tag using:
    `-t` = name the image (a friendly name)
    `.`  = path to the Dockerfile
@@ -265,6 +262,6 @@ You can see the `hello-world` image which we used to test that Docker was proper
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4MDc4MTEwNSwtMTM1NzYzOTgwOSwtMj
+eyJoaXN0b3J5IjpbLTc4NjczNDczMiwtMTM1NzYzOTgwOSwtMj
 Q4OTk4OTQ5LDk0NDE1OTMwM119
 -->
