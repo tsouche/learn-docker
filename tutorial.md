@@ -602,77 +602,46 @@ You need a hypervisor that can create virtual machines (VMs), so install Oracle 
 
 Now, create three VMs using docker-machine, using the VirtualBox driver:
 ```
-$ docker-machine create --driver virtualbox myvm1
-
 Running pre-create checks...
-
 (myvm1) Default Boot2Docker ISO is out-of-date, downloading the latest release...
-
 (myvm1) Latest release for github.com/boot2docker/boot2docker is v18.06.1-ce
-
 (myvm1) Downloading /home/thierry/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v18.06.1-ce/boot2docker.iso...
-
 (myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
-
 Creating machine...
-
 (myvm1) Copying /home/thierry/.docker/machine/cache/boot2docker.iso to /home/thierry/.docker/machine/machines/myvm1/boot2docker.iso...
-
 (myvm1) Creating VirtualBox VM...
-
 (myvm1) Creating SSH key...
-
 (myvm1) Starting the VM...
-
 (myvm1) Check network to re-create if needed...
-
 (myvm1) Waiting for an IP...
-
 Waiting for machine to be running, this may take a few minutes...
-
 Detecting operating system of created instance...
-
 Waiting for SSH to be available...
-
 Detecting the provisioner...
-
 Provisioning with boot2docker...
-
 Copying certs to the local machine directory...
-
 Copying certs to the remote machine...
-
 Setting Docker configuration on the remote daemon...
-
 Checking connection to Docker...
-
 Docker is up and running!
-
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1
-
+```
 Now, do the same for the two additional VMs:
-
+```
 $ docker-machine create --driver virtualbox myvm2
-
 $ docker-machine create --driver virtualbox myvm3
-
+```
 You now have two VMs created, named myvm1 and myvm2.
 
 Use this command to list the machines and get their IP addresses.
-
+```
 $ docker-machine ls
-
-NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
-
-myvm1 - virtualbox Running tcp://192.168.99.100:2376 v19.03.5
-
-myvm2 - virtualbox Running tcp://192.168.99.101:2376 v19.03.5
-
-myvm3 - virtualbox Running tcp://192.168.99.102:2376 v19.03.5
-
-Initialize the swarm
-
-====================
+NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
+myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
+myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
+myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5
+```
+#### Initialize the swarm
 
 The first machine acts as the manager, which executes management commands and
 
@@ -1575,8 +1544,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkzNjQxNTk1LDE4OTU2NTgzNjMsLTEwMD
-Y3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQz
-NDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5ND
-ksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTE1NDI0Njc3OSwxODk1NjU4MzYzLC0xMD
+A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
+MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
+Q5LDk0NDE1OTMwM119
 -->
