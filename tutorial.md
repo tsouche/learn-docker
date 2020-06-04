@@ -228,7 +228,16 @@ We are ready to build the app. Make sure you are still at the top level of your 
 ```
 tuto@laptop:~$ cd code/
 tuto@laptop:~/code$ ls -al
-***à revoir***
+total 36
+drwxrwxr-x 2 tuto tuto 4096 juin   3 13:30 ./
+drwxrwxr-x 6 thierry thierry 4096 juin   3 23:50 ../
+-rw-rw-r-- 1 thierry thierry  760 juin   3 13:29 app.py
+-rw-rw-r-- 1 thierry thierry  400 juin   3 13:29 docker-compose-part3.yml
+-rw-rw-r-- 1 thierry thierry  653 juin   3 13:29 docker-compose-part5-1.yml
+-rw-rw-r-- 1 thierry thierry  902 juin   3 13:29 docker-compose-part5-2.yml
+-rw-rw-r-- 1 thierry thierry  400 juin   3 13:29 docker-compose.yml
+-rw-rw-r-- 1 thierry thierry  507 juin   3 13:29 Dockerfile
+-rw-rw-r-- 1 thierry thierry   11 juin   3 13:29 requirements.txt
 ```
 Now run the build command. This creates a Docker image, which we’re going to tag using:
 - `-t` = name the image (a friendly name)
@@ -1437,7 +1446,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4OTE1NDMzNSwxNDU5OTY3MzQ0LDE5Mz
+eyJoaXN0b3J5IjpbLTM2ODEwMzE5NCwxNDU5OTY3MzQ0LDE5Mz
 Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
 MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
 wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
