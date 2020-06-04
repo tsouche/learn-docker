@@ -783,42 +783,26 @@ $ docker-machine scp <file> <machine>:~
 
 #### Accessing your cluster
 
-You can access your app from the IP address of either VM. Typically, you can enter http://192.168.99.100:4000/ or http://192.168.99.101:4000/ or http://192.168.99.102:4000/ in the browser and see the same app running.
+You can access your app from the IP address of either VM. Typically, you can enter [http://192.168.99.100:4000/](http://192.168.99.100:4000/) or [http://192.168.99.101:4000/](http://192.168.99.101:4000/) or [http://192.168.99.102:4000/](http://192.168.99.102:4000/) in the browser and see the same app running.
 
-The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a
-
-browser, hitting refresh. In order to show the result, we use curl:
-
+The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a browser, hitting refresh. In order to show the result, we use `curl`:
+```
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> 160f2964ebb1<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> d0da3840a388<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> a2e30e45b9c4<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> a10839a1e4a8<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> c49b406440d2<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> 05994270e546<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 $ curl http://192.168.99.100:4000
-
 <h3>Hello World!</h3><b>Hostname:</b> 1cd9df25ec42<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-
 ...
-
+```
 There are eight possible container IDs all cycling by randomly, demonstrating
 
 the load-balancing.
@@ -1412,10 +1396,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzQzNzA5MjUsLTkyOTY0MDI1NSwtMT
-c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
-Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
-gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
-MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
-U5MzAzXX0=
+eyJoaXN0b3J5IjpbMTgwNzU5OTgxMiwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
