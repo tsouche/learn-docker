@@ -867,32 +867,20 @@ Started machines may have new IP addresses. You may need to re-run the `docker-m
 
 In part 4 you learned what a swarm is, how nodes in swarms can be managers or workers, created a swarm, and deployed an application on it. You saw that the core Docker commands didn’t change from part 3, they just had to be targeted to run on a swarm master. You also saw the power of Docker’s networking in action, which kept load-balancing requests across containers, even though they were running on different machines. Finally, you learned how to iterate and scale your app on a cluster.
 
-REMINDER FOR PART 4:
-
-docker-machine create --driver virtualbox myvm1 # Create a VM
-
-docker-machine env myvm1 # View basic information about your node
-
-docker-machine ssh myvm1 "docker node ls" # List the nodes in your swarm
-
-docker-machine ssh myvm1 "docker node inspect <node ID>" # Inspect a node
-
-docker-machine ssh myvm1 "docker swarm join-token -q worker" # View join token
-
-docker-machine ssh myvm1 # Open an SSH session with the VM; type "exit" to end
-
-docker node ls # View nodes in swarm (while logged on to manager)
-
-docker-machine ssh myvm2 "docker swarm leave" # Make the worker leave the swarm
-
-docker-machine ssh myvm1 "docker swarm leave -f" # Make master leave,
-
-# kill swarm
-
-docker-machine ls # list VMs, asterisk shows which VM this shell is talking to
-
-docker-machine start myvm1 # Start a VM that is currently not running
-
+### Part 4 Cheat Sheet
+|   |   |
+| --- | ---:|
+| `docker-machine create --driver virtualbox myvm1 # Create a VM
+| `docker-machine env myvm1 # View basic information about your node
+| `docker-machine ssh myvm1 "docker node ls" # List the nodes in your swarm
+| `docker-machine ssh myvm1 "docker node inspect <node ID>" # Inspect a node
+| `docker-machine ssh myvm1 "docker swarm join-token -q worker" # View join token
+| `docker-machine ssh myvm1 # Open an SSH session with the VM; type "exit" to end
+| `docker node ls # View nodes in swarm (while logged on to manager)
+| `docker-machine ssh myvm2 "docker swarm leave" # Make the worker leave the swarm
+| `docker-machine ssh myvm1 "docker swarm leave -f" # Make master leave, kill swarm
+| `docker-machine ls # list VMs, asterisk shows which VM this shell is talking to
+| `docker-machine start myvm1 # Start a VM that is currently not running
 docker-machine env myvm1 # show environment variables and command for myvm1
 
 eval $(docker-machine env myvm1) # Mac command to connect shell to myvm1
@@ -1317,10 +1305,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjEzNDExMDIsLTkyOTY0MDI1NSwtMT
-c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
-Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
-gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
-MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
-U5MzAzXX0=
+eyJoaXN0b3J5IjpbMTg0NTIxNTYxMywtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
