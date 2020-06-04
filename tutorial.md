@@ -267,6 +267,7 @@ You will now run the app, mapping your machine’s port 4000 to the container’
 
 ```
 code/$ docker run -p 4000:80 friendlyhello
+*** à revoir ***
 ```
 
 You should see a message that Python is serving your app at [http://0.0.0.0:80](http://0.0.0.0:80). But that message is coming from inside the container, which doesn’t know you mapped port 80 of that container to 4000, making the correct URL [http://localhost:4000](http://localhost:4000).
@@ -286,22 +287,17 @@ Now let’s run the app in the background, in detached mode:
 
 ```
 $ docker run -d -p 4000:80 friendlyhello
+*** à revoir ***
 ```
-You get the long container ID for your app and then are kicked back to your
-
-terminal. Your container is running in the background. You can also see theabbreviated container ID with docker container ls (and both work interchangeably when running commands):
-
-$ docker container ls
-
-CONTAINER ID IMAGE COMMAND CREATED
-
+You get the long container ID for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the abbreviated container ID with docker container ls (and both work interchangeably when running commands):
+```
+code/$ docker container ls
+CONTAINER ID IMAGE         COMMAND         CREATED
 1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
+```
 
 Notice that CONTAINER ID matches what’s on http://localhost:4000.
-
-Now use docker container stop to end the process, using the CONTAINER ID,
-
-like so:
+Now use docker container stop to end the process, using the CONTAINER ID, like so:
 
 $ docker container stop 1fa4ab2cf395
 
@@ -1914,6 +1910,6 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTQ4MTIwMDksLTExNTk0ODk3NDMsLT
-EzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMT
+M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
