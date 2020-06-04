@@ -278,31 +278,18 @@ You can also use the `curl` command in a shell to view the same content.
 code/$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
+This port remapping of 4000:80 demonstrates the difference between EXPOSE within the Dockerfile and what the publish value is set to when running `docker run -p`. In later steps, map port 4000 on the host to port 80 in the container and use [http://localhost](http://localhost).
 
-
-
-
-This port remapping of 4000:80 demonstrates the difference between EXPOSE
-
-within the Dockerfile and what the publish value is set to when running
-
-docker run -p. In later steps, map port 4000 on the host to port 80 in the
-
-container and use http://localhost.
-
-Hit CTRL+C in your terminal to quit.
+Hit `CTRL+C` in your terminal to quit.
 
 Now let’s run the app in the background, in detached mode:
 
+```
 $ docker run -d -p 4000:80 friendlyhello
-
+```
 You get the long container ID for your app and then are kicked back to your
 
-terminal. Your container is running in the background. You can also see the
-
-abbreviated container ID with docker container ls (and both work
-
-interchangeably when running commands):
+terminal. Your container is running in the background. You can also see theabbreviated container ID with docker container ls (and both work interchangeably when running commands):
 
 $ docker container ls
 
@@ -1927,6 +1914,6 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MDc4NTgzOSwtMTE1OTQ4OTc0MywtMT
-M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTE1NTQ4MTIwMDksLTExNTk0ODk3NDMsLT
+EzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
