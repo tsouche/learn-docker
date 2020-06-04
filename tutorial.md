@@ -582,7 +582,7 @@ In part 3, you took an app you wrote in part 2, and defined how it should run in
 
 A swarm is a group of machines that are running Docker and joined into a cluster. After that has happened, you continue to run the Docker commands you’re used to, but now they are executed on a cluster by a swarm manager. The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes.
 
-Swarm managers can use several strategies to run containers, such as “emptiest node” -- which fills the least utilized machines with containers. Or “global”, which ensures that each machine gets exactly one instance of the specified container. You instruct the swarm manager to use these strategies in the Compose file, just like the one you have already been using.
+Swarm managers can use several strategies to run containers, such as “emptiest node” -- which fills the least utilized machines with containers. Or “global”, which ensures that each machine gets exactly one instance of the specified container. You instruct the swarm manager to use these strategies in the `Compose` file, just like the one you have already been using.
 
 Swarm managers are the only machines in a swarm that can execute your commands, or authorize other machines to join the swarm as workers. Workers are just there to provide capacity and do not have the authority to tell any other machine what it can and cannot do.
 
@@ -1436,7 +1436,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMDQwMjE1MiwxNTQ5NDI4MDg0LDE4OT
+eyJoaXN0b3J5IjpbLTMzNjc1MzY3NiwxNTQ5NDI4MDg0LDE4OT
 U2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4
 MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5OD
 A5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
