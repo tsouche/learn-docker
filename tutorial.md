@@ -541,31 +541,27 @@ d04e320efdb3        tsouche/get-started:part2   "python app.py"     10 minutes a
 
 ### 3.5 - Take the app down
 
-The instruction to take the service stack down is 'docker stack rm' followed with the name of the service.
-
+The instruction to take the service stack down is 'docker stack rm` followed with the name of the service.
+```
 $ docker stack rm getstartedlab
 Removing service getstartedlab_web
 Removing network getstartedlab_webnet
+```
 
 ### 3.6 - Take the swarm down
 
-The instruction to take the service stack down is 'docker swarm leave' with the option '--force' to take it down even if there could connections active.
-
+The instruction to take the service stack down is `docker swarm leave` with the option `--force` to take it down even if there could connections active.
+```
 $ docker swarm leave --force
-
 Node left the swarm.
+```
 
 ### Conclusion of Part 3
 
 It’s as easy as that to stand up and scale your app with Docker. You’ve taken a huge step towards learning how to run containers in production. Up next, you learn how to run this app as a bonafide swarm on a cluster of Docker machines.
+> Note: Compose files like this are used to define applications with Docker, and can be uploaded to cloud providers using Docker Cloud, or on any hardware or cloud provider you choose with Docker Enterprise Edition.
 
-Note: Compose files like this are used to define applications with Docker,
-
-and can be uploaded to cloud providers using Docker Cloud, or on any
-
-hardware or cloud provider you choose with Docker Enterprise Edition.
-
-REMINDER FOR PART 3:
+### Cheat Sheet for Part 3:
 
 docker stack ls # List stacks or apps
 
@@ -1646,7 +1642,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTkxMzI4NzksLTQ4NDU0NjA3NSwtMT
-kyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3
-NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTYxMTM4Mjk4NywtNDg0NTQ2MDc1LC0xOT
+I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
+Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
