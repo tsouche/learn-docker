@@ -377,7 +377,7 @@ ee7d8f576a14: Already exists
 fbccdcced46e: Already exists
 Digest: sha256:0601c866aab2adcc6498200efd0f754037e909e5fd42069adeff72d1e2439068
 Status: Downloaded newer image for yourlogin/get-started:part2
-* Running on [http://0.0.0.0:80/](http://0.0.0.0:80/) (Press CTRL+C to quit)
+ * Running on [http://0.0.0.0:80/](http://0.0.0.0:80/) (Press CTRL+C to quit)
 ```
 No matter where docker run executes, it pulls your image, along with Python and all the dependencies from requirements.txt, and runs your code. It all travels together in a neat little package, and you don’t need to install anything on the host machine for Docker to run it.
 
@@ -411,7 +411,7 @@ That’s all for this page. In the next section, we learn how to scale our appli
 
 ## Docker get started - Part 3 - Services
 
-### 3.1 Your first docker-compose.yml file
+### 3.1 - Your first docker-compose.yml file
 
 A `docker-compose.yml` file is a YAML file that defines how Docker containers should behave in production. Here, we will use the `docker-compose-part3.yml` file which tells Docker to do the following:
 
@@ -422,7 +422,7 @@ A `docker-compose.yml` file is a YAML file that defines how Docker containers sh
 * instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
 * define the webnet network with the default settings (which is a load-balanced overlay network).
 
-#### Run your new load-balanced app
+### 3.2 - Run your new load-balanced app
 
 Before we can use the docker stack deploy command we first run:
 
@@ -1773,7 +1773,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMT
-E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
-OTMwM119
+eyJoaXN0b3J5IjpbLTU2ODkxMjQ2LC0xOTI5NjgwNjIwLC0xMT
+ExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5
+ODk0OSw5NDQxNTkzMDNdfQ==
 -->
