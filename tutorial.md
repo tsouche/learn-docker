@@ -425,18 +425,12 @@ A `docker-compose.yml` file is a YAML file that defines how Docker containers sh
 ### 3.2 - Run your new load-balanced app
 
 Before we can use the docker stack deploy command we first run:
-
+```
 $ docker swarm init
+```
+> Note: We get into the meaning of that command in part 4. If you don’t run docker swarm init you get an error that “this node is not a swarm manager.”
 
-Note: We get into the meaning of that command in part 4. If you don’t run
-
-docker swarm init you get an error that “this node is not a swarm
-
-manager.”
-
-Now let’s run it. You need to give your app a name. Here, it is set to
-
-'getstartedlab':
+Now let’s run it. You need to give your app a name. Here, it is set to `getstartedlab`:
 
 $ docker stack deploy -c docker-compose-part3.yml getstartedlab
 
@@ -1773,7 +1767,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2ODkxMjQ2LC0xOTI5NjgwNjIwLC0xMT
-ExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5
-ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTExNTY5MTcxMzYsLTE5Mjk2ODA2MjAsLT
+ExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4
+OTk4OTQ5LDk0NDE1OTMwM119
 -->
