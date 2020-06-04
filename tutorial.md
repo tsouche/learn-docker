@@ -776,24 +776,16 @@ To set your shell to talk to a different machine like myvm2, simply re-run docke
 
 Alternatively, you can wrap Docker commands in the form of `docker-machine ssh <machine> "<command>"`, which logs directly into the VM but doesn’t give you immediate access to files on your local host.
 
-You can use the following command to copy files across machines 
+You can use `docker-machine` to *secure copy* (scp) files across machines:
 ```
 $ docker-machine scp <file> <machine>:~
 ```
 
 #### Accessing your cluster
 
-You can access your app from the IP address of either VM. Typically, you can
+You can access your app from the IP address of either VM. Typically, you can enter http://192.168.99.100:4000/ or http://192.168.99.101:4000/ or http://192.168.99.102:4000/ in the browser and see the same app running.
 
-enter http://192.168.99.100:4000/ or http://192.168.99.101:4000/ or
-
-http://192.168.99.102:4000/ in the browser and see the same app
-
-running.
-
-The network you created is shared between them and load-balancing. Run
-
-docker-machine ls to get your VMs’ IP addresses and visit either of them on a
+The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a
 
 browser, hitting refresh. In order to show the result, we use curl:
 
@@ -1420,10 +1412,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg3OTYxNTI2LC05Mjk2NDAyNTUsLTE3NT
-E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
-ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
-00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
-OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
-MwM119
+eyJoaXN0b3J5IjpbLTE2NzQzNzA5MjUsLTkyOTY0MDI1NSwtMT
+c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
+Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
+gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
+MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
+U5MzAzXX0=
 -->
