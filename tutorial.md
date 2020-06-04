@@ -836,35 +836,21 @@ Keep the swarm or remove it?
 At some point later, you can remove this swarm if you want to with `docker-machine ssh myvm2 "docker swarm leave"` on the workers and `docker-machine ssh myvm1 "docker swarm leave --force"` on the manager, but you will still need this swarm for part 5, so keep it around for now.
 
 #### Unsetting `docker-machine` shell variable settings
-
 You can unset the `docker-machine` environment variables in your current shell with the given command:
 ```
 $ eval $(docker-machine env -u)
 ```
-This disconnects the shell from `docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker
+This disconnects the shell from docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker commands. 
 
-commands (for example, on Docker for Mac or Docker for Windows). To learn
-
-more, see the Machine topic on unsetting environment variables.
-
-Restarting Docker machines
-
-==========================
-
-If you shut down your local host, Docker machines stops running. You can
-
-check the status of machines by running docker-machine ls.
-
+#### Restarting Docker machines
+If you shut down your local host, Docker machines stops running. You can check the status of machines by running `docker-machine ls`.
+```
 $ docker-machine ls
-
-NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
-
-myvm1 - virtualbox Stopped Unknown
-
-myvm2 - virtualbox Stopped Unknown
-
-myvm3 - virtualbox Stopped Unknown
-
+NAME    ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
+myvm1   -        virtualbox   Stopped                 Unknown
+myvm2   -        virtualbox   Stopped                 Unknown
+myvm3   -        virtualbox   Stopped                 Unknown
+```
 To restart a machine that’s stopped, run:
 
 $ docker-machine start <machine-name>
@@ -1357,10 +1343,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY2Mzk4OTg3LC05Mjk2NDAyNTUsLTE3NT
-E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
-ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
-00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
-OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
-MwM119
+eyJoaXN0b3J5IjpbLTEwNjYyNDQzNjMsLTkyOTY0MDI1NSwtMT
+c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
+Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
+gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
+MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
+U5MzAzXX0=
 -->
