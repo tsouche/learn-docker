@@ -636,14 +636,14 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 ```
 Now, do the same for the two additional VMs:
 ```
-$ docker-machine create --driver virtualbox myvm2
-$ docker-machine create --driver virtualbox myvm3
+tuto@laptop:~$ docker-machine create --driver virtualbox myvm2
+tuto@laptop:~$ docker-machine create --driver virtualbox myvm3
 ```
-You now have three VMs created, named myvm1, myvm2 and myvm3.
+You now have three VMs created, named `myvm1`, `myvm2` and `myvm3`.
 
 Use the `docker-machine ls` command to list the machines and get their IP addresses.
 ```
-$ docker-machine ls
+tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
 myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
 myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
@@ -1448,9 +1448,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxND
-U5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4
-MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NS
-wtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0x
-MzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTEzMTQ3NjU1NzEsLTkyOTY0MDI1NSwtMT
+c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
+Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
+gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
+MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
+U5MzAzXX0=
 -->
