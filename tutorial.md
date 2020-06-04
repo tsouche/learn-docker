@@ -307,29 +307,14 @@ $ docker container stop 1fa4ab2cf395
 
 #### Share your image
 
-To demonstrate the portability of what we just created, let’s upload our
+To demonstrate the portability of what we just created, let’s upload our built image and run it somewhere else. After all, you need to know how to push to **registries** when you want to deploy containers to production.
+A **registry** is a collection of repositories, and a repository is a collection of images—sort of like a GitHub repository, except the code is already built.
 
-built image and run it somewhere else. After all, you need to know how to
+An account on a registry can create many repositories. The docker CLI uses Docker’s public registry by default.
 
-push to registries when you want to deploy containers to production.
-
-A registry is a collection of repositories, and a repository is a collection
-
-of images—sort of like a GitHub repository, except the code is already built.
-
-An account on a registry can create many repositories. The docker CLI uses
-
-Docker’s public registry by default.
-
-Note: We use Docker’s public registry here just because it’s free and
-
-pre-configured, but there are many public ones to choose from, and you
-
-can even set up your own private registry using Docker Trusted Registry.
+> Note: We use Docker’s public registry here just because it’s free and pre-configured, but there are many public ones to choose from, and you can even set up your own private registry using Docker Trusted Registry.
 
 ##### Log in with your Docker ID
-
-==========================
 
 If you don’t have a Docker account, sign up for one at hub.docker.com. Make
 
@@ -1910,7 +1895,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDk0MTQyMjcsLTExMTE0MzQ1OSwtMT
-E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
-OTMwM119
+eyJoaXN0b3J5IjpbMTg1NTYyMjg5MywtMTExMTQzNDU5LC0xMT
+U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
+MzAzXX0=
 -->
