@@ -356,15 +356,11 @@ The command to actually upload your tagged image to the repository is `docker pu
 ```
 $ docker push yourname/get-started:part2
 ```
-Once complete, the results of this upload are publicly available. If you log
+Once complete, the results of this upload are publicly available. If you log in to Docker Hub, you see the new image there, with its pull command.
 
-in to Docker Hub, you see the new image there, with its pull command.
+#####  Pull and run the image from the remote repository
 
-Pull and run the image from the remote repository
-
-From now on, you can use docker run and run your app on any machine with this
-
-command:
+From now on, you can use docker run and run your app on any machine with this command:
 
 docker run -p 4000:80 username/repository:tag
 
@@ -408,21 +404,14 @@ travels together in a neat little package, and you don’t need to install
 
 anything on the host machine for Docker to run it.
 
-======================
 
-Conclusion of part two
+###  Conclusion of Part 2
 
-======================
+That’s all for this page. In the next section, we learn how to scale our application by running this container in a service.
 
-That’s all for this page. In the next section, we learn how to scale our
+### Part 2 Cheat Sheet
 
-application by running this container in a service.
-
-REMINDER FOR PART 2
-
-docker build -t friendlyhello . # Create image using this directory's
-
-# Dockerfile
+docker build -t friendlyhello . # Create image using this directory's Dockerfile
 
 docker run -p 4000:80 friendlyhello # Run "friendlyname" mapping port
 
@@ -1855,7 +1844,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzNjIxNDMyMiwtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbLTE5MTYxOTg2MjMsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
