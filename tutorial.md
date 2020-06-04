@@ -360,20 +360,13 @@ Once complete, the results of this upload are publicly available. If you log in 
 
 #####  Pull and run the image from the remote repository
 
-From now on, you can use docker run and run your app on any machine with this command:
+From now on, you can use docker run and run your app on any machine with this command `docker run -p 4000:80 username/repository:tag`.
 
-docker run -p 4000:80 username/repository:tag
+So in our case `$ docker run -p 4000:80 yourlogin/get-started:part2`. If the image isn’t available locally on the machine, Docker pulls it from the repository:
 
-So in our case:
-
-$ docker run -p 4000:80 yourlogin/get-started:part2
-
-If the image isn’t available locally on the machine, Docker pulls it from the repository.
 ```
-$ docker run -p 4000:80 yourlogin/get-started:part2
-
+code/$ docker run -p 4000:80 yourlogin/get-started:part2
 Unable to find image 'yourlogin/get-started:part2' locally
-
 part2: Pulling from yourlogin/get-started
 10a267c67f42: Already exists
 f68a39a6a5e4: Already exists
@@ -1780,7 +1773,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI1Mzc5MTYwLC0xMTExNDM0NTksLTExNT
-k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
-MDNdfQ==
+eyJoaXN0b3J5IjpbLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
