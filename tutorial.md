@@ -579,37 +579,13 @@ docker stack rm <appname> # Tear down an application
 
 docker swarm leave --force # Take down a single node swarm from the manager
 
-###############################################################################
+## Part 4 - Swarms
 
-#
+In part 3, you took an app you wrote in part 2, and defined how it should run in production by turning it into a service, scaling it up 5x in the process. Here in part 4, you deploy this application onto a cluster, running it on multiple machines. Multi-container, multi-machine applications are made possible by joining multiple machines into a “Dockerized” cluster called a swarm.
 
-# Docker get started - Part 4 - Swarms
+A swarm is a group of machines that are running Docker and joined into a cluster. After that has happened, you continue to run the Docker commands you’re used to, but now they are executed on a cluster by a swarm manager.
 
-#
-
-###############################################################################
-
-In part 3, you took an app you wrote in part 2, and defined how it should
-
-run in production by turning it into a service, scaling it up 5x in the
-
-process. Here in part 4, you deploy this application onto a cluster, running
-
-it on multiple machines. Multi-container, multi-machine applications are
-
-made possible by joining multiple machines into a “Dockerized” cluster
-
-called a swarm.
-
-A swarm is a group of machines that are running Docker and joined into a
-
-cluster. After that has happened, you continue to run the Docker commands
-
-you’re used to, but now they are executed on a cluster by a swarm manager.
-
-The machines in a swarm can be physical or virtual. After joining a swarm,
-
-they are referred to as nodes.
+The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes.
 
 Swarm managers can use several strategies to run containers, such as
 
@@ -641,9 +617,7 @@ machine a swarm manager. From then on, Docker runs the commands you execute
 
 on the swarm you’re managing, rather than just on the current machine.
 
-=================
-
-Set up your swarm
+### 4.1 - Set up your swarm
 
 =================
 
@@ -1642,8 +1616,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NTY1ODM2MywtMTAwNjcwMjMxOCwtND
-g0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0
-ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMD
-NdfQ==
+eyJoaXN0b3J5IjpbLTE3NDc0NzUxMDQsMTg5NTY1ODM2MywtMT
+AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
+NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
+k0OSw5NDQxNTkzMDNdfQ==
 -->
