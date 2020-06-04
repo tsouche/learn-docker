@@ -808,17 +808,11 @@ And that’s it, the app is deployed on a swarm cluster!
 
 > Note: If your image is stored on a private registry instead of Docker Hub, you need to be logged in using docker login <your-registry> and then you need to add the --with-registry-auth flag to the above Command. For example:
 > ```$ docker login registry.example.com```
-> ```$ docker stack deploy --with-registry-auth \```
-> c docker-compose-part3.yml getstartedlab```
-
+> ```$ docker stack deploy --with-registry-auth -c docker-compose-part3.yml getstartedlab```
 >This passes the login token from your local client to the swarm nodes where the service is deployed, using the encrypted WAL logs. With this information, the nodes are able to log into the registry and pull the image.
 
-Now you can use the same docker commands you used in part 3. Only this time
-
-notice that the services (and associated containers) have been distributed
-
-between both myvm1 and myvm2.
-
+Now you can use the same docker commands you used in part 3. Only this time Notice that the services (and associated containers) have been distributed between both myvm1 and myvm2.
+```
 $ docker stack ps getstartedlab
 
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
@@ -838,10 +832,8 @@ wkzok2n1kjb1 getstartedlab_web.6 docklog/get-started:part2 myvm1 Running Running
 g3igrtiezmhe getstartedlab_web.7 docklog/get-started:part2 myvm1 Running Running about a minute ago
 
 r8xs2ytlwtvz getstartedlab_web.8 docklog/get-started:part2 myvm3 Running Running about a minute ago
-
-Connecting to VMs with docker-machine env and docker-machine ssh
-
-================================================================
+```
+#### Connecting to VMs with docker-machine env and docker-machine ssh
 
 To set your shell to talk to a different machine like myvm2, simply re-run
 
@@ -1504,8 +1496,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTg2NDA0OTUsMTg5NTY1ODM2MywtMT
-AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
-NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
-k0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTE1MzExOTgwNiwxODk1NjU4MzYzLC0xMD
+A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
+MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
+Q5LDk0NDE1OTMwM119
 -->
