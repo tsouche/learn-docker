@@ -852,42 +852,20 @@ myvm2   -        virtualbox   Stopped                 Unknown
 myvm3   -        virtualbox   Stopped                 Unknown
 ```
 To restart a machine that’s stopped, run `docker-machine start <machine-name>`. For example:
-
+```
 tuto@laptop:~$ docker-machine start myvm1
-
 Starting "myvm1"...
-
 (myvm1) Check network to re-create if needed...
-
 (myvm1) Waiting for an IP...
-
 Machine "myvm1" was started.
-
 Waiting for SSH to be available...
-
 Detecting the provisioner...
-
+```
 Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
 
-=======================
+### Conclusion of Part 4
 
-Conclusion of part four
-
-=======================
-
-In part 4 you learned what a swarm is, how nodes in swarms can be managers or
-
-workers, created a swarm, and deployed an application on it. You saw that the
-
-core Docker commands didn’t change from part 3, they just had to be targeted
-
-to run on a swarm master. You also saw the power of Docker’s networking in
-
-action, which kept load-balancing requests across containers, even though
-
-they were running on different machines. Finally, you learned how to iterate
-
-and scale your app on a cluster.
+In part 4 you learned what a swarm is, how nodes in swarms can be managers or workers, created a swarm, and deployed an application on it. You saw that the core Docker commands didn’t change from part 3, they just had to be targeted to run on a swarm master. You also saw the power of Docker’s networking in action, which kept load-balancing requests across containers, even though they were running on different machines. Finally, you learned how to iterate and scale your app on a cluster.
 
 REMINDER FOR PART 4:
 
@@ -1339,10 +1317,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MzI5ODM2NSwtOTI5NjQwMjU1LC0xNz
-UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
-Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
-wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
-NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
-kzMDNdfQ==
+eyJoaXN0b3J5IjpbLTEzMjEzNDExMDIsLTkyOTY0MDI1NSwtMT
+c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
+Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
+gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
+MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
+U5MzAzXX0=
 -->
