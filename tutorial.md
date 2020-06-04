@@ -265,8 +265,9 @@ You can see the `hello-world` image which we used to test that Docker was proper
 
 You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
 
-$ docker run -p 4000:80 friendlyhello
-
+```
+code/$ docker run -p 4000:80 friendlyhello
+```
 You should see a message that Python is serving your app at
 
 http://0.0.0.0:80. But that message is coming from inside the container,
@@ -1928,7 +1929,8 @@ of placement constraints and volumes you can create a permanent home for
 persisting data, so that your app’s data survives when the container is torn
 
 down and redeployed.
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3OTk4ODg3NCwtMTE1OTQ4OTc0MywtMT
+eyJoaXN0b3J5IjpbMTUzOTk4MzU2NiwtMTE1OTQ4OTc0MywtMT
 M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
