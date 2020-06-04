@@ -679,13 +679,9 @@ We keep preciously these connection instruction: the other nodes will not be
 
 able to join the swarm if they don't know the token.
 
-Add nodes to the swarm
+#### Add nodes to the swarm
 
-======================
-
-So, we conitnue logging into the next VM and joining it to the swarm. To do so,
-
-we use the docker command:
+So, we continue logging into the next VM and joining it to the swarm. To do so, we use the docker command:
 
 docker swarm join --token <token> <myvm ip>:<port>
 
@@ -729,17 +725,11 @@ As you can see, all three VMs appear in the list, and 'myvm1' is indicated
 
 as the 'leader' of the swarm.
 
-Leaving a swarm
-
-===============
+#### Leaving a swarm
 
 If you want to start over, you can run docker swarm leave from each node.
 
-====================================
-
-Deploy your app on the swarm cluster
-
-====================================
+### 4.2 - Deploy your app on the swarm cluster
 
 The hard part is over. Now you just repeat the process you used in part 3 to
 
@@ -747,13 +737,9 @@ deploy on your new swarm. Just remember that only swarm managers like myvm1
 
 execute Docker commands; workers are just for capacity.
 
-Configure a docker-machine shell to the swarm manager
+#### Configure a docker-machine shell to the swarm manager
 
-=====================================================
-
-So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to
-
-the VMs, or you logged directly into the VM (via SSH) in order to place orders.
+So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to the VMs, or you logged directly into the VM (via SSH) in order to place orders.
 
 Another option is to run docker-machine env <machine> to get and run a command
 
@@ -1544,7 +1530,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDI0Njc3OSwxODk1NjU4MzYzLC0xMD
+eyJoaXN0b3J5IjpbMTQ3MTk4MDU2NSwxODk1NjU4MzYzLC0xMD
 A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
 MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
 Q5LDk0NDE1OTMwM119
