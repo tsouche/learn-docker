@@ -307,24 +307,21 @@ $ docker container stop 1fa4ab2cf395
 
 #### Share your image
 
-To demonstrate the portability of what we just created, let’s upload our built image and run it somewhere else. After all, you need to know how to push to **registries** when you want to deploy containers to production.
-A **registry** is a collection of repositories, and a repository is a collection of images—sort of like a GitHub repository, except the code is already built.
-
+To demonstrate the portability of what we just created, let’s upload our built image and run it somewhere else. After all, you need to know how to push to *registries* when you want to deploy containers to production.
+A **registry** is a collection of repositories, and a **repository** is a collection of images—sort of like a GitHub repository, except the code is already built.
 An account on a registry can create many repositories. The docker CLI uses Docker’s public registry by default.
 
 > Note: We use Docker’s public registry here just because it’s free and pre-configured, but there are many public ones to choose from, and you can even set up your own private registry using Docker Trusted Registry.
 
 ##### Log in with your Docker ID
 
-If you don’t have a Docker account, sign up for one at hub.docker.com. Make
-
-note of your username.
+If you don’t have a Docker account, sign up for one at [https://hub.docker.com](https://hub.docker.com). Make note of your username.
 
 Log in to the Docker public registry on your local machine.
-
+```
 $ docker login
-
-Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+```
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
 
 Username: tsouche
 
@@ -1895,7 +1892,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NTYyMjg5MywtMTExMTQzNDU5LC0xMT
+eyJoaXN0b3J5IjpbLTM5NDE3MDY3MCwtMTExMTQzNDU5LC0xMT
 U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
 MzAzXX0=
 -->
