@@ -688,10 +688,10 @@ and:
 tso@laptop:~$ docker-machine ssh myvm3
 docker@myvm3:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
+```
+**Congratulations**, you have now created your first swarm on a cluster of 3 VMs!
 
-Congratulations, you have created your first swarm of 3 VMs!
-
-Run docker node ls on the manager to view the nodes in this swarm:
+Run `docker node ls` on the manager to view the nodes in this swarm:
 
 docker@myvm1:~$ docker node ls
 
@@ -1436,10 +1436,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjcyODMxMjYsLTkyOTY0MDI1NSwtMT
-c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
-Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
-gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
-MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
-U5MzAzXX0=
+eyJoaXN0b3J5IjpbLTM2Mzk0MzQ3OCwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
