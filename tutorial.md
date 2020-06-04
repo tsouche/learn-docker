@@ -491,10 +491,13 @@ ID              NAME                 MODE          REPLICAS   IMAGE             
 xoagyod5294j    getstartedlab_web    replicated    4/5        yourlogin/get-started:part2    *:4000->80/tcp
 $ docker container ls
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-df119c85f902 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-d04e320efdb3 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+df119c85f902 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+
+d04e320efdb3 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+
+4c3229476930 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+
+14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
 As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (`ID 23b1b1a90fe6`) to meet again the target of 5 concurrent containers for the service stack. The `REPLICAS` column now indicate 5/5 again:
 ```
@@ -1692,7 +1695,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMT
-ExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5
-OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTk5MzA5Mjk0NSwtNDg0NTQ2MDc1LC0xOT
+I5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2
+Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
