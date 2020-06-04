@@ -685,7 +685,7 @@ This node joined a swarm as a worker.
 ```
 and:
 ```
-tso@laptop:~$ docker-machine ssh myvm3
+tuto@laptop:~$ docker-machine ssh myvm3
 docker@myvm3:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
 ```
@@ -705,15 +705,16 @@ As you can see, all three VMs appear in the list, and `myvm1` is indicated as th
 
 If you want to start over, you can run `docker swarm leave` from each node. However, we can continue using the swarm '*as is*' for some more time. 
 
+
 ### 4.2 - Deploy your app on the swarm cluster
 
-The hard part is over. Now you just repeat the process you used in part 3 to deploy on your new swarm. Just remember that only swarm managers like `myvm1` execute Docker commands; workers are just for capacity.
+The hard part is over. Now you just repeat the process you used in Part 3 to deploy on your new swarm. Just remember that only swarm managers like `myvm1` execute Docker commands; workers are just for capacity.
 
 #### Configure a docker-machine shell to the swarm manager
 
 So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to the VMs, or you logged directly into the VM (via SSH) in order to place orders.
 
-Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local copy of the docker-compose.yml file (on your laptop) to deploy the app “remotely” without having to copy it inside the VM1.
+Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local copy of the `docker-compose.yml` file (on your laptop) to deploy the app “*remotely*” without having to copy it inside the VM1.
 
 ```
 $ docker-machine env myvm1
@@ -1430,7 +1431,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDA1MzczNywtOTI5NjQwMjU1LC0xNz
+eyJoaXN0b3J5IjpbMTUyNjUwNDk1OSwtOTI5NjQwMjU1LC0xNz
 UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
 Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
 wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
