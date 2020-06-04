@@ -644,13 +644,9 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 
 The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using `docker-machine ssh`. Instruct `myvm1` to become a swarm manager with `docker swarm init` and look for output like this:
 
-docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"
+`docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"`
 
-More elegantly, we will actually spawn a new terminal tab for each VM, use
-
-docker-machine to connect (via SSH) into the VM, and - from the VM - initialize
-
-the swarm (for VM1) or join the swarm (VM2 and VM3):
+More elegantly, we will actually spawn a new terminal tab for each VM, use `docker-machine` to connect (via SSH) into the VM, and - from within the VM - initialize the swarm (for VM1) or join the swarm (VM2 and VM3):
 
 $ gnome-terminal --tab --tab --tab
 
@@ -1432,8 +1428,9 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OT
-U2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4
-MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5OD
-A5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1ND
+k0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2
+MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3ND
+MsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+
 -->
