@@ -679,7 +679,7 @@ copy this command, and run it from `myvm2` and `myvm3` via `docker swarm join --
 
 In this case:
 ```
-tso@laptop:~$ docker-machine ssh myvm2
+tuto@laptop:~$ docker-machine ssh myvm2
 docker@myvm2:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
 ```
@@ -717,7 +717,7 @@ So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to 
 Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local copy of the `docker-compose.yml` file (on your laptop) to deploy the app “*remotely*” without having to copy it inside the VM1.
 
 ```
-$ docker-machine env myvm1
+tuto@laptop:~$ docker-machine env myvm1
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/home/tso/.docker/machine/machines/myvm1"
@@ -725,12 +725,11 @@ export DOCKER_MACHINE_NAME="myvm1"
 # Run this command to configure your shell:
 # eval $(docker-machine env myvm1)
 ```
-
-We just have to follow the instructions:
+So, we just have to follow the instructions above:
 ```
-$ eval $(docker-machine env myvm1)
+tuto@laptop:~$ eval $(docker-machine env myvm1)
 ```
-Run docker-machine ls to verify that myvm1 is now the active machine, as indicated by the asterisk next to it.
+Run `docker-machine ls` to verify that `myvm1` is now the active machine, as indicated by the asterisk next to it:
 ```
 $ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
@@ -1323,23 +1322,23 @@ node’s IP address, and notice see the redis service running along with the web
 
 and visualizer services. We can show it here with curl:
 
-tso@laptop:~$ curl http://192.168.99.101
+tuto@laptop:~$ curl http://192.168.99.101
 
 <h3>Hello World!</h3><b>Hostname:</b> 4bf84a659203<br/><b>Visits:</b> 1
 
-tso@laptop:~$ curl http://192.168.99.101
+tuto@laptop:~$ curl http://192.168.99.101
 
 <h3>Hello World!</h3><b>Hostname:</b> 6e44c2030d1d<br/><b>Visits:</b> 2
 
-tso@laptop:~$ curl http://192.168.99.101
+tuto@laptop:~$ curl http://192.168.99.101
 
 <h3>Hello World!</h3><b>Hostname:</b> 72e463fe35f4<br/><b>Visits:</b> 3
 
-tso@laptop:~$ curl http://192.168.99.101
+tuto@laptop:~$ curl http://192.168.99.101
 
 <h3>Hello World!</h3><b>Hostname:</b> de35f3de665f<br/><b>Visits:</b> 4
 
-tso@laptop:~$ curl http://192.168.99.101
+tuto@laptop:~$ curl http://192.168.99.101
 
 <h3>Hello World!</h3><b>Hostname:</b> 84fe0906e70b<br/><b>Visits:</b> 5
 
@@ -1355,7 +1354,7 @@ Before leaving, tidy the place!
 
 This means bringing the services down and removing any container/images left.
 
-tso@laptop:~$ docker service ls
+tuto@laptop:~$ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
@@ -1365,7 +1364,7 @@ tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:st
 
 2ythn4okhrdc getstartedlab_web replicated 8/8 account/get-started:part2 *:80->80/tcp
 
-tso@laptop:~$ docker stack rm getstartedlab
+tuto@laptop:~$ docker stack rm getstartedlab
 
 Removing service getstartedlab_redis
 
@@ -1375,11 +1374,11 @@ Removing service getstartedlab_web
 
 Removing network getstartedlab_webnet
 
-tso@laptop:~$ docker container ls -a
+tuto@laptop:~$ docker container ls -a
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-tso@laptop:~$ docker images -a
+tuto@laptop:~$ docker images -a
 
 REPOSITORY TAG IMAGE ID CREATED SIZE
 
@@ -1389,7 +1388,7 @@ redis <none> c33c9b2541a8 2 days ago 98.2MB
 
 dockersamples/visualizer <none> 8dbf7c60cf88 2 years ago 148MB
 
-tso@laptop:/projects/get-started/docker$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
+tuto@laptop:/projects/get-started/docker$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
 
 ...
 
@@ -1431,7 +1430,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNjUwNDk1OSwtOTI5NjQwMjU1LC0xNz
+eyJoaXN0b3J5IjpbMTk3ODcyNTAxNCwtOTI5NjQwMjU1LC0xNz
 UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
 Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
 wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
