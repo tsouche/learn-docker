@@ -428,51 +428,22 @@ That’s all for this page. In the next section, we learn how to scale our appli
 | `docker login` | Log in this CLI session using your Docker credentials |
 | `docker tag <image> username/repository:tag` | Tag <image> for upload to registry |
 | `docker push username/repository:tag` | Upload tagged image to registry |
-| docker run username/repository:tag | Run image from a registry |
+| `docker run username/repository:tag` | Run image from a registry |
 
 
 
-# Docker get started - Part 3 - Services
+## Docker get started - Part 3 - Services
 
-#
+### 3.1 Your first docker-compose.yml file
 
-###############################################################################
+A `docker-compose.yml` file is a YAML file that defines how Docker containers should behave in production. Here, we will use the `docker-compose-part3.yml` file which tells Docker to do the following:
 
-==================================
-
-Your first docker-compose.yml file
-
-==================================
-
-A docker-compose.yml file is a YAML file that defines how Docker containers
-
-should behave in production. Here, we will use the docker-compose-part3.yml
-
-file which tells Docker to do the following:
-
-- pull the image we uploaded in step 2 from the registry.
-
-- run 5 instances of that image as a service called web, limiting each
-
-one to use, at most, 10% of the CPU (across all cores), and 50MB of
-
-RAM.
-
-- immediately restart containers if one fails.
-
-- map port 4000 on the host to web’s port 80.
-
-- instruct web’s containers to share port 80 via a load-balanced network
-
-called webnet. (Internally, the containers themselves publish to web’s
-
-port 80 at an ephemeral port.)
-
-- define the webnet network with the default settings (which is a load-
-
-balanced overlay network).
-
-==============================
+* pull the image we uploaded in step 2 from the registry.
+* run 5 instances of that image as a service called web, limiting each one to use, at most, 10% of the CPU (across all cores), and 50MB of RAM.
+* immediately restart containers if one fails.
+* map port 4000 on the host to web’s port 80.
+* instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
+* define the webnet network with the default settings (which is a load-balanced overlay network).
 
 Run your new load-balanced app
 
@@ -1827,7 +1798,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMzI1MTA5MiwtMTExMTQzNDU5LC0xMT
+eyJoaXN0b3J5IjpbMjA0MDExODYyNiwtMTExMTQzNDU5LC0xMT
 U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
 MzAzXX0=
 -->
