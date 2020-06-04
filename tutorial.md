@@ -295,9 +295,9 @@ Now let’s run the app in the background, in detached mode:
 
 ```
 tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
-*** à revoir ***
+959d6fbadbbd58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
 ```
-You get the long container ID for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the abbreviated container ID with docker container ls (and both work interchangeably when running commands):
+You get the `long container ID` for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the `abbreviated container ID` with `docker container ls` (and both work interchangeably when running commands):
 ```
 tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
@@ -1446,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzE0ODMxNTIsMTQ1OTIwODk2MCwxND
-U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
-MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
-AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
-MjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTczMTI0Mzc3NCwxNDU5MjA4OTYwLDE0NT
+k5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgz
+NjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMC
+wtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0y
+NDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
