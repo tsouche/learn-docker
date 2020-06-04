@@ -783,7 +783,7 @@ $ docker-machine scp <file> <machine>:~
 
 #### Accessing your cluster
 
-You can access your app from the IP address of either VM. Typically, you can enter [http://192.168.99.100:4000/](http://192.168.99.100:4000/) or [http://192.168.99.101:4000/](http://192.168.99.101:4000/) or [http://192.168.99.102:4000/](http://192.168.99.102:4000/) in the browser and see the same app running.
+You can access your app from the IP address of either VM. Typically, you can enter [http://192.168.99.100:4000/](http://192.168.99.100:4000/) or [http://192.168.99.101:4000/](http://192.168.99.101:4000/) or [http://192.168.99.102:4000/](http://192.168.99.102:4000/) in the browser and see the *same* app running.
 
 The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a browser, hitting refresh. In order to show the result, we use `curl`:
 ```
@@ -803,17 +803,8 @@ $ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 1cd9df25ec42<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ...
 ```
-There are eight possible container IDs all cycling by randomly, demonstrating
-
-the load-balancing.
-
-The reason all 3 IP addresses work is that nodes in a swarm participate in an
-
-ingress routing mesh. This ensures that a service deployed at a certain port
-
-within your swarm always has that port reserved to itself, no matter what
-
-node is actually running the container.
+There are eight possible container IDs all cycling by randomly, demonstrating the load-balancing.
+The reason all 3 IP addresses work is that nodes in a swarm participate in an ingress routing mesh. This ensures that a service deployed at a certain port within your swarm always has that port reserved to itself, no matter what node is actually running the container.
 
 #### Having connectivity trouble?
 
@@ -824,15 +815,10 @@ Keep in mind that to use the ingress network in the swarm, you need to have the 
 
 ### 4.3 - Iterating and scaling your app
 
-From here you can do everything you learned about in parts 2 and 3.
+From here you can do everything you learned about in parts 2 and 3:
 
-- Scale the app by changing the docker-compose.yml file.
-
-- Change the app behavior by editing code, then rebuild, and push the new
-
-image. (To do this, follow the same steps you took earlier to build the
-
-app and publish the image).
+* Scale the app by changing the docker-compose.yml file.
+* Change the app behavior by editing code, then rebuild, and push the new image. (To do this, follow the same steps you took earlier to build the app and publish the image).
 
 In either case, simply run docker stack deploy again to deploy these changes.
 
@@ -1396,7 +1382,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNzU5OTgxMiwtOTI5NjQwMjU1LC0xNz
+eyJoaXN0b3J5IjpbLTkwODMwMjQ5MiwtOTI5NjQwMjU1LC0xNz
 UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
 Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
 wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
