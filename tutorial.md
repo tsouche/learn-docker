@@ -822,33 +822,18 @@ From here you can do everything you learned about in parts 2 and 3:
 
 In either case, simply run docker stack deploy again to deploy these changes.
 
-You can join any machine, physical or virtual, to this swarm, using the same
+You can join any machine, physical or virtual, to this swarm, using the same docker swarm join command you used on myvm2, and capacity is added to your cluster. Just run docker stack deploy afterwards, and your app can take advantage of the new resources.
 
-docker swarm join command you used on myvm2, and capacity is added to your
-
-cluster. Just run docker stack deploy afterwards, and your app can take
-
-advantage of the new resources.
-
-====================================
-
-Cleanup and reboot Stacks and swarms
-
-====================================
+### 4.4 - Cleanup and reboot Stacks and swarms
 
 You can tear down the stack with docker stack rm. For example:
-
+```
 $ docker stack rm getstartedlab
-
 Removing service getstartedlab_web
-
 Removing network getstartedlab_webnet
-
+```
 Keep the swarm or remove it?
-
-At some point later, you can remove this swarm if you want to with
-
-docker-machine ssh myvm2 "docker swarm leave" on the worker and
+At some point later, you can remove this swarm if you want to with `docker-machine ssh myvm2 "docker swarm leave" on the worker and
 
 docker-machine ssh myvm1 "docker swarm leave --force" on the manager, but you
 
@@ -1382,7 +1367,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwODMwMjQ5MiwtOTI5NjQwMjU1LC0xNz
+eyJoaXN0b3J5IjpbMTEyNzkzMjcxMiwtOTI5NjQwMjU1LC0xNz
 UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
 Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
 wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
