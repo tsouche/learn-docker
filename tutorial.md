@@ -583,43 +583,15 @@ docker swarm leave --force # Take down a single node swarm from the manager
 
 In part 3, you took an app you wrote in part 2, and defined how it should run in production by turning it into a service, scaling it up 5x in the process. Here in part 4, you deploy this application onto a cluster, running it on multiple machines. Multi-container, multi-machine applications are made possible by joining multiple machines into a “Dockerized” cluster called a swarm.
 
-A swarm is a group of machines that are running Docker and joined into a cluster. After that has happened, you continue to run the Docker commands you’re used to, but now they are executed on a cluster by a swarm manager.
+A swarm is a group of machines that are running Docker and joined into a cluster. After that has happened, you continue to run the Docker commands you’re used to, but now they are executed on a cluster by a swarm manager. The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes.
 
-The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes.
+Swarm managers can use several strategies to run containers, such as “emptiest node” -- which fills the least utilized machines with containers. Or “global”, which ensures that each machine gets exactly one instance of the specified container. You instruct the swarm manager to use these strategies in the Compose file, just like the one you have already been using.
 
-Swarm managers can use several strategies to run containers, such as
+Swarm managers are the only machines in a swarm that can execute your commands, or authorize other machines to join the swarm as workers. Workers are just there to provide capacity and do not have the authority to tell any other machine what it can and cannot do.
 
-“emptiest node” -- which fills the least utilized machines with containers.
-
-Or “global”, which ensures that each machine gets exactly one instance of
-
-the specified container. You instruct the swarm manager to use these
-
-strategies in the Compose file, just like the one you have already been
-
-using.
-
-Swarm managers are the only machines in a swarm that can execute your
-
-commands, or authorize other machines to join the swarm as workers. Workers
-
-are just there to provide capacity and do not have the authority to tell any
-
-other machine what it can and cannot do.
-
-Up until now, you have been using Docker in a single-host mode on your local
-
-machine. But Docker also can be switched into swarm mode, and that’s what
-
-enables the use of swarms. Enabling swarm mode instantly makes the current
-
-machine a swarm manager. From then on, Docker runs the commands you execute
-
-on the swarm you’re managing, rather than just on the current machine.
+Up until now, you have been using Docker in a single-host mode on your local machine. But Docker also can be switched into swarm mode, and that’s what enables the use of swarms. Enabling swarm mode instantly makes the current machine a swarm manager. From then on, Docker runs the commands you execute on the swarm you’re managing, rather than just on the current machine.
 
 ### 4.1 - Set up your swarm
-
-=================
 
 A swarm is made up of multiple nodes, which can be either physical or virtual
 
@@ -633,7 +605,7 @@ Choose a tab below to see how this plays out in various contexts. We use VMs
 
 to quickly create a two-machine cluster and turn it into a swarm.
 
-Create a cluster
+### Create a cluster
 
 ================
 
@@ -1616,8 +1588,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDc0NzUxMDQsMTg5NTY1ODM2MywtMT
-AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
-NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
-k0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMTM4MjE4MTQwNCwxODk1NjU4MzYzLC0xMD
+A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
+MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
+Q5LDk0NDE1OTMwM119
 -->
