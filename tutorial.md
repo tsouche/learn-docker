@@ -630,19 +630,19 @@ $ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
-xoagyod5294j getstartedlab_web replicated 4/5 tsouche/get-started:part2 *:4000->80/tcp
+xoagyod5294j getstartedlab_web replicated 4/5 yourlogin/get-started:part2 *:4000->80/tcp
 
 $ docker container ls
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-df119c85f902 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+df119c85f902 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 
-d04e320efdb3 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+d04e320efdb3 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
 
-4c3229476930 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+4c3229476930 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
-14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+14e380d75bf0 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 
 As you can see, there are only 4 isntance left running, while we asked for 5.
 
@@ -658,21 +658,21 @@ $ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
-xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
 
 $ docker container ls
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-b12b6b1d6cc4 tsouche/get-started:part2 "python app.py" 20 seconds ago Up 8 seconds 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+b12b6b1d6cc4 yourlogin/get-started:part2 "python app.py" 20 seconds ago Up 8 seconds 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
 
-df119c85f902 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+df119c85f902 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 
-d04e320efdb3 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+d04e320efdb3 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
 
-4c3229476930 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+4c3229476930 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
-14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+14e380d75bf0 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 
 =============
 
@@ -702,27 +702,27 @@ $ docker service ls
 
 ID NAME MODE REPLICAS IMAGE PORTS
 
-xoagyod5294j getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:4000->80/tcp
+xoagyod5294j getstartedlab_web replicated 8/8 yourlogin/get-started:part2 *:4000->80/tcp
 
 $ docker container ls
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-29eaeb676554 tsouche/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
+29eaeb676554 yourlogin/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
 
-e2643e1f9374 tsouche/get-started:part2 "python app.py" 11 seconds ago Up 4 seconds 80/tcp getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
+e2643e1f9374 yourlogin/get-started:part2 "python app.py" 11 seconds ago Up 4 seconds 80/tcp getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
 
-076bda02c8ac tsouche/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.8.038y0t3sv10fw5bhpp6272n03
+076bda02c8ac yourlogin/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.8.038y0t3sv10fw5bhpp6272n03
 
-b12b6b1d6cc4 tsouche/get-started:part2 "python app.py" 2 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+b12b6b1d6cc4 yourlogin/get-started:part2 "python app.py" 2 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
 
-df119c85f902 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+df119c85f902 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 
-d04e320efdb3 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+d04e320efdb3 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
 
-4c3229476930 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+4c3229476930 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
-14e380d75bf0 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+14e380d75bf0 yourlogin/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 
 =================
 
@@ -1174,21 +1174,21 @@ $ docker stack ps getstartedlab
 
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
 
-xr369odnin3x getstartedlab_web.1 tsouche/get-started:part2 myvm2 Running Running about a minute ago
+xr369odnin3x getstartedlab_web.1 yourlogin/get-started:part2 myvm2 Running Running about a minute ago
 
-i0cy5sv9y4l0 getstartedlab_web.2 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+i0cy5sv9y4l0 getstartedlab_web.2 yourlogin/get-started:part2 myvm3 Running Running about a minute ago
 
-sqnb23j0n6xr getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running about a minute ago
+sqnb23j0n6xr getstartedlab_web.3 yourlogin/get-started:part2 myvm2 Running Running about a minute ago
 
-hnt4hndfqxd2 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+hnt4hndfqxd2 getstartedlab_web.4 yourlogin/get-started:part2 myvm3 Running Running about a minute ago
 
-l41yrxn5vavl getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+l41yrxn5vavl getstartedlab_web.5 yourlogin/get-started:part2 myvm1 Running Running about a minute ago
 
-wkzok2n1kjb1 getstartedlab_web.6 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+wkzok2n1kjb1 getstartedlab_web.6 yourlogin/get-started:part2 myvm1 Running Running about a minute ago
 
-g3igrtiezmhe getstartedlab_web.7 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+g3igrtiezmhe getstartedlab_web.7 yourlogin/get-started:part2 myvm1 Running Running about a minute ago
 
-r8xs2ytlwtvz getstartedlab_web.8 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+r8xs2ytlwtvz getstartedlab_web.8 yourlogin/get-started:part2 myvm3 Running Running about a minute ago
 
 Connecting to VMs with docker-machine env and docker-machine ssh
 
@@ -1588,23 +1588,23 @@ $ docker stack ps getstartedlab
 
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
 
-kb8e3d7iqj76 getstartedlab_web.1 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+kb8e3d7iqj76 getstartedlab_web.1 yourlogin/get-started:part2 myvm3 Running Running 59 seconds ago
 
 puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 50 seconds ago
 
-zr4jjcvrr0l5 getstartedlab_web.2 tsouche/get-started:part2 myvm1 Running Running 58 seconds ago
+zr4jjcvrr0l5 getstartedlab_web.2 yourlogin/get-started:part2 myvm1 Running Running 58 seconds ago
 
-v6a1qd49a0ka getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+v6a1qd49a0ka getstartedlab_web.3 yourlogin/get-started:part2 myvm2 Running Running 59 seconds ago
 
-x0gq7usig5y6 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+x0gq7usig5y6 getstartedlab_web.4 yourlogin/get-started:part2 myvm3 Running Running 59 seconds ago
 
-9uxjs2ve3x1s getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running 58 seconds ago
+9uxjs2ve3x1s getstartedlab_web.5 yourlogin/get-started:part2 myvm1 Running Running 58 seconds ago
 
-4r6a1dxxlh0e getstartedlab_web.6 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+4r6a1dxxlh0e getstartedlab_web.6 yourlogin/get-started:part2 myvm2 Running Running 59 seconds ago
 
-pqxvp3m14loh getstartedlab_web.7 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+pqxvp3m14loh getstartedlab_web.7 yourlogin/get-started:part2 myvm3 Running Running 59 seconds ago
 
-gs5ox6yvnumw getstartedlab_web.8 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+gs5ox6yvnumw getstartedlab_web.8 yourlogin/get-started:part2 myvm2 Running Running 59 seconds ago
 
 As you can see, the previous containers were stopped and replaced with the
 
@@ -1724,7 +1724,7 @@ ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
 
 tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
 
-2ythn4okhrdc getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:80->80/tcp
+2ythn4okhrdc getstartedlab_web replicated 8/8 yourlogin/get-started:part2 *:80->80/tcp
 
 docker@myvm1:~$ docker stack ps getstartedlab
 
@@ -1732,7 +1732,7 @@ ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
 
 hcvuq1nt48hp getstartedlab_redis.1 redis:latest myvm1 Running Running about a minute ago
 
-kb8e3d7iqj76 getstartedlab_web.1 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+kb8e3d7iqj76 getstartedlab_web.1 yourlogin/get-started:part2 myvm3 Running Running 5 minutes ago
 
 puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 5 minutes ago
 
@@ -1855,7 +1855,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5NjAyMzUwLC0xMTExNDM0NTksLTExNT
-k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
-MDNdfQ==
+eyJoaXN0b3J5IjpbLTYzNjIxNDMyMiwtMTExMTQzNDU5LC0xMT
+U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
+MzAzXX0=
 -->
