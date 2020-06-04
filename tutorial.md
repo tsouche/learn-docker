@@ -226,8 +226,7 @@ You don’t need Python or anything in `requirements.txt` on your system, nor do
 We are ready to build the app. Make sure you are still at the top level of your new directory. Here’s what `ls` should show:
 
 ```
-tuto@laptop:~$ cd code/
-tuto@laptop:~/code$ ls
+tuto@laptop:~$ ls code/
 app.py                    docker-compose-part5-1.yml  docker-compose.yml  requirements.txt
 docker-compose-part3.yml  docker-compose-part5-2.yml  Dockerfile
 ```
@@ -238,7 +237,7 @@ Now run the build command. This creates a Docker image, which we’re going to t
 You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many more lines but we skipped most of them (represented by [...]) :  
 
 ```
-tuto@laptop:~/code$ docker build -t friendlyhello .
+tuto@laptop:~$ docker build -t friendlyhello ./code
 Sending build context to Docker daemon  9.728kB
 Step 1/7 : FROM python:3.6
 3.6: Pulling from library/python
@@ -253,7 +252,7 @@ Successfully tagged friendlyhello:latest
 Where is your built image? It’s in your machine’s local Docker image registry:
 
 ```
-tuto@laptop:~/code$ docker image ls
+tuto@laptop:~$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 friendlyhello       latest              c54174fc2d78        5 minutes ago       924MB
 python              3.6                 2dfb6d103623        2 weeks ago         914MB
@@ -266,7 +265,7 @@ You can see the `hello-world` image which we used to test that Docker was proper
 You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
 
 ```
-tuto@laptop:~/code$ docker run -p 4000:80 friendlyhello
+tuto@laptop:~$ docker run -p 4000:80 friendlyhello
  * Serving Flask app "app" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -1421,7 +1420,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkyMDk2Njk0LC05Mjk2NDAyNTUsLTE3NT
+eyJoaXN0b3J5IjpbNjE4MTk3ODk1LC05Mjk2NDAyNTUsLTE3NT
 E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
 ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
 00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
