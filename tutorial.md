@@ -227,17 +227,9 @@ We are ready to build the app. Make sure you are still at the top level of your 
 
 ```
 tuto@laptop:~$ cd code/
-tuto@laptop:~/code$ ls -al
-total 36
-drwxrwxr-x 2 tuto tuto 4096 juin   3 13:30 ./
-drwxrwxr-x 6 tuto tuto 4096 juin   3 23:50 ../
--rw-rw-r-- 1 tuto tuto  760 juin   3 13:29 app.py
--rw-rw-r-- 1 tuto tuto  400 juin   3 13:29 docker-compose-part3.yml
--rw-rw-r-- 1 tuto tuto  653 juin   3 13:29 docker-compose-part5-1.yml
--rw-rw-r-- 1 tuto tuto  902 juin   3 13:29 docker-compose-part5-2.yml
--rw-rw-r-- 1 tuto tuto  400 juin   3 13:29 docker-compose.yml
--rw-rw-r-- 1 tuto tuto  507 juin   3 13:29 Dockerfile
--rw-rw-r-- 1 tuto tuto   11 juin   3 13:29 requirements.txt
+tuto@laptop:~/code$ ls
+app.py                    docker-compose-part5-1.yml  docker-compose.yml  requirements.txt
+docker-compose-part3.yml  docker-compose-part5-2.yml  Dockerfile
 ```
 Now run the build command. This creates a Docker image, which we’re going to tag using:
 - `-t` = name the image (a friendly name)
@@ -246,7 +238,7 @@ Now run the build command. This creates a Docker image, which we’re going to t
 You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many more lines but we skipped most of them (represented by [...]) :  
 
 ```
-/code$ docker build -t friendlyhello .
+tuto@laptop:~/code$ docker build -t friendlyhello .
 Sending build context to Docker daemon  9.728kB
 Step 1/7 : FROM python:3.6
 3.6: Pulling from library/python
@@ -261,7 +253,7 @@ Successfully tagged friendlyhello:latest
 Where is your built image? It’s in your machine’s local Docker image registry:
 
 ```
-/code$ docker image ls
+tuto@laptop:~/code$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 friendlyhello       latest              c54174fc2d78        5 minutes ago       924MB
 python              3.6                 2dfb6d103623        2 weeks ago         914MB
@@ -274,7 +266,7 @@ You can see the `hello-world` image which we used to test that Docker was proper
 You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
 
 ```
-code/$ docker run -p 4000:80 friendlyhello
+tuto@laptop:~/code$ docker run -p 4000:80 friendlyhello
 *** à revoir ***
 ```
 
@@ -284,7 +276,7 @@ Go to that URL in a web browser to see the display content served up on a web pa
 You can also use the `curl` command in a shell to view the same content.
 
 ```
-code/$ curl http://localhost:4000
+tuto@laptop:~/code$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
 This port remapping of 4000:80 demonstrates the difference between EXPOSE within the Dockerfile and what the publish value is set to when running `docker run -p`. In later steps, map port 4000 on the host to port 80 in the container and use [http://localhost](http://localhost).
@@ -294,16 +286,16 @@ Hit `CTRL+C` in your terminal to quit.
 Now let’s run the app in the background, in detached mode:
 
 ```
-$ docker run -d -p 4000:80 friendlyhello
+tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
 *** à revoir ***
 ```
 You get the long container ID for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the abbreviated container ID with docker container ls (and both work interchangeably when running commands):
 ```
-code/$ docker container ls
+tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
 1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
 ```
-Notice that CONTAINER ID matches what is displayed on [http://localhost:4000](http://localhost:4000).
+Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
 Now, you will use `docker container stop` to end the process, using the CONTAINER ID to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
 
@@ -1446,9 +1438,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzMwMDM0NTQsMTQ1OTk2NzM0NCwxOT
-M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
-MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
-ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
-NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMjQwMTI3MjEwLDE0NTk5NjczNDQsMTkzNj
+UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
+MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
+0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
+MTU5MzAzXX0=
 -->
