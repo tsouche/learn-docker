@@ -192,11 +192,11 @@ With Docker, scaling your application is a matter of spinning up new executables
 
 It’s time to begin building an app the Docker way. We start at the bottom of the hierarchy of such an app, which is a **container**, which we cover on this page. Above this level is a **service**, which defines how containers behave in production, covered in Part 3. Finally, at the top level is the **stack**, defining the interactions of all the services, covered in Part 5.
 
-|     |
-|:---:|
-| stack |
-| service |
-| container *(you are here)* |
+|     |     |
+|:---:|:---:|
+| stack |  |
+| service |  |
+| container | *(you are here)* |
 
 In the past, if you were to start writing a Python app, your first order of business was to install a Python runtime onto your machine. But, that creates a situation where the environment on your machine needs to be perfect for your app to run as expected, and also needs to match your production environment.
 
@@ -263,6 +263,6 @@ You can see the `hello-world` image which we used to test that Docker was proper
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5ND
-QxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMjEyMTU0ODAzMCwtMTM1NzYzOTgwOSwtMj
+Q4OTk4OTQ5LDk0NDE1OTMwM119
 -->
