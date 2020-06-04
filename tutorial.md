@@ -647,26 +647,21 @@ The first machine acts as the manager, which executes management commands and au
 `docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"`
 
 More elegantly, we will actually spawn a new terminal tab for each VM, use `docker-machine` to connect (via SSH) into the VM, and - from within the VM - initialize the swarm (for VM1) or join the swarm (VM2 and VM3):
-
+```
 $ gnome-terminal --tab --tab --tab
-
+```
 In the second tab, we will log into VM1 and initialize the swam:
-
-tso@laptop:~$ docker-machine ssh myvm1
-
+```
+tuto@laptop:~$ docker-machine ssh myvm1
 docker@myvm1:~$ docker swarm init --advertise-addr 192.168.99.100
-
 Swarm initialized: current node (jo9p4yihnnvu2wu4r1vx09gmc) is now a manager.
 
 To add a worker to this swarm, run the following command:
-
-docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
+    docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
-
-We keep preciously these connection instruction: the other nodes will not be
-
-able to join the swarm if they don't know the token.
+```
+We keep preciously these connection instruction: the other nodes will not be able to join the swarm if they don't know the token.
 
 #### Add nodes to the swarm
 
@@ -1428,9 +1423,9 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1ND
-k0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2
-MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3ND
-MsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
-
+eyJoaXN0b3J5IjpbODEyMTMxNiwxNDU5OTY3MzQ0LDE5MzY1MD
+I3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4
+LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
