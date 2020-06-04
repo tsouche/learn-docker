@@ -9,12 +9,12 @@ Here are the identified pre-requisites to run this tutorial and actually learn s
 * have a linux laptop, and an account with `sudo privilege` (i.e. you have admin rights to execute some commands). Ubuntu 20.04 will be a perfect choice for beginners.
 * have `curl`, `git` and `virtualbox` installed (see the 'Installation appendix')
 * have `docker`, `docker-compose` and `docker-machine` installed  (see the 'Installation appendix')
-* have a docker hub account (with login / pwd)
-* have a github account (with login / pwd)
+* have a DockerHub account (with login / pwd)
+* have a GitHub account (with login / pwd)
 
 In case you need help, an installation script is shown in the appendix. The script was tested for Ubuntu 20.04. 
 
-This is it. Everything in the list is free (except the laptop itself) and nothing else is needed... except the desire to learn :-)
+***This is it!*** Everything in the list is free (except the laptop itself) and nothing else is needed... except the desire to learn :-)
 
 ***
 
@@ -183,7 +183,7 @@ With Docker, scaling your application is a matter of spinning up new executables
 | `docker container ls -aq` | List all Docker containers in quiet mode |
 
 
-*******************************************
+***
 
 
 ## Part 2 - Containers
@@ -1438,7 +1438,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTA1MjA1NCwxNDU5OTY3MzQ0LDE5Mz
+eyJoaXN0b3J5IjpbLTYxMzY0ODAyMywxNDU5OTY3MzQ0LDE5Mz
 Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
 MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
 wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
