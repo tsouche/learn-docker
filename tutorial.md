@@ -1433,13 +1433,13 @@ zepjezapohf
 In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
 * *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with `account`.  
 * *machine*: 
-* *shell prompt*: tuto@laptop:~
+* *shell prompt*: when you are logged on your machine, we represent it with the prompt `tuto@laptop:~`. When you are logged into one of the cluster's VM (here `myvm1, we represent it with the prompt `docker@myvm1:~`
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3Mzc5MDk4MiwxNDU5OTY3MzQ0LDE5Mz
-Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
-MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
-wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
-NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTEwMzk0MTg2OTQsMTQ1OTk2NzM0NCwxOT
+M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
+MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
+ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
+NDQxNTkzMDNdfQ==
 -->
