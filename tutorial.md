@@ -278,7 +278,7 @@ tuto@laptop:~/code$ docker run -p 4000:80 friendlyhello
 
 You should see such a message that Python is serving your app at [http://0.0.0.0:80](http://0.0.0.0:80). This message is coming from *inside* the container, which doesn’t know that you mapped port 80 of that container to port 4000 on your laptop, making the correct URL [http://localhost:4000](http://localhost:4000).
 Go to that second URL in a web browser to see the display content served up on a web page. It should look like this:
-![friendlyhello runs in a browser](images/test)
+![friendlyhello runs in a browser](images/part2-friendlyhello.png)
 
 You can also use the `curl` command in a shell to view the same content.
 
@@ -1445,9 +1445,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTc4MTQyMzksMTQ1OTk2NzM0NCwxOT
-M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
-MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
-ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
-NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTY3MDQ4MjE0MywxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
