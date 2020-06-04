@@ -457,7 +457,7 @@ n984sajq0gu7        getstartedlab_web.5   account/get-started:part2   laptop    
 ```
 Tasks also show up if you just list all the containers on your system, though that is not filtered by service:
 ```
-$ docker container ls -a
+tuto@laptop:~$ docker container ls -a
 df119c85f902        account/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 3717956b14e9        account/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
 d04e320efdb3        account/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
@@ -476,22 +476,22 @@ The service stack is instructed from the docker-compose file to keep at any mome
 * list again the containers after few seconds (showing again 5 active containers)
 
 ```
-$ docker service ls
+tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          5/5                 account/get-started:part2   *:4000->80/tcp
 
 ```
 We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm reacts.
 ```
-$ docker container stop 3717956b14e9
+tuto@laptop:~$ docker container stop 3717956b14e9
 ```
-Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
+Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the `REPLICAS` column, showing 4/5).
 ```
-$ docker service ls
+tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          4/5                 account/get-started:part2   *:4000->80/tcp
 
-$ docker container ls
+tuto@laptop:~$ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
 df119c85f902        account/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 d04e320efdb3        account/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
@@ -500,11 +500,11 @@ d04e320efdb3        account/get-started:part2   "python app.py"     7 minutes ag
 ```
 As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (`ID 23b1b1a90fe6`) to meet again the target of 5 concurrent containers for the service stack. The `REPLICAS` column now indicate 5/5 again:
 ```
-$ docker service ls
+tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          5/5                 account/get-started:part2   *:4000->80/tcp
 
-$ docker container ls
+tuto@laptop:~$ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
 b12b6b1d6cc4        account/get-started:part2   "python app.py"     20 seconds ago      Up 8 seconds        80/tcp                 getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
 df119c85f902        account/get-started:part2   "python app.py"     8 minutes ago       Up 8 minutes        80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
@@ -516,9 +516,9 @@ d04e320efdb3        account/get-started:part2   "python app.py"     8 minutes ag
 
 ### 3.4 - Scale the app
 
-You can scale the app by changing the replicas value (e.g. from 5 to 8) in docker-compose-part3.yml, saving the change, and re-running the `docker stack deploy` command:
+You can scale the app by changing the replicas value (e.g. from 5 to 8) in the YAML file `docker-compose-part3.yml`, saving the change, and re-running the `docker stack deploy` command:
 ```
-$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
 ```
 Docker performs an in-place update, no need to tear the stack down first or kill any containers.
 Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
@@ -1438,9 +1438,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjQwMDgyNzcsMTQ1OTk2NzM0NCwxOT
-M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
-MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
-ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
-NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbODU5Mjk2NTQ2LDE0NTk5NjczNDQsMTkzNj
+UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
+MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
+0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
+MTU5MzAzXX0=
 -->
