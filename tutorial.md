@@ -333,22 +333,16 @@ Login Succeeded
 
 The notation for associating a local image with a repository on a registry is `username/repository:tag`. The `tag` is optional, but recommended, since it is the mechanism that registries use to give Docker images a *version*. Give the repository and tag meaningful names for the context, such as `get-started:part2`. This puts the image in the `get-started` repository and tags it as `part2`.
 
-Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is:
-```
-docker tag image username/repository:tag
-```
+Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is `docker tag image username/repository:tag`.
+
 For example:
+```
+code/$ docker tag friendlyhello tsouche/get-started:part2
+```
+Run `docker image ls` to see your newly tagged image.
 
-$ docker tag friendlyhello tsouche/get-started:part2
-
-Run docker image ls to see your newly tagged image.
-
-Now, put it all together to tag the image. Run docker tag image with your
-
-username, repository, and tag names so that the image uploads to your desired
-
-destination. The syntax of the command is:
-
+Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination:
+```
 $ docker image ls
 
 REPOSITORY TAG IMAGE ID CREATED SIZE
@@ -358,8 +352,8 @@ friendlyhello latest d9e555c53008 3 minutes ago 195MB
 tsouche/get-started part2 d9e555c53008 3 minutes ago 195MB
 
 python 2.7-slim 1c7128a655f6 5 days ago 183MB
+...```
 
-...
 
 Publish the image
 
@@ -1870,7 +1864,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDQ2MjYzMTIsLTExMTE0MzQ1OSwtMT
+eyJoaXN0b3J5IjpbLTEzMzU5MDg1MTksLTExMTE0MzQ1OSwtMT
 E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
 OTMwM119
 -->
