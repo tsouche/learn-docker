@@ -280,10 +280,7 @@ You should see such a message that Python is serving your app at [http://0.0.0.0
 Go to that second URL in a web browser to see the display content served up on a web page. It should look like this:
 ![alt text](./images/part2-friendlyhello.png "friendlyhello displayed in a browser")
 
-
-
-[bash_kernel]: ./images/bash_kernel.png \"choose 'bash' kernel\"\n",
-
+![friendlyhello displayed in a browser](https://github.com/tsouche/learn-docker/blob/master/images/part2-friendlyhello.png)
 You can also use the `curl` command in a shell to view the same content.
 
 ```
@@ -1449,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5Mz
-Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
-MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
-wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
-NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTg2NzE4MjIxOSwxNDU5MjA4OTYwLDE0NT
+k5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgz
+NjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMC
+wtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0y
+NDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
