@@ -593,28 +593,15 @@ Up until now, you have been using Docker in a single-host mode on your local mac
 
 ### 4.1 - Set up your swarm
 
-A swarm is made up of multiple nodes, which can be either physical or virtual
+A swarm is made up of multiple nodes, which can be either physical or virtual machines. The basic concept is simple enough: run `docker swarm init` to enable swarm mode and make your current machine a swarm manager, then run docker swarm join on other machines to have them join the swarm as workers.
+Choose a tab below to see how this plays out in various contexts. We use VMs to quickly create a two-machine cluster and turn it into a swarm.
 
-machines. The basic concept is simple enough: run docker swarm init to
+#### Create a cluster
 
-enable swarm mode and make your current machine a swarm manager, then run
-
-docker swarm join on other machines to have them join the swarm as workers.
-
-Choose a tab below to see how this plays out in various contexts. We use VMs
-
-to quickly create a two-machine cluster and turn it into a swarm.
-
-### Create a cluster
-
-================
-
-You need a hypervisor that can create virtual machines (VMs), so install
-
-Oracle VirtualBox for your machine’s OS.
+You need a hypervisor that can create virtual machines (VMs), so install Oracle VirtualBox for your machine’s OS.
 
 Now, create three VMs using docker-machine, using the VirtualBox driver:
-
+```
 $ docker-machine create --driver virtualbox myvm1
 
 Running pre-create checks...
@@ -1588,8 +1575,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MjE4MTQwNCwxODk1NjU4MzYzLC0xMD
-A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
-MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
-Q5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbODkzNjQxNTk1LDE4OTU2NTgzNjMsLTEwMD
+Y3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQz
+NDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5ND
+ksOTQ0MTU5MzAzXX0=
 -->
