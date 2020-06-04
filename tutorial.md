@@ -652,13 +652,11 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 
 #### Initialize the swarm
 
-The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using `docker-machine ssh`. Instruct `myvm1` to become a swarm manager with `docker swarm init` and look for output like this:
+The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using `docker-machine ssh`. Instruct `myvm1` to become a swarm manager with `docker swarm init` and look for output like `docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"`.
 
-`docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"`
-
-More elegantly, we will actually spawn a new terminal tab for each VM, use `docker-machine` to connect (via SSH) into the VM, and - from within the VM - initialize the swarm (for VM1) or join the swarm (VM2 and VM3):
+More elegantly, we will actually spawn a new terminal tab for each VM, use `docker-machine` to connect (via SSH) into the VM, and - from within each VM - either initialize the swarm (for `myvm1`) or join the swarm (`myvm2` and `myvm3`):
 ```
-$ gnome-terminal --tab --tab --tab
+tuto@laptop:~$ gnome-terminal --tab --tab --tab
 ```
 In the second tab, we will log into VM1 and initialize the swam:
 ```
@@ -1448,10 +1446,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTQ3NjU1NzEsLTkyOTY0MDI1NSwtMT
-c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
-Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
-gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
-MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
-U5MzAzXX0=
+eyJoaXN0b3J5IjpbLTU2MTc1NDU3NCwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
