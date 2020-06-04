@@ -297,11 +297,11 @@ CONTAINER ID IMAGE         COMMAND         CREATED
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the CONTAINER ID to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
 
 ```
-$ docker container stop 1fa4ab2cf395
-*** à revoir ***
+tuto@laptop:~$ docker container stop 1fa4ab2cf395
+1fa4ab2cf395
 ```
 
 
@@ -319,7 +319,7 @@ If you don’t have a Docker account, sign up for one at [https://hub.docker.com
 
 Log in to the Docker public registry on your local machine.
 ```
-$ docker login
+tuto@laptop:~$ docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
 Username: account
 Password:
@@ -337,7 +337,7 @@ Now, put it all together to tag the image. Run `docker tag image` with your user
 
 For example:
 ```
-code/$ docker tag friendlyhello account/get-started:part2
+tuto@laptop:~$ docker tag friendlyhello account/get-started:part2
 ```
 You may run `docker image ls` command to see your newly tagged image.
 
@@ -346,7 +346,7 @@ You may run `docker image ls` command to see your newly tagged image.
 
 Now, let's put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination:
 ```
-$ docker image ls
+tuto@laptop:~$ docker image ls
 REPOSITORY           TAG      IMAGE ID     CREATED       SIZE
 friendlyhello        latest   d9e555c53008 3 minutes ago 195MB
 yourname/get-started part2    d9e555c53008 3 minutes ago 195MB
@@ -354,7 +354,7 @@ python               2.7-slim 1c7128a655f6 5 days ago    183MB
 ```
 The command to actually upload your tagged image to the repository is `docker push username/repository:tag`, so let's run it now:
 ```
-$ docker push yourname/get-started:part2
+tuto@laptop:~$ docker push yourname/get-started:part2
 ```
 Once complete, the results of this upload are publicly available. If you log in to Docker Hub, you see the new image there, with its pull command.
 
@@ -1438,7 +1438,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQwMTI3MjEwLDE0NTk5NjczNDQsMTkzNj
+eyJoaXN0b3J5IjpbNzE4NTYyODAyLDE0NTk5NjczNDQsMTkzNj
 UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
 MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
 0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
