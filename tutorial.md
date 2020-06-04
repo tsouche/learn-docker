@@ -261,7 +261,7 @@ hello-world         latest              bf756fb1ae65        5 months ago        
 ```
 You can see the `hello-world` image which we used to test that Docker was properly installed, the `friendlyhello` image which you just built  - *your first Docker image ever !!!* - and a third image called `python`, which you did not ask for, but which Docker used as the base image on top of which `friendlyhello` was built.
 
-####Run the app
+#### Run the app
 
 You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
 
@@ -1438,7 +1438,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMzY0ODAyMywxNDU5OTY3MzQ0LDE5Mz
+eyJoaXN0b3J5IjpbMTc3NjM5ODgzNywxNDU5OTY3MzQ0LDE5Mz
 Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
 MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
 wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
