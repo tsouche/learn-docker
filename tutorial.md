@@ -759,7 +759,7 @@ And that’s it, the app is deployed on a swarm cluster!
 
 Now you can use the same docker commands you used in part 3. Only this time Notice that the services (and associated containers) have been distributed between both myvm1 and myvm2.
 ```
-$ docker stack ps getstartedlab
+tuto@laptop:~$ docker stack ps getstartedlab
 ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
 xr369odnin3x        getstartedlab_web.1   tsouche/get-started:part2   myvm2               Running             Running about a minute ago                       
 i0cy5sv9y4l0        getstartedlab_web.2   tsouche/get-started:part2   myvm3               Running             Running about a minute ago                       
@@ -778,7 +778,7 @@ Alternatively, you can wrap Docker commands in the form of `docker-machine ssh <
 
 You can use `docker-machine` to *secure copy* (scp) files across machines:
 ```
-$ docker-machine scp <file> <machine>:~
+tuto@laptop:~$ docker-machine scp <file> <machine>:~
 ```
 
 #### Accessing your cluster
@@ -787,19 +787,19 @@ You can access your app from the IP address of either VM. Typically, you can ent
 
 The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a browser, hitting refresh. In order to show the result, we use `curl`:
 ```
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 160f2964ebb1<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> d0da3840a388<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> a2e30e45b9c4<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> a10839a1e4a8<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> c49b406440d2<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 05994270e546<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
-$ curl http://192.168.99.100:4000
+tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 1cd9df25ec42<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ...
 ```
@@ -828,7 +828,7 @@ You can join any machine, physical or virtual, to this swarm, using the same doc
 
 You can tear down the stack with docker stack rm. For example:
 ```
-$ docker stack rm getstartedlab
+tuto@laptop:~$ docker stack rm getstartedlab
 Removing service getstartedlab_web
 Removing network getstartedlab_webnet
 ```
@@ -838,26 +838,22 @@ At some point later, you can remove this swarm if you want to with `docker-machi
 #### Unsetting `docker-machine` shell variable settings
 You can unset the `docker-machine` environment variables in your current shell with the given command:
 ```
-$ eval $(docker-machine env -u)
+tuto@laptop:~$ eval $(docker-machine env -u)
 ```
 This disconnects the shell from docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker commands. 
 
 #### Restarting Docker machines
 If you shut down your local host, Docker machines stops running. You can check the status of machines by running `docker-machine ls`.
 ```
-$ docker-machine ls
+tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 myvm1   -        virtualbox   Stopped                 Unknown
 myvm2   -        virtualbox   Stopped                 Unknown
 myvm3   -        virtualbox   Stopped                 Unknown
 ```
-To restart a machine that’s stopped, run:
+To restart a machine that’s stopped, run `docker-machine start <machine-name>`. For example:
 
-$ docker-machine start <machine-name>
-
-For example:
-
-$ docker-machine start myvm1
+tuto@laptop:~$ docker-machine start myvm1
 
 Starting "myvm1"...
 
@@ -1343,10 +1339,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjYyNDQzNjMsLTkyOTY0MDI1NSwtMT
-c1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUw
-Mjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMT
-gsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0x
-MTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MT
-U5MzAzXX0=
+eyJoaXN0b3J5IjpbMjA3MzI5ODM2NSwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
