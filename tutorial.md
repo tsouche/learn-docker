@@ -331,12 +331,12 @@ Login Succeeded
 
 ##### Tag the image
 
-The notation for associating a local image with a repository on a registry is username/repository:tag. The tag is optional, but recommended, since it is the mechanism that registries use to give Docker images a version. Give the repository and tag meaningful names for the context, such as get-started:part2. This puts the image in the get-started repository and tag it as part2.
+The notation for associating a local image with a repository on a registry is `username/repository:tag`. The `tag` is optional, but recommended, since it is the mechanism that registries use to give Docker images a *version*. Give the repository and tag meaningful names for the context, such as `get-started:part2`. This puts the image in the `get-started` repository and tags it as `part2`.
 
-Now, put it all together to tag the image. Run docker tag image with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is:
-
+Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is:
+```
 docker tag image username/repository:tag
-
+```
 For example:
 
 $ docker tag friendlyhello tsouche/get-started:part2
@@ -1870,7 +1870,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxODE0MTI0NSwtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbLTE1MDQ2MjYzMTIsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
