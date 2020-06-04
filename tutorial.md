@@ -520,14 +520,13 @@ You can scale the app by changing the replicas value (e.g. from 5 to 8) in the Y
 ```
 tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
 ```
-Docker performs an in-place update, no need to tear the stack down first or kill any containers.
-Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
+Docker performs an in-place update, no need to tear the stack down first or kill any containers. Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
 ```
-$ docker service ls
+tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          8/8                 account/get-started:part2   *:4000->80/tcp
 
-$ docker container ls
+tuto@laptop:~$ docker container ls
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                  NAMES
 29eaeb676554        account/get-started:part2   "python app.py"     11 seconds ago      Up 3 seconds        80/tcp                 getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
 e2643e1f9374        account/get-started:part2   "python app.py"     11 seconds ago      Up 4 seconds        80/tcp                 getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
@@ -543,7 +542,7 @@ d04e320efdb3        account/get-started:part2   "python app.py"     10 minutes a
 
 The instruction to take the service stack down is `docker stack rm` followed with the name of the service:
 ```
-$ docker stack rm getstartedlab
+tuto@laptop:~$ docker stack rm getstartedlab
 Removing service getstartedlab_web
 Removing network getstartedlab_webnet
 ```
@@ -552,7 +551,7 @@ Removing network getstartedlab_webnet
 
 The instruction to take the service stack down is `docker swarm leave` with the option `--force` to take it down even if there could connections active.
 ```
-$ docker swarm leave --force
+tuto@laptop:~$ docker swarm leave --force
 Node left the swarm.
 ```
 
@@ -600,6 +599,7 @@ You need a hypervisor that can create virtual machines (VMs), so install Oracle 
 
 Now, let's create three VMs using docker-machine, using the VirtualBox driver:
 ```
+tuto@laptop:~
 Running pre-create checks...
 (myvm1) Default Boot2Docker ISO is out-of-date, downloading the latest release...
 (myvm1) Latest release for github.com/boot2docker/boot2docker is v18.06.1-ce
@@ -1438,7 +1438,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU5Mjk2NTQ2LDE0NTk5NjczNDQsMTkzNj
+eyJoaXN0b3J5IjpbNTc0NzYyMzQwLDE0NTk5NjczNDQsMTkzNj
 UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
 MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
 0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
