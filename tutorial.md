@@ -486,12 +486,11 @@ $ docker container stop 3717956b14e9
 ```
 Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
 
+
+```
 $ docker service ls
-
-ID NAME MODE REPLICAS IMAGE PORTS
-
-xoagyod5294j getstartedlab_web replicated 4/5 yourlogin/get-started:part2 *:4000->80/tcp
-
+ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
+xoagyod5294j    getstartedlab_web    replicated    4/5        yourlogin/get-started:part2    *:4000->80/tcp
 $ docker container ls
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -503,12 +502,8 @@ d04e320efdb3 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minu
 4c3229476930 yourlogin/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 
 14e380d75bf0 yourlogin/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
-
-As you can see, there are only 4 isntance left running, while we asked for 5.
-
-Wait few seconds and list the service and containers again: as you can see,
-
-docker restarted a new container (ID 23b1b1a90fe6) to meet again the target
+```
+As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (ID 23b1b1a90fe6) to meet again the target
 
 of 5 concurrent containers for the service stack. The "REPLICAS" column
 
@@ -1715,7 +1710,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDA1Mzg4MTQsLTE5Mjk2ODA2MjAsLT
+eyJoaXN0b3J5IjpbLTEyMzIyODk2NjQsLTE5Mjk2ODA2MjAsLT
 ExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4
 OTk4OTQ5LDk0NDE1OTMwM119
 -->
