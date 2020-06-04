@@ -315,7 +315,7 @@ An account on a registry can create many repositories. The docker CLI uses Docke
 
 ##### Log in with your Docker ID
 
-If you don’t have a Docker account, sign up for one at [https://hub.docker.com](https://hub.docker.com). Make note of your username.
+If you don’t have a Docker account, sign up for one at [https://hub.docker.com](https://hub.docker.com). Make note of your username: we assume from now on that your login is *account*.
 
 Log in to the Docker public registry on your local machine.
 ```
@@ -426,20 +426,20 @@ A `docker-compose.yml` file is a YAML file that defines how Docker containers sh
 
 Before we can use the docker stack deploy command we first run:
 ```
-$ docker swarm init
+tuto@laptop:~$ docker swarm init
 ```
 > Note: We get into the meaning of that command in part 4. If you don’t run docker swarm init you get an error that “this node is not a swarm manager.”
 
 Now let’s run it. You need to give your app a name. Here, it is set to `getstartedlab`:
 ```
-$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
 Creating network getstartedlab_webnet
 Creating service getstartedlab_web
 ```
 Our single service stack is running 5 container instances of our deployed image on one host. Let’s investigate.
 Get the `service ID` for the one service in our application:
 ```
-$ docker service ls
+tuto@laptop:~$ docker service ls
 ID             NAME                MODE         REPLICAS    IMAGE                         PORTS
 xoagyod5294j   getstartedlab_web   replicated   5/5         account/get-started:part2   *:4000->80/tcp
 ```
@@ -447,7 +447,7 @@ Look for output for the web service, prepended with your app name. If you named 
 
 A single container running in a service is called a task. Tasks are given unique IDs that numerically increment, up to the number of replicas you defined in docker-compose.yml. List the tasks for your service:
 ```
-$ docker service ps getstartedlab_web
+tuto@laptop:~$ docker service ps getstartedlab_web
 ID              NAME                   IMAGE                         NODE      DESIRED STATE    ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
 r8z7k5gw4mdg        getstartedlab_web.1   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
 mruh44c14hii        getstartedlab_web.2   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
@@ -1438,9 +1438,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMjQ3MzIyMiwxNDU5OTY3MzQ0LDE5Mz
-Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
-MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
-wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
-NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTE5MjQwMDgyNzcsMTQ1OTk2NzM0NCwxOT
+M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
+MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
+ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
+NDQxNTkzMDNdfQ==
 -->
