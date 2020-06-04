@@ -458,12 +458,12 @@ n984sajq0gu7    getstartedlab_web.5    yourlogin/get-started:part2   laptop    R
 Tasks also show up if you just list all the containers on your system, though that is not filtered by service:
 ```
 $ docker container ls -a
-df119c85f902    yourlogin/get-started:part2    "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
-3717956b14e9    yourlogin/get-started:part2    "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
-d04e320efdb3    yourlogin/get-started:part2    "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
-4c3229476930    yourlogin/get-started:part2    "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
-14e380d75bf0    yourlogin/get-started:part2    "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
-29568f266344    yourlogin/get-started:part2    "python app.py" 7 minutes ago Up 7 minutes 0.0.0.0:4000->80/tcp flamboyant_goldwasser
+df119c85f902    yourlogin/get-started:part2    "python app.py"    3 minutes ago    Up 2 minutes      80/tcp                  getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+3717956b14e9    yourlogin/get-started:part2    "python app.py"    3 minutes ago    Up 2 minutes      80/tcp                  getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
+d04e320efdb3    yourlogin/get-started:part2    "python app.py"    3 minutes ago    Up 2 minutes      80/tcp                  getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+4c3229476930    yourlogin/get-started:part2    "python app.py"    3 minutes ago    Up 2 minutes      80/tcp                  getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+14e380d75bf0    yourlogin/get-started:part2    "python app.py"    3 minutes ago    Up 2 minutes      80/tcp                  getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+29568f266344    yourlogin/get-started:part2    "python app.py"    7 minutes ago    Up 7 minutes      0.0.0.0:4000->80/tcp    flamboyant_goldwasser
 ```
 
 ### 3.3 - Service stack resilience
@@ -1731,7 +1731,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIwODMwNjk2LC0xOTI5NjgwNjIwLC0xMT
+eyJoaXN0b3J5IjpbNTY0MjEzNTUwLC0xOTI5NjgwNjIwLC0xMT
 ExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5
 ODk0OSw5NDQxNTkzMDNdfQ==
 -->
