@@ -814,54 +814,28 @@ And that’s it, the app is deployed on a swarm cluster!
 Now you can use the same docker commands you used in part 3. Only this time Notice that the services (and associated containers) have been distributed between both myvm1 and myvm2.
 ```
 $ docker stack ps getstartedlab
-
-ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-
-xr369odnin3x getstartedlab_web.1 docklog/get-started:part2 myvm2 Running Running about a minute ago
-
-i0cy5sv9y4l0 getstartedlab_web.2 docklog/get-started:part2 myvm3 Running Running about a minute ago
-
-sqnb23j0n6xr getstartedlab_web.3 docklog/get-started:part2 myvm2 Running Running about a minute ago
-
-hnt4hndfqxd2 getstartedlab_web.4 docklog/get-started:part2 myvm3 Running Running about a minute ago
-
-l41yrxn5vavl getstartedlab_web.5 docklog/get-started:part2 myvm1 Running Running about a minute ago
-
-wkzok2n1kjb1 getstartedlab_web.6 docklog/get-started:part2 myvm1 Running Running about a minute ago
-
-g3igrtiezmhe getstartedlab_web.7 docklog/get-started:part2 myvm1 Running Running about a minute ago
-
-r8xs2ytlwtvz getstartedlab_web.8 docklog/get-started:part2 myvm3 Running Running about a minute ago
+ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
+xr369odnin3x        getstartedlab_web.1   tsouche/get-started:part2   myvm2               Running             Running about a minute ago                       
+i0cy5sv9y4l0        getstartedlab_web.2   tsouche/get-started:part2   myvm3               Running             Running about a minute ago                       
+sqnb23j0n6xr        getstartedlab_web.3   tsouche/get-started:part2   myvm2               Running             Running about a minute ago                       
+hnt4hndfqxd2        getstartedlab_web.4   tsouche/get-started:part2   myvm3               Running             Running about a minute ago                       
+l41yrxn5vavl        getstartedlab_web.5   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                       
+wkzok2n1kjb1        getstartedlab_web.6   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                            
+g3igrtiezmhe        getstartedlab_web.7   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                            
+r8xs2ytlwtvz        getstartedlab_web.8   tsouche/get-started:part2   myvm3               Running             Running about a minute ago  
 ```
 #### Connecting to VMs with docker-machine env and docker-machine ssh
 
-To set your shell to talk to a different machine like myvm2, simply re-run
+To set your shell to talk to a different machine like myvm2, simply re-run docker-machine env in the same or a different shell, then run the given command to point to myvm2. This is always specific to the current shell. If you change to an unconfigured shell or open a new one, you need to re-run the commands. Use docker-machine ls to list machines, see what state they are in, get IP addresses, and find out which one, if any, you are connected to. To learn more, see the Docker Machine getting started topics.
 
-docker-machine env in the same or a different shell, then run the given
-
-command to point to myvm2. This is always specific to the current shell. If
-
-you change to an unconfigured shell or open a new one, you need to re-run the
-
-commands. Use docker-machine ls to list machines, see what state they are in,
-
-get IP addresses, and find out which one, if any, you are connected to. To
-
-learn more, see the Docker Machine getting started topics.
-
-Alternatively, you can wrap Docker commands in the form of
-
-docker-machine ssh <machine> "<command>", which logs directly into the VM but
-
-doesn’t give you immediate access to files on your local host.
+Alternatively, you can wrap Docker commands in the form of `docker-machine ssh <machine> "<command>"`, which logs directly into the VM but doesn’t give you immediate access to files on your local host.
 
 You can use the following command to copy files across machines:
-
+```
 $ docker-machine scp <file> <machine>:~
+```
 
-Accessing your cluster
-
-======================
+#### Accessing your cluster
 
 You can access your app from the IP address of either VM. Typically, you can
 
@@ -1496,7 +1470,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzExOTgwNiwxODk1NjU4MzYzLC0xMD
+eyJoaXN0b3J5IjpbMjE0NzQ4MTM2NiwxODk1NjU4MzYzLC0xMD
 A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
 MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
 Q5LDk0NDE1OTMwM119
