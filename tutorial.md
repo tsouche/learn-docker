@@ -689,25 +689,21 @@ tso@laptop:~$ docker-machine ssh myvm3
 docker@myvm3:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
 ```
-**Congratulations**, you have now created your first swarm on a cluster of 3 VMs!
+***Congratulations***, you have now created your first swarm on a cluster of 3 VMs!
 
 Run `docker node ls` on the manager to view the nodes in this swarm:
 ```
 docker@myvm1:~$ docker node ls
-
-ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS ENGINE VERSION
-
-jo9p4yihnnvu2wu4r1vx09gmc * myvm1 Ready Active Leader 19.03.5
-
-fkfmmeirve311smrdd1s2dld4 myvm2 Ready Active 19.03.5
-
-0lajp4xuakprqorap8ezgdu3s myvm3 Ready Active 19.03.5
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jo9p4yihnnvu2wu4r1vx09gmc *   myvm1               Ready               Active              Leader              19.03.5
+fkfmmeirve311smrdd1s2dld4     myvm2               Ready               Active                                  19.03.5
+0lajp4xuakprqorap8ezgdu3s     myvm3               Ready               Active                                  19.03.5
 ```
 As you can see, all three VMs appear in the list, and `myvm1` is indicated as the 'leader' of the swarm.
 
 #### Leaving a swarm
 
-If you want to start over, you can run docker swarm leave from each node.
+If you want to start over, you can run `docker swarm leave` from each node. However, we can continue using the swarm '*as is*' for some more time. 
 
 ### 4.2 - Deploy your app on the swarm cluster
 
@@ -1434,10 +1430,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODgzNDY5OTU0LC05Mjk2NDAyNTUsLTE3NT
-E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
-ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
-00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
-OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
-MwM119
+eyJoaXN0b3J5IjpbLTE2MDA1MzczNywtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
