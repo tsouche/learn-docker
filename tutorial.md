@@ -574,6 +574,8 @@ It’s as easy as that to stand up and scale your app with Docker. You’ve take
 | `docker stack rm <appname>` | Tear down an application |
 | `docker swarm leave --force` | Take down a single node swarm from the manager |
 
+
+
 ## Part 4 - Swarms
 
 In part 3, you took an app you wrote in part 2, and defined how it should run in production by turning it into a service, scaling it up 5x in the process. Here in part 4, you deploy this application onto a cluster, running it on multiple machines. Multi-container, multi-machine applications are made possible by joining multiple machines into a “Dockerized” cluster called a swarm.
@@ -1434,8 +1436,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMD
-A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
-MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
-Q5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTgzMDQwMjE1MiwxNTQ5NDI4MDg0LDE4OT
+U2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4
+MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5OD
+A5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
