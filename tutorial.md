@@ -369,40 +369,24 @@ So in our case:
 $ docker run -p 4000:80 yourlogin/get-started:part2
 
 If the image isn’t available locally on the machine, Docker pulls it from the repository.
-
+```
 $ docker run -p 4000:80 yourlogin/get-started:part2
 
 Unable to find image 'yourlogin/get-started:part2' locally
 
 part2: Pulling from yourlogin/get-started
-
 10a267c67f42: Already exists
-
 f68a39a6a5e4: Already exists
-
 9beaffc0cf19: Already exists
-
 3c1fe835fb6b: Already exists
-
 4c9f1fa8fcb8: Already exists
-
 ee7d8f576a14: Already exists
-
 fbccdcced46e: Already exists
-
 Digest: sha256:0601c866aab2adcc6498200efd0f754037e909e5fd42069adeff72d1e2439068
-
 Status: Downloaded newer image for yourlogin/get-started:part2
-
-* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
-
-No matter where docker run executes, it pulls your image, along with Python
-
-and all the dependencies from requirements.txt, and runs your code. It all
-
-travels together in a neat little package, and you don’t need to install
-
-anything on the host machine for Docker to run it.
+* Running on [http://0.0.0.0:80/](http://0.0.0.0:80/) (Press CTRL+C to quit)
+```
+No matter where docker run executes, it pulls your image, along with Python and all the dependencies from requirements.txt, and runs your code. It all travels together in a neat little package, and you don’t need to install anything on the host machine for Docker to run it.
 
 
 ###  Conclusion of Part 2
@@ -445,9 +429,7 @@ A `docker-compose.yml` file is a YAML file that defines how Docker containers sh
 * instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
 * define the webnet network with the default settings (which is a load-balanced overlay network).
 
-Run your new load-balanced app
-
-==============================
+#### Run your new load-balanced app
 
 Before we can use the docker stack deploy command we first run:
 
@@ -1798,7 +1780,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MDExODYyNiwtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbMjI1Mzc5MTYwLC0xMTExNDM0NTksLTExNT
+k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
+MDNdfQ==
 -->
