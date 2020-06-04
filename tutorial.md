@@ -1423,11 +1423,20 @@ down and redeployed.
 
 
 
-## Appendix - in
+## Appendix - installation script
+
+
+zepjezapohf
+
+## Appendix - conventions
+
+In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
+thierry
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3NDU0NzIyOCwxNDU5OTY3MzQ0LDE5Mz
-Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
-MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
-wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
-NDE1OTMwM119
+eyJoaXN0b3J5IjpbMTE3Mzc5NTYyLDE0NTk5NjczNDQsMTkzNj
+UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
+MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
+0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
+MTU5MzAzXX0=
 -->
