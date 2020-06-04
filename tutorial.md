@@ -299,13 +299,13 @@ CONTAINER ID IMAGE         COMMAND         CREATED
 Notice that CONTAINER ID matches what’s on http://localhost:4000.
 Now use docker container stop to end the process, using the CONTAINER ID, like so:
 
+```
 $ docker container stop 1fa4ab2cf395
+*** à revoir ***
+```
 
-================
 
-Share your image
-
-================
+#### Share your image
 
 To demonstrate the portability of what we just created, let’s upload our
 
@@ -1910,6 +1910,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMT
-M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTIwMzk4NDU0ODYsLTExMTE0MzQ1OSwtMT
+E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
+OTMwM119
 -->
