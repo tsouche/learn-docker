@@ -413,39 +413,22 @@ That’s all for this page. In the next section, we learn how to scale our appli
 
 |  |  |
 | --- | ---:|
-| docker build -t friendlyhello . | Create image using this directory's Dockerfile |
-
-
-
-docker run -p 4000:80 friendlyhello # Run "friendlyname" mapping port 4000 to 80
-
-docker run -d -p 4000:80 friendlyhello # Same thing, but in detached mode
-
-docker container ls # List all running containers
-
-docker container ls -a # List all containers, even those not running
-
-docker container stop <hash> # Gracefully stop the specified container
-
-docker container kill <hash> # Force shutdown of the specified container
-
-docker container rm <hash> # Remove specified container from this machine
-
-docker container rm $(docker container ls -a -q) # Remove all containers
-
-docker image ls -a # List all images on this machine
-
-docker image rm <image id> # Remove specified image from this machine
-
-docker image rm $(docker image ls -a -q) # Remove all images from this machine
-
-docker login # Log in this CLI session using your Docker credentials
-
-docker tag <image> username/repository:tag # Tag <image> for upload to registry
-
-docker push username/repository:tag # Upload tagged image to registry
-
-docker run username/repository:tag # Run image from a registry
+| `docker build -t friendlyhello .` | Create image using this directory's Dockerfile |
+|`docker run -p 4000:80 friendlyhello` | Run "friendlyname" mapping port 4000 to 80 |
+`docker run -d -p 4000:80 friendlyhello` | Same thing, but in detached mode |
+`docker container ls` | List all running containers |
+docker container ls -a | List all containers, even those not running |
+docker container stop <hash> | Gracefully stop the specified container |
+docker container kill <hash> | Force shutdown of the specified container |
+docker container rm <hash> | Remove specified container from this machine |
+docker container rm $(docker container ls -a -q) | Remove all containers |
+docker image ls -a # List all images on this machine |
+docker image rm <image id> # Remove specified image from this machine |
+docker image rm $(docker image ls -a -q) # Remove all images from this machine |
+docker login # Log in this CLI session using your Docker credentials |
+docker tag <image> username/repository:tag # Tag <image> for upload to registry |
+docker push username/repository:tag # Upload tagged image to registry |
+docker run username/repository:tag # Run image from a registry |
 
 
 
@@ -1844,7 +1827,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxNDIyOTYxMywtMTExMTQzNDU5LC0xMT
+eyJoaXN0b3J5IjpbMTIxNjE4NjI1MywtMTExMTQzNDU5LC0xMT
 U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
 MzAzXX0=
 -->
