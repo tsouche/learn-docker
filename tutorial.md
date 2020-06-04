@@ -278,16 +278,13 @@ tuto@laptop:~/code$ docker run -p 4000:80 friendlyhello
 
 You should see such a message that Python is serving your app at [http://0.0.0.0:80](http://0.0.0.0:80). This message is coming from *inside* the container, which doesn’t know that you mapped port 80 of that container to port 4000 on your laptop, making the correct URL [http://localhost:4000](http://localhost:4000).
 Go to that second URL in a web browser to see the display content served up on a web page. It should look like this:
+
 ![alt text](./images/part2-friendlyhello.png "friendlyhello displayed in a browser")
 
-
-
-[bash_kernel]: ./images/bash_kernel.png \"choose 'bash' kernel\"\n",
-
-You can also use the `curl` command in a shell to view the same content.
+You can also use the `curl` command in a shell to view the same content... in text format:
 
 ```
-tuto@laptop:~/code$ curl http://localhost:4000
+tuto@laptop:~$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
 This port remapping of 4000:80 demonstrates the difference between EXPOSE within the Dockerfile and what the publish value is set to when running `docker run -p`. In later steps, map port 4000 on the host to port 80 in the container and use [http://localhost](http://localhost).
@@ -298,21 +295,21 @@ Now let’s run the app in the background, in detached mode:
 
 ```
 tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
-*** à revoir ***
+959d6fbadbbd58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
 ```
-You get the long container ID for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the abbreviated container ID with docker container ls (and both work interchangeably when running commands):
+You get the `long container ID` for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the `abbreviated container ID` with `docker container ls` (and both work interchangeably when running commands):
 ```
 tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
-1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
+959d6fbadbbd friendlyhello "python app.py" 28 seconds ago
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
 
 ```
-tuto@laptop:~$ docker container stop 1fa4ab2cf395
-1fa4ab2cf395
+tuto@laptop:~$ docker container stop b3bdcd7596de
+b3bdcd7596de
 ```
 
 
@@ -1449,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5Mz
-Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
-MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
-wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
-NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxND
+U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
+MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
+AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
+MjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
