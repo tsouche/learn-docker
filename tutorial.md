@@ -269,12 +269,13 @@ You will now run the app, mapping your machine’s port 4000 to the container’
 code/$ docker run -p 4000:80 friendlyhello
 ```
 
-You should see a message that Python is serving your app at http://0.0.0.0:80. But that message is coming from inside the container, which doesn’t know you mapped port 80 of that container to 4000, making the correct URL http://localhost:4000.
+You should see a message that Python is serving your app at [http://0.0.0.0:80](http://0.0.0.0:80). But that message is coming from inside the container, which doesn’t know you mapped port 80 of that container to 4000, making the correct URL [http://localhost:4000](http://localhost:4000).
 Go to that URL in a web browser to see the display content served up on a web page.
 
-You can also use the curl command in a shell to view the same content.
+You can also use the `curl` command in a shell to view the same content.
+
 ```
-$ curl http://localhost:4000
+code/$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
 
@@ -1926,6 +1927,6 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNTgyMTM5NCwtMTE1OTQ4OTc0MywtMT
+eyJoaXN0b3J5IjpbMTM4MDc4NTgzOSwtMTE1OTQ4OTc0MywtMT
 M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
