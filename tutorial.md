@@ -295,17 +295,17 @@ Now let’s run the app in the background, in detached mode:
 
 ```
 tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
-b3bdcd7596de58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
+959d6fbadbbd58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
 ```
 You get the `long container ID` for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the `abbreviated container ID` with `docker container ls` (and both work interchangeably when running commands):
 ```
 tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
-b3bdcd7596de friendlyhello "python app.py" 28 seconds ago
+959d6fbadbbd friendlyhello "python app.py" 28 seconds ago
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then be unable to connect:
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
 
 ```
 tuto@laptop:~$ docker container stop b3bdcd7596de
@@ -1446,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNjIxMTU1LDE0NTkyMDg5NjAsMTQ1OT
-k2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2
-MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC
-0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0
-ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxND
+U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
+MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
+AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
+MjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
