@@ -261,8 +261,1674 @@ hello-world         latest              bf756fb1ae65        5 months ago        
 ```
 You can see the `hello-world` image which we used to test that Docker was properly installed, the `friendlyhello` image which you just built  - *your first Docker image ever !!!* - and a third image called `python`, which you did not ask for, but which Docker used as the base image on top of which `friendlyhello` was built.
 
+####Run the app
 
+You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
+
+$ docker run -p 4000:80 friendlyhello
+
+You should see a message that Python is serving your app at
+
+http://0.0.0.0:80. But that message is coming from inside the container,
+
+which doesn’t know you mapped port 80 of that container to 4000, making the
+
+correct URL http://localhost:4000.
+
+Go to that URL in a web browser to see the display content served up on a
+
+web page.
+
+You can also use the curl command in a shell to view the same content.
+
+$ curl http://localhost:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+This port remapping of 4000:80 demonstrates the difference between EXPOSE
+
+within the Dockerfile and what the publish value is set to when running
+
+docker run -p. In later steps, map port 4000 on the host to port 80 in the
+
+container and use http://localhost.
+
+Hit CTRL+C in your terminal to quit.
+
+Now let’s run the app in the background, in detached mode:
+
+$ docker run -d -p 4000:80 friendlyhello
+
+You get the long container ID for your app and then are kicked back to your
+
+terminal. Your container is running in the background. You can also see the
+
+abbreviated container ID with docker container ls (and both work
+
+interchangeably when running commands):
+
+$ docker container ls
+
+CONTAINER ID IMAGE COMMAND CREATED
+
+1fa4ab2cf395 friendlyhello "python app.py" 28 seconds ago
+
+Notice that CONTAINER ID matches what’s on http://localhost:4000.
+
+Now use docker container stop to end the process, using the CONTAINER ID,
+
+like so:
+
+$ docker container stop 1fa4ab2cf395
+
+================
+
+Share your image
+
+================
+
+To demonstrate the portability of what we just created, let’s upload our
+
+built image and run it somewhere else. After all, you need to know how to
+
+push to registries when you want to deploy containers to production.
+
+A registry is a collection of repositories, and a repository is a collection
+
+of images—sort of like a GitHub repository, except the code is already built.
+
+An account on a registry can create many repositories. The docker CLI uses
+
+Docker’s public registry by default.
+
+Note: We use Docker’s public registry here just because it’s free and
+
+pre-configured, but there are many public ones to choose from, and you
+
+can even set up your own private registry using Docker Trusted Registry.
+
+Log in with your Docker ID
+
+==========================
+
+If you don’t have a Docker account, sign up for one at hub.docker.com. Make
+
+note of your username.
+
+Log in to the Docker public registry on your local machine.
+
+$ docker login
+
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+
+Username: tsouche
+
+Password:
+
+WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
+
+Configure a credential helper to remove this warning. See
+
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+Tag the image
+
+=============
+
+The notation for associating a local image with a repository on a registry is
+
+username/repository:tag. The tag is optional, but recommended, since it is
+
+the mechanism that registries use to give Docker images a version. Give the
+
+repository and tag meaningful names for the context, such as
+
+get-started:part2. This puts the image in the get-started repository and tag
+
+it as part2.
+
+Now, put it all together to tag the image. Run docker tag image with your
+
+username, repository, and tag names so that the image uploads to your desired
+
+destination. The syntax of the command is:
+
+docker tag image username/repository:tag
+
+For example:
+
+$ docker tag friendlyhello tsouche/get-started:part2
+
+Run docker image ls to see your newly tagged image.
+
+Now, put it all together to tag the image. Run docker tag image with your
+
+username, repository, and tag names so that the image uploads to your desired
+
+destination. The syntax of the command is:
+
+$ docker image ls
+
+REPOSITORY TAG IMAGE ID CREATED SIZE
+
+friendlyhello latest d9e555c53008 3 minutes ago 195MB
+
+tsouche/get-started part2 d9e555c53008 3 minutes ago 195MB
+
+python 2.7-slim 1c7128a655f6 5 days ago 183MB
+
+...
+
+Publish the image
+
+=================
+
+Upload your tagged image to the repository:
+
+docker push username/repository:tag
+
+$ docker push tsouche/get-started:part2
+
+Once complete, the results of this upload are publicly available. If you log
+
+in to Docker Hub, you see the new image there, with its pull command.
+
+Pull and run the image from the remote repository
+
+From now on, you can use docker run and run your app on any machine with this
+
+command:
+
+docker run -p 4000:80 username/repository:tag
+
+So in our case:
+
+$ docker run -p 4000:80 tsouche/get-started:part2
+
+If the image isn’t available locally on the machine, Docker pulls it from the repository.
+
+$ docker run -p 4000:80 tsouche/get-started:part2
+
+Unable to find image 'tsouche/get-started:part2' locally
+
+part2: Pulling from tsouche/get-started
+
+10a267c67f42: Already exists
+
+f68a39a6a5e4: Already exists
+
+9beaffc0cf19: Already exists
+
+3c1fe835fb6b: Already exists
+
+4c9f1fa8fcb8: Already exists
+
+ee7d8f576a14: Already exists
+
+fbccdcced46e: Already exists
+
+Digest: sha256:0601c866aab2adcc6498200efd0f754037e909e5fd42069adeff72d1e2439068
+
+Status: Downloaded newer image for tsouche/get-started:part2
+
+* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+
+No matter where docker run executes, it pulls your image, along with Python
+
+and all the dependencies from requirements.txt, and runs your code. It all
+
+travels together in a neat little package, and you don’t need to install
+
+anything on the host machine for Docker to run it.
+
+======================
+
+Conclusion of part two
+
+======================
+
+That’s all for this page. In the next section, we learn how to scale our
+
+application by running this container in a service.
+
+REMINDER FOR PART 2
+
+docker build -t friendlyhello . # Create image using this directory's
+
+# Dockerfile
+
+docker run -p 4000:80 friendlyhello # Run "friendlyname" mapping port
+
+# 4000 to 80
+
+docker run -d -p 4000:80 friendlyhello # Same thing, but in detached mode
+
+docker container ls # List all running containers
+
+docker container ls -a # List all containers, even those not running
+
+docker container stop <hash> # Gracefully stop the specified container
+
+docker container kill <hash> # Force shutdown of the specified container
+
+docker container rm <hash> # Remove specified container from this machine
+
+docker container rm $(docker container ls -a -q) # Remove all containers
+
+docker image ls -a # List all images on this machine
+
+docker image rm <image id> # Remove specified image from this machine
+
+docker image rm $(docker image ls -a -q) # Remove all images from this machine
+
+docker login # Log in this CLI session using your Docker credentials
+
+docker tag <image> username/repository:tag # Tag <image> for upload to registry
+
+docker push username/repository:tag # Upload tagged image to registry
+
+docker run username/repository:tag # Run image from a registry
+
+###############################################################################
+
+#
+
+# Docker get started - Part 3 - Services
+
+#
+
+###############################################################################
+
+==================================
+
+Your first docker-compose.yml file
+
+==================================
+
+A docker-compose.yml file is a YAML file that defines how Docker containers
+
+should behave in production. Here, we will use the docker-compose-part3.yml
+
+file which tells Docker to do the following:
+
+- pull the image we uploaded in step 2 from the registry.
+
+- run 5 instances of that image as a service called web, limiting each
+
+one to use, at most, 10% of the CPU (across all cores), and 50MB of
+
+RAM.
+
+- immediately restart containers if one fails.
+
+- map port 4000 on the host to web’s port 80.
+
+- instruct web’s containers to share port 80 via a load-balanced network
+
+called webnet. (Internally, the containers themselves publish to web’s
+
+port 80 at an ephemeral port.)
+
+- define the webnet network with the default settings (which is a load-
+
+balanced overlay network).
+
+==============================
+
+Run your new load-balanced app
+
+==============================
+
+Before we can use the docker stack deploy command we first run:
+
+$ docker swarm init
+
+Note: We get into the meaning of that command in part 4. If you don’t run
+
+docker swarm init you get an error that “this node is not a swarm
+
+manager.”
+
+Now let’s run it. You need to give your app a name. Here, it is set to
+
+'getstartedlab':
+
+$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+
+Creating network getstartedlab_webnet
+
+Creating service getstartedlab_web
+
+Our single service stack is running 5 container instances of our deployed
+
+image on one host. Let’s investigate.
+
+Get the service ID for the one service in our application:
+
+$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+
+Look for output for the web service, prepended with your app name. If you
+
+named it the same as shown in this example, the name is getstartedlab_web. The
+
+service ID is listed as well, along with the number of replicas, image name,
+
+and exposed ports.
+
+A single container running in a service is called a task. Tasks are given
+
+unique IDs that numerically increment, up to the number of replicas you
+
+defined in docker-compose.yml. List the tasks for your service:
+
+$ docker service ps getstartedlab_web
+
+ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
+
+ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
+
+r8z7k5gw4mdg getstartedlab_web.1 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+
+mruh44c14hii getstartedlab_web.2 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+
+rketr3b5523p getstartedlab_web.3 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+
+sgw7n6mo152h getstartedlab_web.4 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+
+n984sajq0gu7 getstartedlab_web.5 tsouche/get-started:part2 laptop Running Running 2 minutes ago
+
+Tasks also show up if you just list all the containers on your system, though
+
+that is not filtered by service:
+
+$ docker container ls -a
+
+df119c85f902 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+
+3717956b14e9 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
+
+d04e320efdb3 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+
+4c3229476930 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+
+14e380d75bf0 tsouche/get-started:part2 "python app.py" 3 minutes ago Up 2 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+
+29568f266344 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 0.0.0.0:4000->80/tcp flamboyant_goldwasser
+
+========================
+
+Service stack resilience
+
+========================
+
+The service stack is instructed from the docker-compose file to keep at any
+
+moment 5 containers active. This is true even if a container would stop (for
+
+any reason: a bug in the app, a problem on the system etc etc). Let's see
+
+the sequence of events:
+
+- list the containers (showing 5 active containers)
+
+- stop one container (identifying this container from its ID)
+
+- list again the containers (showing only 4 active containers)
+
+- list again the containers after few seconds (showing again 5 active
+
+containers)
+
+$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+
+We see in the list above that the container 3717956b14e9 is running one of the
+
+five instance: we will kill it, and observe how the swarm react.
+
+$ docker container stop 3717956b14e9
+
+Now list again the service, and you will notice that the service is running
+
+only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
+
+$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+xoagyod5294j getstartedlab_web replicated 4/5 tsouche/get-started:part2 *:4000->80/tcp
+
+$ docker container ls
+
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+
+df119c85f902 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+
+d04e320efdb3 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+
+4c3229476930 tsouche/get-started:part2 "python app.py" 7 minutes ago Up 7 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+
+14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 7 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+
+As you can see, there are only 4 isntance left running, while we asked for 5.
+
+Wait few seconds and list the service and containers again: as you can see,
+
+docker restarted a new container (ID 23b1b1a90fe6) to meet again the target
+
+of 5 concurrent containers for the service stack. The "REPLICAS" column
+
+now indicate 5/5 again:
+
+$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+xoagyod5294j getstartedlab_web replicated 5/5 tsouche/get-started:part2 *:4000->80/tcp
+
+$ docker container ls
+
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+
+b12b6b1d6cc4 tsouche/get-started:part2 "python app.py" 20 seconds ago Up 8 seconds 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+
+df119c85f902 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+
+d04e320efdb3 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+
+4c3229476930 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+
+14e380d75bf0 tsouche/get-started:part2 "python app.py" 8 minutes ago Up 8 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+
+=============
+
+Scale the app
+
+=============
+
+You can scale the app by changing the replicas value (e.g. from 5 to 8) in
+
+docker-compose-part3.yml, saving the change, and re-running the "docker
+
+stack deploy" command:
+
+$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+
+Docker performs an in-place update, no need to tear the stack down first or
+
+kill any containers.
+
+Now, re-run docker container ls -q to see the deployed instances
+
+reconfigured. If you scaled up the replicas, more tasks, and hence, more
+
+containers, are started.
+
+$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+xoagyod5294j getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:4000->80/tcp
+
+$ docker container ls
+
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+
+29eaeb676554 tsouche/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.6.rmdk53alns3l56q9dzcwwe8a7
+
+e2643e1f9374 tsouche/get-started:part2 "python app.py" 11 seconds ago Up 4 seconds 80/tcp getstartedlab_web.7.w79tecr01nxnz7xgb6w2xch61
+
+076bda02c8ac tsouche/get-started:part2 "python app.py" 11 seconds ago Up 3 seconds 80/tcp getstartedlab_web.8.038y0t3sv10fw5bhpp6272n03
+
+b12b6b1d6cc4 tsouche/get-started:part2 "python app.py" 2 minutes ago Up 2 minutes 80/tcp getstartedlab_web.1.iwzq5zzy1pp2lqtn233b1qsg6
+
+df119c85f902 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
+
+d04e320efdb3 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.5.n984sajq0gu7koc9szbllgs3p
+
+4c3229476930 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
+
+14e380d75bf0 tsouche/get-started:part2 "python app.py" 10 minutes ago Up 10 minutes 80/tcp getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
+
+=================
+
+Take the app down
+
+=================
+
+The instruction to take the service stack down is 'docker stack rm' followed
+
+with the name of the service.
+
+$ docker stack rm getstartedlab
+
+Removing service getstartedlab_web
+
+Removing network getstartedlab_webnet
+
+===================
+
+Take the swarm down
+
+===================
+
+The instruction to take the service stack down is 'docker swarm leave' with
+
+the option '--force' to take it down even if there could connections active.
+
+$ docker swarm leave --force
+
+Node left the swarm.
+
+========================
+
+Conclusion of part three
+
+========================
+
+It’s as easy as that to stand up and scale your app with Docker. You’ve
+
+taken a huge step towards learning how to run containers in production. Up
+
+next, you learn how to run this app as a bonafide swarm on a cluster of
+
+Docker machines.
+
+Note: Compose files like this are used to define applications with Docker,
+
+and can be uploaded to cloud providers using Docker Cloud, or on any
+
+hardware or cloud provider you choose with Docker Enterprise Edition.
+
+REMINDER FOR PART 3:
+
+docker stack ls # List stacks or apps
+
+docker stack deploy -c <composefile> <appname> # Run the specified Compose file
+
+docker service ls # List running services associated with an app
+
+docker service ps <service> # List tasks associated with an app
+
+docker inspect <task or container> # Inspect task or container
+
+docker container ls -q # List container IDs
+
+docker stack rm <appname> # Tear down an application
+
+docker swarm leave --force # Take down a single node swarm from the manager
+
+###############################################################################
+
+#
+
+# Docker get started - Part 4 - Swarms
+
+#
+
+###############################################################################
+
+In part 3, you took an app you wrote in part 2, and defined how it should
+
+run in production by turning it into a service, scaling it up 5x in the
+
+process. Here in part 4, you deploy this application onto a cluster, running
+
+it on multiple machines. Multi-container, multi-machine applications are
+
+made possible by joining multiple machines into a “Dockerized” cluster
+
+called a swarm.
+
+A swarm is a group of machines that are running Docker and joined into a
+
+cluster. After that has happened, you continue to run the Docker commands
+
+you’re used to, but now they are executed on a cluster by a swarm manager.
+
+The machines in a swarm can be physical or virtual. After joining a swarm,
+
+they are referred to as nodes.
+
+Swarm managers can use several strategies to run containers, such as
+
+“emptiest node” -- which fills the least utilized machines with containers.
+
+Or “global”, which ensures that each machine gets exactly one instance of
+
+the specified container. You instruct the swarm manager to use these
+
+strategies in the Compose file, just like the one you have already been
+
+using.
+
+Swarm managers are the only machines in a swarm that can execute your
+
+commands, or authorize other machines to join the swarm as workers. Workers
+
+are just there to provide capacity and do not have the authority to tell any
+
+other machine what it can and cannot do.
+
+Up until now, you have been using Docker in a single-host mode on your local
+
+machine. But Docker also can be switched into swarm mode, and that’s what
+
+enables the use of swarms. Enabling swarm mode instantly makes the current
+
+machine a swarm manager. From then on, Docker runs the commands you execute
+
+on the swarm you’re managing, rather than just on the current machine.
+
+=================
+
+Set up your swarm
+
+=================
+
+A swarm is made up of multiple nodes, which can be either physical or virtual
+
+machines. The basic concept is simple enough: run docker swarm init to
+
+enable swarm mode and make your current machine a swarm manager, then run
+
+docker swarm join on other machines to have them join the swarm as workers.
+
+Choose a tab below to see how this plays out in various contexts. We use VMs
+
+to quickly create a two-machine cluster and turn it into a swarm.
+
+Create a cluster
+
+================
+
+You need a hypervisor that can create virtual machines (VMs), so install
+
+Oracle VirtualBox for your machine’s OS.
+
+Now, create three VMs using docker-machine, using the VirtualBox driver:
+
+$ docker-machine create --driver virtualbox myvm1
+
+Running pre-create checks...
+
+(myvm1) Default Boot2Docker ISO is out-of-date, downloading the latest release...
+
+(myvm1) Latest release for github.com/boot2docker/boot2docker is v18.06.1-ce
+
+(myvm1) Downloading /home/thierry/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v18.06.1-ce/boot2docker.iso...
+
+(myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
+
+Creating machine...
+
+(myvm1) Copying /home/thierry/.docker/machine/cache/boot2docker.iso to /home/thierry/.docker/machine/machines/myvm1/boot2docker.iso...
+
+(myvm1) Creating VirtualBox VM...
+
+(myvm1) Creating SSH key...
+
+(myvm1) Starting the VM...
+
+(myvm1) Check network to re-create if needed...
+
+(myvm1) Waiting for an IP...
+
+Waiting for machine to be running, this may take a few minutes...
+
+Detecting operating system of created instance...
+
+Waiting for SSH to be available...
+
+Detecting the provisioner...
+
+Provisioning with boot2docker...
+
+Copying certs to the local machine directory...
+
+Copying certs to the remote machine...
+
+Setting Docker configuration on the remote daemon...
+
+Checking connection to Docker...
+
+Docker is up and running!
+
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1
+
+Now, do the same for the two additional VMs:
+
+$ docker-machine create --driver virtualbox myvm2
+
+$ docker-machine create --driver virtualbox myvm3
+
+You now have two VMs created, named myvm1 and myvm2.
+
+Use this command to list the machines and get their IP addresses.
+
+$ docker-machine ls
+
+NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
+
+myvm1 - virtualbox Running tcp://192.168.99.100:2376 v19.03.5
+
+myvm2 - virtualbox Running tcp://192.168.99.101:2376 v19.03.5
+
+myvm3 - virtualbox Running tcp://192.168.99.102:2376 v19.03.5
+
+Initialize the swarm
+
+====================
+
+The first machine acts as the manager, which executes management commands and
+
+authenticates workers to join the swarm, and the second is a worker. You can
+
+send commands to your VMs using docker-machine ssh. Instruct myvm1 to become
+
+a swarm manager with docker swarm init and look for output like this:
+
+docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"
+
+More elegantly, we will actually spawn a new terminal tab for each VM, use
+
+docker-machine to connect (via SSH) into the VM, and - from the VM - initialize
+
+the swarm (for VM1) or join the swarm (VM2 and VM3):
+
+$ gnome-terminal --tab --tab --tab
+
+In the second tab, we will log into VM1 and initialize the swam:
+
+tso@laptop:~$ docker-machine ssh myvm1
+
+docker@myvm1:~$ docker swarm init --advertise-addr 192.168.99.100
+
+Swarm initialized: current node (jo9p4yihnnvu2wu4r1vx09gmc) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+We keep preciously these connection instruction: the other nodes will not be
+
+able to join the swarm if they don't know the token.
+
+Add nodes to the swarm
+
+======================
+
+So, we conitnue logging into the next VM and joining it to the swarm. To do so,
+
+we use the docker command:
+
+docker swarm join --token <token> <myvm ip>:<port>
+
+We will use the token which is included in the response to docker swarm init:
+
+copy this command, and send it from myvm2 and myvm3 via:
+
+docker swarm join --token <token> <ip>:2377"
+
+In this case:
+
+tso@laptop:~$ docker-machine ssh myvm2
+
+docker@myvm2:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
+
+This node joined a swarm as a worker.
+
+and:
+
+tso@laptop:~$ docker-machine ssh myvm3
+
+docker@myvm3:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
+
+This node joined a swarm as a worker.
+
+Congratulations, you have created your first swarm of 3 VMs!
+
+Run docker node ls on the manager to view the nodes in this swarm:
+
+docker@myvm1:~$ docker node ls
+
+ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS ENGINE VERSION
+
+jo9p4yihnnvu2wu4r1vx09gmc * myvm1 Ready Active Leader 19.03.5
+
+fkfmmeirve311smrdd1s2dld4 myvm2 Ready Active 19.03.5
+
+0lajp4xuakprqorap8ezgdu3s myvm3 Ready Active 19.03.5
+
+As you can see, all three VMs appear in the list, and 'myvm1' is indicated
+
+as the 'leader' of the swarm.
+
+Leaving a swarm
+
+===============
+
+If you want to start over, you can run docker swarm leave from each node.
+
+====================================
+
+Deploy your app on the swarm cluster
+
+====================================
+
+The hard part is over. Now you just repeat the process you used in part 3 to
+
+deploy on your new swarm. Just remember that only swarm managers like myvm1
+
+execute Docker commands; workers are just for capacity.
+
+Configure a docker-machine shell to the swarm manager
+
+=====================================================
+
+So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to
+
+the VMs, or you logged directly into the VM (via SSH) in order to place orders.
+
+Another option is to run docker-machine env <machine> to get and run a command
+
+that configures your current shell to talk to the Docker daemon on the VM. This
+
+method works better for the next step because it allows you to use your local
+
+copy of the docker-compose.yml file (oon your laptop) to deploy the app
+
+“remotely” without having to copy it inside the VM1.
+
+$ docker-machine env myvm1
+
+export DOCKER_TLS_VERIFY="1"
+
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+
+export DOCKER_CERT_PATH="/home/tso/.docker/machine/machines/myvm1"
+
+export DOCKER_MACHINE_NAME="myvm1"
+
+# Run this command to configure your shell:
+
+# eval $(docker-machine env myvm1)
+
+We just have to follow the instructions:
+
+$ eval $(docker-machine env myvm1)
+
+Run docker-machine ls to verify that myvm1 is now the active machine, as
+
+indicated by the asterisk next to it.
+
+$ docker-machine ls
+
+NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
+
+myvm1 * virtualbox Running tcp://192.168.99.100:2376 v19.03.5
+
+myvm2 - virtualbox Running tcp://192.168.99.101:2376 v19.03.5
+
+myvm3 - virtualbox Running tcp://192.168.99.102:2376 v19.03.5
+
+Deploy the app on the swarm manager
+
+===================================
+
+Now that you have myvm1, you can use its powers as a swarm manager to deploy
+
+your app by using the same docker stack deploy command you used in part 3 to
+
+myvm1, and your local copy of docker-compose.yml.. This command may take a
+
+few seconds to complete and the deployment takes some time to be available.
+
+Use the docker service ps <service_name> command on a swarm manager to verify
+
+that all services have been redeployed.
+
+You are connected to myvm1 by means of the docker-machine shell
+
+configuration, and you still have access to the files on your local host.
+
+Make sure you are in the same directory as before, which includes the
+
+docker-compose.yml file you created in part 3.
+
+Just like before, run the following command to deploy the app on myvm1.
+
+$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+
+Creating network getstartedlab_webnet
+
+Creating service getstartedlab_web
+
+And that’s it, the app is deployed on a swarm cluster!
+
+Note: If your image is stored on a private registry instead of Docker
+
+Hub, you need to be logged in using docker login <your-registry>
+
+and then you need to add the --with-registry-auth flag to the above
+
+Command. For example:
+
+$ docker login registry.example.com
+
+$ docker stack deploy --with-registry-auth \
+
+-c docker-compose-part3.yml getstartedlab
+
+This passes the login token from your local client to the swarm
+
+nodes where the service is deployed, using the encrypted WAL logs.
+
+With this information, the nodes are able to log into the registry
+
+and pull the image.
+
+Now you can use the same docker commands you used in part 3. Only this time
+
+notice that the services (and associated containers) have been distributed
+
+between both myvm1 and myvm2.
+
+$ docker stack ps getstartedlab
+
+ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
+
+xr369odnin3x getstartedlab_web.1 tsouche/get-started:part2 myvm2 Running Running about a minute ago
+
+i0cy5sv9y4l0 getstartedlab_web.2 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+
+sqnb23j0n6xr getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running about a minute ago
+
+hnt4hndfqxd2 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+
+l41yrxn5vavl getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+
+wkzok2n1kjb1 getstartedlab_web.6 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+
+g3igrtiezmhe getstartedlab_web.7 tsouche/get-started:part2 myvm1 Running Running about a minute ago
+
+r8xs2ytlwtvz getstartedlab_web.8 tsouche/get-started:part2 myvm3 Running Running about a minute ago
+
+Connecting to VMs with docker-machine env and docker-machine ssh
+
+================================================================
+
+To set your shell to talk to a different machine like myvm2, simply re-run
+
+docker-machine env in the same or a different shell, then run the given
+
+command to point to myvm2. This is always specific to the current shell. If
+
+you change to an unconfigured shell or open a new one, you need to re-run the
+
+commands. Use docker-machine ls to list machines, see what state they are in,
+
+get IP addresses, and find out which one, if any, you are connected to. To
+
+learn more, see the Docker Machine getting started topics.
+
+Alternatively, you can wrap Docker commands in the form of
+
+docker-machine ssh <machine> "<command>", which logs directly into the VM but
+
+doesn’t give you immediate access to files on your local host.
+
+You can use the following command to copy files across machines:
+
+$ docker-machine scp <file> <machine>:~
+
+Accessing your cluster
+
+======================
+
+You can access your app from the IP address of either VM. Typically, you can
+
+enter http://192.168.99.100:4000/ or http://192.168.99.101:4000/ or
+
+http://192.168.99.102:4000/ in the browser and see the same app
+
+running.
+
+The network you created is shared between them and load-balancing. Run
+
+docker-machine ls to get your VMs’ IP addresses and visit either of them on a
+
+browser, hitting refresh. In order to show the result, we use curl:
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> 160f2964ebb1<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> d0da3840a388<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> a2e30e45b9c4<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> a10839a1e4a8<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> c49b406440d2<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> 05994270e546<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+$ curl http://192.168.99.100:4000
+
+<h3>Hello World!</h3><b>Hostname:</b> 1cd9df25ec42<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+...
+
+There are eight possible container IDs all cycling by randomly, demonstrating
+
+the load-balancing.
+
+The reason all 3 IP addresses work is that nodes in a swarm participate in an
+
+ingress routing mesh. This ensures that a service deployed at a certain port
+
+within your swarm always has that port reserved to itself, no matter what
+
+node is actually running the container.
+
+Having connectivity trouble?
+
+============================
+
+Keep in mind that to use the ingress network in the swarm, you need to have
+
+the following ports open between the swarm nodes before you enable swarm
+
+mode:
+
+Port 7946 TCP/UDP for container network discovery.
+
+Port 4789 UDP for the container ingress network.
+
+==============================
+
+Iterating and scaling your app
+
+==============================
+
+From here you can do everything you learned about in parts 2 and 3.
+
+- Scale the app by changing the docker-compose.yml file.
+
+- Change the app behavior by editing code, then rebuild, and push the new
+
+image. (To do this, follow the same steps you took earlier to build the
+
+app and publish the image).
+
+In either case, simply run docker stack deploy again to deploy these changes.
+
+You can join any machine, physical or virtual, to this swarm, using the same
+
+docker swarm join command you used on myvm2, and capacity is added to your
+
+cluster. Just run docker stack deploy afterwards, and your app can take
+
+advantage of the new resources.
+
+====================================
+
+Cleanup and reboot Stacks and swarms
+
+====================================
+
+You can tear down the stack with docker stack rm. For example:
+
+$ docker stack rm getstartedlab
+
+Removing service getstartedlab_web
+
+Removing network getstartedlab_webnet
+
+Keep the swarm or remove it?
+
+At some point later, you can remove this swarm if you want to with
+
+docker-machine ssh myvm2 "docker swarm leave" on the worker and
+
+docker-machine ssh myvm1 "docker swarm leave --force" on the manager, but you
+
+need this swarm for part 5, so keep it around for now.
+
+Unsetting docker-machine shell variable settings
+
+================================================
+
+You can unset the docker-machine environment variables in your current shell
+
+with the given command:
+
+$ eval $(docker-machine env -u)
+
+This disconnects the shell from docker-machine created virtual machines, and
+
+allows you to continue working in the same shell, now using native docker
+
+commands (for example, on Docker for Mac or Docker for Windows). To learn
+
+more, see the Machine topic on unsetting environment variables.
+
+Restarting Docker machines
+
+==========================
+
+If you shut down your local host, Docker machines stops running. You can
+
+check the status of machines by running docker-machine ls.
+
+$ docker-machine ls
+
+NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS
+
+myvm1 - virtualbox Stopped Unknown
+
+myvm2 - virtualbox Stopped Unknown
+
+myvm3 - virtualbox Stopped Unknown
+
+To restart a machine that’s stopped, run:
+
+$ docker-machine start <machine-name>
+
+For example:
+
+$ docker-machine start myvm1
+
+Starting "myvm1"...
+
+(myvm1) Check network to re-create if needed...
+
+(myvm1) Waiting for an IP...
+
+Machine "myvm1" was started.
+
+Waiting for SSH to be available...
+
+Detecting the provisioner...
+
+Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+
+=======================
+
+Conclusion of part four
+
+=======================
+
+In part 4 you learned what a swarm is, how nodes in swarms can be managers or
+
+workers, created a swarm, and deployed an application on it. You saw that the
+
+core Docker commands didn’t change from part 3, they just had to be targeted
+
+to run on a swarm master. You also saw the power of Docker’s networking in
+
+action, which kept load-balancing requests across containers, even though
+
+they were running on different machines. Finally, you learned how to iterate
+
+and scale your app on a cluster.
+
+REMINDER FOR PART 4:
+
+docker-machine create --driver virtualbox myvm1 # Create a VM
+
+docker-machine env myvm1 # View basic information about your node
+
+docker-machine ssh myvm1 "docker node ls" # List the nodes in your swarm
+
+docker-machine ssh myvm1 "docker node inspect <node ID>" # Inspect a node
+
+docker-machine ssh myvm1 "docker swarm join-token -q worker" # View join token
+
+docker-machine ssh myvm1 # Open an SSH session with the VM; type "exit" to end
+
+docker node ls # View nodes in swarm (while logged on to manager)
+
+docker-machine ssh myvm2 "docker swarm leave" # Make the worker leave the swarm
+
+docker-machine ssh myvm1 "docker swarm leave -f" # Make master leave,
+
+# kill swarm
+
+docker-machine ls # list VMs, asterisk shows which VM this shell is talking to
+
+docker-machine start myvm1 # Start a VM that is currently not running
+
+docker-machine env myvm1 # show environment variables and command for myvm1
+
+eval $(docker-machine env myvm1) # Mac command to connect shell to myvm1
+
+docker stack deploy -c <file> <app> # Deploy an app; command shell must be set
+
+# to talk to manager (myvm1), uses local Compose file
+
+docker-machine scp docker-compose.yml myvm1:~ # Copy file to node's home dir
+
+# (only required if you use ssh to connect to manager and deploy the app)
+
+docker-machine ssh myvm1 "docker stack deploy -c <file> <app>" # Deploy an app
+
+# using ssh (you must have first copied the Compose file to myvm1)
+
+eval $(docker-machine env -u) # Disconnect shell from VMs, use native docker
+
+docker-machine stop $(docker-machine ls -q) # Stop all running VMs
+
+docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk
+
+# images
+
+###############################################################################
+
+#
+
+# Docker get started - Part 5 - Stacks
+
+#
+
+###############################################################################
+
+In part 4, you learned how to set up a swarm, which is a cluster of machines
+
+running Docker, and deployed an application to it, with containers running in
+
+concert on multiple machines.
+
+Here in part 5, you reach the top of the hierarchy of distributed
+
+applications: the stack. A stack is a group of interrelated services that
+
+share dependencies, and can be orchestrated and scaled together. A single
+
+stack is capable of defining and coordinating the functionality of an entire
+
+application (though very complex applications may want to use multiple
+
+stacks).
+
+Some good news is, you have technically been working with stacks since part 3,
+
+when you created a Compose file and used docker stack deploy. But that was a
+
+single service stack running on a single host, which is not usually what
+
+takes place in production. Here, you can take what you’ve learned, make
+
+multiple services relate to each other, and run them on multiple machines.
+
+==============================
+
+Add a new service and redeploy
+
+==============================
+
+It’s easy to add services to our docker-compose.yml file. First, let’s add a
+
+free visualizer service that lets us look at how our swarm is scheduling
+
+containers.
+
+We will use here "docker-compose-part5-1.yml", a modified version of the
+
+previous "docker-compose-part3.yml".
+
+The only thing new here is the peer service to web, named visualizer. Notice
+
+two new things here:
+
+- a volumes key, giving the visualizer access to the host’s socket file
+
+for Docker, and
+
+- a placement key, ensuring that this service only ever runs on a swarm
+
+manager -- never a worker. That’s because this container, built from an
+
+open source project created by Docker, displays Docker services running
+
+on a swarm in a diagram.
+
+We talk more about placement constraints and volumes in a moment.
+
+Make sure your shell is configured to talk to myvm1:
+
+- Run docker-machine ls to list machines and make sure you are connected
+
+to myvm1, as indicated by an asterisk next to it.
+
+- If needed, re-run "docker-machine env myvm1", then run the following
+
+command to configure the shell:
+
+$ eval $(docker-machine env myvm1)
+
+Re-run the docker stack deploy command on the manager, and whatever services
+
+need updating are updated:
+
+$ docker stack deploy -c docker-compose-part5-1.yml getstartedlab
+
+Creating network getstartedlab_webnet
+
+Creating service getstartedlab_visualizer
+
+Creating service getstartedlab_web
+
+Take a look at the visualizer
+
+=============================
+
+You saw in the Compose file that visualizer runs on 8080. Get the IP
+
+address of one of your nodes by running docker-machine ls. Go to either IP
+
+address at port 8080 and you can see the visualizer running. In our case:
+
+go to the port 8080 of myvm1: http://192.168.99.100:8080/
+
+The single copy of visualizer is running on the manager as you expect, and
+
+the 8 instances of web are spread out across the swarm. You can corroborate
+
+this visualization by running docker stack ps <stack>:
+
+$ docker stack ps getstartedlab
+
+ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
+
+kb8e3d7iqj76 getstartedlab_web.1 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+
+puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 50 seconds ago
+
+zr4jjcvrr0l5 getstartedlab_web.2 tsouche/get-started:part2 myvm1 Running Running 58 seconds ago
+
+v6a1qd49a0ka getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+
+x0gq7usig5y6 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+
+9uxjs2ve3x1s getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running 58 seconds ago
+
+4r6a1dxxlh0e getstartedlab_web.6 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+
+pqxvp3m14loh getstartedlab_web.7 tsouche/get-started:part2 myvm3 Running Running 59 seconds ago
+
+gs5ox6yvnumw getstartedlab_web.8 tsouche/get-started:part2 myvm2 Running Running 59 seconds ago
+
+As you can see, the previous containers were stopped and replaced with the
+
+new versions of the containers, corresponding to the new docker-compose file.
+
+You had to take no action: the whole process is orchestrated by docker.
+
+The visualizer is a standalone service that can run in any app that includes
+
+it in the stack. It doesn’t depend on anything else. Now let’s create a
+
+service that does have a dependency: the Redis service that provides a
+
+visitor counter.
+
+================
+
+Persist the data
+
+================
+
+Let’s go through the same workflow once more to add a Redis database for
+
+storing app data. This is defined in the docker-compose-part5-2.yml file,
+
+which finally adds a Redis service.
+
+Redis has an official image in the Docker library and has been granted the
+
+short image name of just redis, so no username/repo notation here. The Redis
+
+port, 6379, has been pre-configured by Redis to be exposed from the container
+
+to the host, and here in our Compose file we expose it from the host to the
+
+world, so you can actually enter the IP for any of your nodes into Redis
+
+Desktop Manager and manage this Redis instance, if you so choose.
+
+Most importantly, there are a couple of things in the redis specification
+
+that make data persist between deployments of this stack:
+
+- redis always runs on the manager, so it’s always using the same
+
+filesystem.
+
+- redis accesses an arbitrary directory in the host’s file system as /data
+
+inside the container, which is where Redis stores data.
+
+Together, this is creating a “source of truth” in your host’s physical
+
+filesystem for the Redis data. Without this, Redis would store its data in
+
+/data inside the container’s filesystem, which would get wiped out if that
+
+container were ever redeployed.
+
+This source of truth has two components:
+
+- The placement constraint you put on the Redis service, ensuring that it
+
+always uses the same host.
+
+- The volume you created that lets the container access ./data (on the
+
+host) as /data (inside the Redis container). While containers come and
+
+go, the files stored on ./data on the specified host persists, enabling
+
+continuity.
+
+You are ready to deploy your new Redis-using stack.
+
+Create a ./data directory on the manager
+
+========================================
+
+Note: Make sure your shell is configured to talk to myvm1:
+
+- Run docker-machine ls to list machines and make sure you are
+
+connected to myvm1, as indicated by an asterisk next it.
+
+- If needed, re-run docker-machine env myvm1, then run the given
+
+command to configure the shell.
+
+$ eval $(docker-machine env myvm1)
+
+Then you can create the directory on the VM:
+
+$ docker-machine ssh myvm1 "mkdir ./data"
+
+Run docker stack deploy one more time
+
+=====================================
+
+$ docker stack deploy -c docker-compose-part5-2.yml getstartedlab
+
+Updating service getstartedlab_web (id: 2ythn4okhrdcnnj2o7ecmjbcl)
+
+Updating service getstartedlab_visualizer (id: tufou3x0sztx69eg6kzfmzvi8)
+
+Creating service getstartedlab_redis
+
+Run docker service ls from the VM1 to verify that the three services are
+
+running as expected.
+
+docker@myvm1:~$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
+
+tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
+
+2ythn4okhrdc getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:80->80/tcp
+
+docker@myvm1:~$ docker stack ps getstartedlab
+
+ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
+
+hcvuq1nt48hp getstartedlab_redis.1 redis:latest myvm1 Running Running about a minute ago
+
+kb8e3d7iqj76 getstartedlab_web.1 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+
+puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 5 minutes ago
+
+zr4jjcvrr0l5 getstartedlab_web.2 tsouche/get-started:part2 myvm1 Running Running 5 minutes ago
+
+v6a1qd49a0ka getstartedlab_web.3 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+
+x0gq7usig5y6 getstartedlab_web.4 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+
+9uxjs2ve3x1s getstartedlab_web.5 tsouche/get-started:part2 myvm1 Running Running 5 minutes ago
+
+4r6a1dxxlh0e getstartedlab_web.6 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+
+pqxvp3m14loh getstartedlab_web.7 tsouche/get-started:part2 myvm3 Running Running 5 minutes ago
+
+gs5ox6yvnumw getstartedlab_web.8 tsouche/get-started:part2 myvm2 Running Running 5 minutes ago
+
+Check the web page at one of your nodes, such as http://192.168.99.101, and
+
+take a look at the results of the visitor counter, which is now live and
+
+storing information on Redis.
+
+Now come back to the host, and check the visualizer at port 8080 on either
+
+node’s IP address, and notice see the redis service running along with the web
+
+and visualizer services. We can show it here with curl:
+
+tso@laptop:~$ curl http://192.168.99.101
+
+<h3>Hello World!</h3><b>Hostname:</b> 4bf84a659203<br/><b>Visits:</b> 1
+
+tso@laptop:~$ curl http://192.168.99.101
+
+<h3>Hello World!</h3><b>Hostname:</b> 6e44c2030d1d<br/><b>Visits:</b> 2
+
+tso@laptop:~$ curl http://192.168.99.101
+
+<h3>Hello World!</h3><b>Hostname:</b> 72e463fe35f4<br/><b>Visits:</b> 3
+
+tso@laptop:~$ curl http://192.168.99.101
+
+<h3>Hello World!</h3><b>Hostname:</b> de35f3de665f<br/><b>Visits:</b> 4
+
+tso@laptop:~$ curl http://192.168.99.101
+
+<h3>Hello World!</h3><b>Hostname:</b> 84fe0906e70b<br/><b>Visits:</b> 5
+
+...
+
+so go on the browser, visit the '192.168.99.101' URL and observe the result.
+
+Cleanup!!!
+
+==========
+
+Before leaving, tidy the place!
+
+This means bringing the services down and removing any container/images left.
+
+tso@laptop:~$ docker service ls
+
+ID NAME MODE REPLICAS IMAGE PORTS
+
+ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
+
+tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
+
+2ythn4okhrdc getstartedlab_web replicated 8/8 tsouche/get-started:part2 *:80->80/tcp
+
+tso@laptop:~$ docker stack rm getstartedlab
+
+Removing service getstartedlab_redis
+
+Removing service getstartedlab_visualizer
+
+Removing service getstartedlab_web
+
+Removing network getstartedlab_webnet
+
+tso@laptop:~$ docker container ls -a
+
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+
+tso@laptop:~$ docker images -a
+
+REPOSITORY TAG IMAGE ID CREATED SIZE
+
+tsouche/get-started <none> c160e4abb8aa About an hour ago 159MB
+
+redis <none> c33c9b2541a8 2 days ago 98.2MB
+
+dockersamples/visualizer <none> 8dbf7c60cf88 2 years ago 148MB
+
+tso@laptop:/projects/get-started/docker$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
+
+...
+
+Here you are :-)
+
+=======================
+
+Conclusion of part five
+
+=======================
+
+You learned that stacks are inter-related services all running in concert,
+
+and that -- surprise! -- you’ve been using stacks since part three of this
+
+tutorial. You learned that to add more services to your stack, you insert
+
+them in your Compose file. Finally, you learned that by using a combination
+
+of placement constraints and volumes you can create a permanent home for
+
+persisting data, so that your app’s data survives when the container is torn
+
+down and redeployed.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLT
-I0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTc3OTk4ODg3NCwtMTE1OTQ4OTc0MywtMT
+M1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
