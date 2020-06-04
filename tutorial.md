@@ -1431,14 +1431,14 @@ zepjezapohf
 ## Appendix - conventions
 
 In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
-* *user*: the examples are given with a user called tuto, on a 
+* *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with ``.  
 * *machine*: 
 * *shell prompt*: tuto@laptop:~
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI5OTY0MjMxLDE0NTk5NjczNDQsMTkzNj
-UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
-MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
-0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
-MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTU4MTI5MTM2MSwxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
