@@ -281,10 +281,10 @@ Go to that second URL in a web browser to see the display content served up on a
 
 ![alt text](./images/part2-friendlyhello.png "friendlyhello displayed in a browser")
 
-You can also use the `curl` command in a shell to view the same content.
+You can also use the `curl` command in a shell to view the same content... in text format:
 
 ```
-tuto@laptop:~/code$ curl http://localhost:4000
+tuto@laptop:~$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
 This port remapping of 4000:80 demonstrates the difference between EXPOSE within the Dockerfile and what the publish value is set to when running `docker run -p`. In later steps, map port 4000 on the host to port 80 in the container and use [http://localhost](http://localhost).
@@ -1446,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTk3MzQwOSwxNDU5MjA4OTYwLDE0NT
-k5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgz
-NjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMC
-wtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0y
-NDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTExMzE0ODMxNTIsMTQ1OTIwODk2MCwxND
+U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
+MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
+AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
+MjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
