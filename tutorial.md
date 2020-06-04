@@ -528,7 +528,7 @@ d04e320efdb3        account/get-started:part2   "python app.py"     8 minutes ag
 
 You can scale the app by changing the replicas value (e.g. from 5 to 8) in the YAML file `docker-compose-part3.yml`, saving the change, and re-running the `docker stack deploy` command:
 ```
-tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 ```
 Docker performs an in-place update, no need to tear the stack down first or kill any containers. Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
 ```
@@ -746,12 +746,11 @@ You are connected to `myvm1` by means of the docker-machine shell configuration,
 
 Just like before, run the following command to deploy the app on `myvm1`:
 
-tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
-
+```
+tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 Creating network getstartedlab_webnet
-
 Creating service getstartedlab_web
-
+```
 And that’s it, the app is deployed on a swarm cluster!
 
 > Note: If your image is stored on a private registry instead of Docker Hub, you need to be logged in using docker login <your-registry> and then you need to add the --with-registry-auth flag to the above Command. For example:
@@ -1422,10 +1421,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUxNDA3MzA4LC05Mjk2NDAyNTUsLTE3NT
-E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
-ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
-00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
-OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
-MwM119
+eyJoaXN0b3J5IjpbMTgwNDE3MDk2MCwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
+kzMDNdfQ==
 -->
