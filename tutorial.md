@@ -305,7 +305,7 @@ b3bdcd7596de friendlyhello "python app.py" 28 seconds ago
 ```
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and you will then see the `Unable to Connect` page.
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done. In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then be unable to connect:
 
 ```
 tuto@laptop:~$ docker container stop b3bdcd7596de
@@ -1446,9 +1446,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwNjEyOTIwNSwxNDU5MjA4OTYwLDE0NT
-k5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgz
-NjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMC
-wtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0y
-NDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTEyNjIxMTU1LDE0NTkyMDg5NjAsMTQ1OT
+k2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2
+MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC
+0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0
+ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
