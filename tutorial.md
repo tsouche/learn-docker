@@ -477,16 +477,14 @@ The service stack is instructed from the docker-compose file to keep at any mome
 
 ```
 $ docker service ls
-ID NAME MODE REPLICAS IMAGE PORTS
-xoagyod5294j getstartedlab_web replicated 5/5 yourlogin/get-started:part2 *:4000->80/tcp
+ID              NAME                 MODE          REPLICAS   IMAGE                          PORTS
+xoagyod5294j    getstartedlab_web    replicated    5/5        yourlogin/get-started:part2    *:4000->80/tcp
 ```
-We see in the list above that the container 3717956b14e9 is running one of the five instance: we will kill it, and observe how the swarm react.
-
+We see in the containers list above that the container 3717956b14e9 is running one of the five instance: we will kill it, and observe how the swarm react.
+```
 $ docker container stop 3717956b14e9
-
-Now list again the service, and you will notice that the service is running
-
-only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
+```
+Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the "REPLICAS" columnw, showing 4/5).
 
 $ docker service ls
 
@@ -1717,7 +1715,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNDQ5MTc1NCwtMTkyOTY4MDYyMCwtMT
-ExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5
-OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTE2NDA1Mzg4MTQsLTE5Mjk2ODA2MjAsLT
+ExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4
+OTk4OTQ5LDk0NDE1OTMwM119
 -->
