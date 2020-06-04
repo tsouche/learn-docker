@@ -731,17 +731,16 @@ tuto@laptop:~$ eval $(docker-machine env myvm1)
 ```
 Run `docker-machine ls` to verify that `myvm1` is now the active machine, as indicated by the asterisk next to it:
 ```
-$ docker-machine ls
+tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
 myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
 myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
 myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5   
-
 ```
 
 #### Deploy the app on the swarm manager
 
-Now that you have myvm1, you can use its powers as a swarm manager to deploy your app by using the same docker stack deploy command you used in part 3 to `myvm1`, and your local copy of `docker-compose.yml`. This command may take a few seconds to complete and the deployment takes some time to be available.
+Now that you have `myvm1`, you can use its powers as a swarm manager to deploy your app by using the same `docker stack deploy` command you used in part 3 to `myvm1`, and your local copy of `docker-compose.yml`. This command may take a few seconds to complete and the deployment takes some time to be available.
 
 Use the `docker service ps <service_name>` command on a swarm manager to verify that all services have been redeployed.
 You are connected to myvm1 by means of the docker-machine shell
@@ -1430,10 +1429,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3ODcyNTAxNCwtOTI5NjQwMjU1LC0xNz
-UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
-Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
-wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
-NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
-kzMDNdfQ==
+eyJoaXN0b3J5IjpbNjAzMDk3NTM2LC05Mjk2NDAyNTUsLTE3NT
+E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
+ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
+00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
+OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
+MwM119
 -->
