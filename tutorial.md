@@ -737,13 +737,8 @@ The hard part is over. Now you just repeat the process you used in part 3 to dep
 
 So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to the VMs, or you logged directly into the VM (via SSH) in order to place orders.
 
-Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This
+Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local copy of the docker-compose.yml file (on your laptop) to deploy the app “remotely” without having to copy it inside the VM1.
 
-method works better for the next step because it allows you to use your local
-
-copy of the docker-compose.yml file (oon your laptop) to deploy the app
-
-“remotely” without having to copy it inside the VM1.
 ```
 $ docker-machine env myvm1
 export DOCKER_TLS_VERIFY="1"
@@ -770,18 +765,9 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 
 #### Deploy the app on the swarm manager
 
-Now that you have myvm1, you can use its powers as a swarm manager to deploy
+Now that you have myvm1, you can use its powers as a swarm manager to deploy your app by using the same docker stack deploy command you used in part 3 to `myvm1`, and your local copy of `docker-compose.yml`. This command may take a few seconds to complete and the deployment takes some time to be available.
 
-your app by using the same docker stack deploy command you used in part 3 to
-
-myvm1, and your local copy of docker-compose.yml.. This command may take a
-
-few seconds to complete and the deployment takes some time to be available.
-
-Use the docker service ps <service_name> command on a swarm manager to verify
-
-that all services have been redeployed.
-
+Use the `docker service ps <service_name>` command on a swarm manager to verify that all services have been redeployed.
 You are connected to myvm1 by means of the docker-machine shell
 
 configuration, and you still have access to the files on your local host.
@@ -1453,8 +1439,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzk4NTM0OSwxODk1NjU4MzYzLC0xMD
-A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
-MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
-Q5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbMTU5NTcxNTUwLDE4OTU2NTgzNjMsLTEwMD
+Y3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQz
+NDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5ND
+ksOTQ0MTU5MzAzXX0=
 -->
