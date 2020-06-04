@@ -76,7 +76,7 @@ Docker version 19.03.8, build afacb8b7f0
 Run `docker info` or `docker version` (without `--`) to view even more details about your docker installation:
 
 ```
-$ docker version
+tuto@laptop:~$ docker version
 Client:
  Version:           19.03.8
  API version:       1.40
@@ -111,7 +111,7 @@ Server:
 The first steps of the installation script install docker on your machine: your can check it by running the simple Docker image, hello-world:
 
 ```
-$ docker run hello-world
+tuto@laptop:~$ docker run hello-world
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 0e03bdcc26d7: Pull complete 
@@ -143,7 +143,7 @@ For more examples and ideas, visit:
 You canlList the hello-world image that was downloaded to your machine:
 
 ```
-$ docker image ls
+tuto@laptop:~$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 hello-world         latest              bf756fb1ae65        5 months ago        13.3kB
 ```
@@ -151,7 +151,7 @@ hello-world         latest              bf756fb1ae65        5 months ago        
 List the hello-world container (spawned by the image) which exits after displaying its message. If it were still running, you would not need the `--all` option:
 
 ```
-$ docker container ls --all
+tuto@laptop:~$ docker container ls --all
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
 a9a177a596fd        hello-world         "/hello"            2 minutes ago       Exited (0) 2 minutes ago                       happy_kalam
 ```
@@ -226,8 +226,8 @@ You don’t need Python or anything in `requirements.txt` on your system, nor do
 We are ready to build the app. Make sure you are still at the top level of your new directory. Here’s what `ls` should show:
 
 ```
-$ cd code/
-/code$ ls -al
+tuto@laptop:~$ cd code/
+tuto@laptop:~/code$ ls -al
 ***à revoir***
 ```
 Now run the build command. This creates a Docker image, which we’re going to tag using:
@@ -1433,13 +1433,13 @@ zepjezapohf
 In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
 * *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with `account`.  
 * *machine*: 
-* *shell prompt*: when you are logged on your machine, we represent it with the prompt `tuto@laptop:~`. When you are logged into one of the cluster's VM (here `myvm1, we represent it with the prompt `docker@myvm1:~`
+* *shell prompt*: when you are logged on your machine, we represent it with the prompt `tuto@laptop:~`. When you are logged into one of the cluster's VM (here `myvm1`), we represent it with the prompt `docker@myvm1:~`
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzk0MTg2OTQsMTQ1OTk2NzM0NCwxOT
-M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
-MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
-ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
-NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMTk4OTE1NDMzNSwxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
