@@ -629,9 +629,9 @@ Now, do the same for the two additional VMs:
 $ docker-machine create --driver virtualbox myvm2
 $ docker-machine create --driver virtualbox myvm3
 ```
-You now have two VMs created, named myvm1 and myvm2.
+You now have three VMs created, named myvm1, myvm2 and myvm3.
 
-Use this command to list the machines and get their IP addresses.
+Use the `docker-machine ls` command to list the machines and get their IP addresses.
 ```
 $ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
@@ -639,13 +639,10 @@ myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.
 myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
 myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5
 ```
+
 #### Initialize the swarm
 
-The first machine acts as the manager, which executes management commands and
-
-authenticates workers to join the swarm, and the second is a worker. You can
-
-send commands to your VMs using docker-machine ssh. Instruct myvm1 to become
+The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using docker-machine ssh. Instruct myvm1 to become
 
 a swarm manager with docker swarm init and look for output like this:
 
@@ -1437,8 +1434,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNTAyMzg3NywxNTQ5NDI4MDg0LDE4OT
-U2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4
-MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5OD
-A5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTE0NDM2MTc3MDEsMTU0OTQyODA4NCwxOD
+k1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2
+ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOT
+gwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
