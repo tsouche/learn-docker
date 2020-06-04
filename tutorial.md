@@ -7,9 +7,9 @@
 Here are the identified pre-requisites to run this tutorial and actually learn something from this experience:
 
 * have a linux laptop, and an account with `sudo privilege` (i.e. you have admin rights to execute some commands). Ubuntu 20.04 will be a perfect choice for beginners.
-* have curl, git and virtualbox installed (see the 'Installation appendix')
-* docker, docker-compose and docker-machine installed  (see the 'Installation appendix')
-* a docker hub account (with login / pwd)
+* have `curl`, `git` and `virtualbox` installed (see the 'Installation appendix')
+* have `docker`, `docker-compose` and `docker-machine` installed  (see the 'Installation appendix')
+* have a docker hub account (with login / pwd)
 * have a github account (with login / pwd)
 
 In case you need help, an installation script is shown in the appendix. The script was tested for Ubuntu 20.04. 
@@ -597,9 +597,9 @@ In this tutorial, we use VMs to quickly create a three-machine cluster and turn 
 
 You need a hypervisor that can create virtual machines (VMs), so install Oracle VirtualBox for your machine’s OS.
 
-Now, let's create three VMs using docker-machine, using the VirtualBox driver:
+Now, let's create three VMs using docker-machine with the VirtualBox driver:
 ```
-tuto@laptop:~
+tuto@laptop:~$ docker-machine create --driver virtualbox myvm1
 Running pre-create checks...
 (myvm1) Default Boot2Docker ISO is out-of-date, downloading the latest release...
 (myvm1) Latest release for github.com/boot2docker/boot2docker is v18.06.1-ce
@@ -1438,9 +1438,9 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc0NzYyMzQwLDE0NTk5NjczNDQsMTkzNj
-UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
-MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
-0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
-MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTEyMTA1MjA1NCwxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
