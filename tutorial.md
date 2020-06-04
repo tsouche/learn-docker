@@ -1431,10 +1431,12 @@ zepjezapohf
 ## Appendix - conventions
 
 In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
-thierry
+* *user*: the examples are given with a user called tuto, on a 
+* *machine*: 
+* *shell prompt*: tuto@laptop:~
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3Mzc5NTYyLDE0NTk5NjczNDQsMTkzNj
+eyJoaXN0b3J5IjpbOTI5OTY0MjMxLDE0NTk5NjczNDQsMTkzNj
 UwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIz
 MTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC
 0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0
