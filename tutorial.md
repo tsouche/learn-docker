@@ -46,10 +46,9 @@ A container is a runtime instance of an image, i.e. the image is loaded in memor
 
 A container runs natively on Linux and shares the kernel of the host machine with other containers. It runs a discrete process, taking no more memory than any other executable, making it lightweight.
 
-By contrast, a virtual machine (VM) runs a full-blown “guest” operating system with virtual access to hosclear
-t resources through a hypervisor. In general, VMs provide an environment with more resources than most applications need.
+By contrast, a virtual machine (VM) runs a full-blown “guest” operating system with virtual access to host resources through a hypervisor. In general, VMs provide an environment with more resources than most applications need.
 
-In this tutorial, we will start with running *containers* on your machine. In order to illustrate concepts like *stacks* or *services*, we will thenn actually generate *several VMs* on your machine, which will simulate a *cluster of servers* on top of which you will dispatch and execute (we say *'orchestrate'*) several containers.  
+In this tutorial, we will start with running *containers* on your machine. In order to illustrate concepts like *stacks* or *services*, we will then actually generate *several VMs* on your machine, which will simulate a *cluster of servers* on top of which you will dispatch and execute (we say *'orchestrate'*) several containers.  
 
 
 ### 1.2 - Prepare your Docker environment
@@ -71,7 +70,7 @@ This should be enough to run the tutorial. Let's now test that everything is fin
 Run the command `docker --version` and ensure that you have a supported version of Docker:
 
 ```
-$ docker --version
+tuto@laptop:~$ docker --version
 Docker version 19.03.8, build afacb8b7f0
 ```
 Run `docker info` or `docker version` (without `--`) to view even more details about your docker installation:
@@ -1422,10 +1421,13 @@ persisting data, so that your app’s data survives when the container is torn
 
 down and redeployed.
 
+
+
+## Appendix - in
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODEyMTMxNiwxNDU5OTY3MzQ0LDE5MzY1MD
-I3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4
-LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMT
-E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
-OTMwM119
+eyJoaXN0b3J5IjpbMTY3NDU0NzIyOCwxNDU5OTY3MzQ0LDE5Mz
+Y1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAy
+MzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OS
+wtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0
+NDE1OTMwM119
 -->
