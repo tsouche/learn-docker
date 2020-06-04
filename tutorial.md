@@ -565,16 +565,14 @@ It’s as easy as that to stand up and scale your app with Docker. You’ve take
 
 |  |  |
 | --- | ---:|
-| `   ` |  |
-
-| `docker stack ls # List stacks or apps
-| `docker stack deploy -c <composefile> <appname> # Run the specified Compose file
-| `docker service ls # List running services associated with an app
-| `docker service ps <service> # List tasks associated with an app
-| `docker inspect <task or container> # Inspect task or container
-| `docker container ls -q # List container IDs
-| `docker stack rm <appname> # Tear down an application
-| `docker swarm leave --force # Take down a single node swarm from the manager
+| `docker stack ls` | List stacks or apps |
+| `docker stack deploy -c <composefile> <appname>` | Run the specified Compose file |
+| `docker service ls` | List running services associated with an app |
+| `docker service ps <service>` | List tasks associated with an app |
+| `docker inspect <task or container>` | Inspect task or container |
+| `docker container ls -q` | List container IDs |
+| `docker stack rm <appname>` | Tear down an application |
+| `docker swarm leave --force` | Take down a single node swarm from the manager |
 
 ## Part 4 - Swarms
 
@@ -1436,8 +1434,8 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDU5NDY0OTIsMTg5NTY1ODM2MywtMT
-AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
-NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
-k0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMD
+A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
+MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
+Q5LDk0NDE1OTMwM119
 -->
