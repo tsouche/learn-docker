@@ -320,36 +320,18 @@ If you don’t have a Docker account, sign up for one at [https://hub.docker.com
 Log in to the Docker public registry on your local machine.
 ```
 $ docker login
-```
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
-
-Username: tsouche
-
+Username: xxxxxxxx
 Password:
-
 WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
-
 Configure a credential helper to remove this warning. See
-
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
 Login Succeeded
+```
 
-Tag the image
+##### Tag the image
 
-=============
-
-The notation for associating a local image with a repository on a registry is
-
-username/repository:tag. The tag is optional, but recommended, since it is
-
-the mechanism that registries use to give Docker images a version. Give the
-
-repository and tag meaningful names for the context, such as
-
-get-started:part2. This puts the image in the get-started repository and tag
-
-it as part2.
+The notation for associating a local image with a repository on a registry is username/repository:tag. The tag is optional, but recommended, since it is the mechanism that registries use to give Docker images a version. Give the repository and tag meaningful names for the context, such as get-started:part2. This puts the image in the get-started repository and tag it as part2.
 
 Now, put it all together to tag the image. Run docker tag image with your
 
@@ -1892,7 +1874,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5NDE3MDY3MCwtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbNDc3Nzk3Nzk3LC0xMTExNDM0NTksLTExNT
+k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
+MDNdfQ==
 -->
