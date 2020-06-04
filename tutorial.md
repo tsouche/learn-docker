@@ -442,7 +442,7 @@ tuto@laptop:~$ docker swarm init
 
 Now let’s run it. You need to give your app a name. Here, it is set to `getstartedlab`:
 ```
-tuto@laptop:~$ docker stack deploy -c docker-compose-part3.yml getstartedlab
+tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 Creating network getstartedlab_webnet
 Creating service getstartedlab_web
 ```
@@ -1421,10 +1421,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNDE3MDk2MCwtOTI5NjQwMjU1LC0xNz
-UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
-Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
-wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
-NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
-kzMDNdfQ==
+eyJoaXN0b3J5IjpbODkyMDk2Njk0LC05Mjk2NDAyNTUsLTE3NT
+E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
+ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
+00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
+OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
+MwM119
 -->
