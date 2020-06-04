@@ -321,7 +321,7 @@ Log in to the Docker public registry on your local machine.
 ```
 $ docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
-Username: xxxxxxxx
+Username: tsouche
 Password:
 WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -337,7 +337,7 @@ Now, put it all together to tag the image. Run `docker tag image` with your user
 
 For example:
 ```
-code/$ docker tag friendlyhello tsouche/get-started:part2
+code/$ docker tag friendlyhello yourlo/get-started:part2
 ```
 You may run `docker image ls` command to see your newly tagged image.
 
@@ -347,17 +347,15 @@ You may run `docker image ls` command to see your newly tagged image.
 Now, let's put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination:
 ```
 $ docker image ls
-REPOSITORY          TAG      IMAGE ID     CREATED       SIZE
-friendlyhello       latest   d9e555c53008 3 minutes ago 195MB
-tsouche/get-started part2    d9e555c53008 3 minutes ago 195MB
-python              2.7-slim 1c7128a655f6 5 days ago    183MB
+REPOSITORY           TAG      IMAGE ID     CREATED       SIZE
+friendlyhello        latest   d9e555c53008 3 minutes ago 195MB
+yourname/get-started part2    d9e555c53008 3 minutes ago 195MB
+python               2.7-slim 1c7128a655f6 5 days ago    183MB
 ```
-The command to actually upload your tagged image to the repository is 
-
-docker push username/repository:tag
-
-$ docker push tsouche/get-started:part2
-
+The command to actually upload your tagged image to the repository is `docker push username/repository:tag`, so let's run it now:
+```
+$ docker push yourname/get-started:part2
+```
 Once complete, the results of this upload are publicly available. If you log
 
 in to Docker Hub, you see the new image there, with its pull command.
@@ -1857,7 +1855,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MTg1NTA1NywtMTExMTQzNDU5LC0xMT
-U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
-MzAzXX0=
+eyJoaXN0b3J5IjpbMzYwODc5NTIyLC0xMTExNDM0NTksLTExNT
+k0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNTkz
+MDNdfQ==
 -->
