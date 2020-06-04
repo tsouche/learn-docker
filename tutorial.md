@@ -411,11 +411,13 @@ That’s all for this page. In the next section, we learn how to scale our appli
 
 ### Part 2 Cheat Sheet
 
-docker build -t friendlyhello . # Create image using this directory's Dockerfile
+|  |  |
+| --- | ---:|
+| docker build -t friendlyhello . | Create image using this directory's Dockerfile |
 
-docker run -p 4000:80 friendlyhello # Run "friendlyname" mapping port
 
-# 4000 to 80
+
+docker run -p 4000:80 friendlyhello # Run "friendlyname" mapping port 4000 to 80
 
 docker run -d -p 4000:80 friendlyhello # Same thing, but in detached mode
 
@@ -445,9 +447,7 @@ docker push username/repository:tag # Upload tagged image to registry
 
 docker run username/repository:tag # Run image from a registry
 
-###############################################################################
 
-#
 
 # Docker get started - Part 3 - Services
 
@@ -1844,7 +1844,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTYxOTg2MjMsLTExMTE0MzQ1OSwtMT
-E1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1
-OTMwM119
+eyJoaXN0b3J5IjpbMTAxNDIyOTYxMywtMTExMTQzNDU5LC0xMT
+U5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5
+MzAzXX0=
 -->
