@@ -731,19 +731,13 @@ If you want to start over, you can run docker swarm leave from each node.
 
 ### 4.2 - Deploy your app on the swarm cluster
 
-The hard part is over. Now you just repeat the process you used in part 3 to
-
-deploy on your new swarm. Just remember that only swarm managers like myvm1
-
-execute Docker commands; workers are just for capacity.
+The hard part is over. Now you just repeat the process you used in part 3 to deploy on your new swarm. Just remember that only swarm managers like `myvm1` execute Docker commands; workers are just for capacity.
 
 #### Configure a docker-machine shell to the swarm manager
 
 So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to the VMs, or you logged directly into the VM (via SSH) in order to place orders.
 
-Another option is to run docker-machine env <machine> to get and run a command
-
-that configures your current shell to talk to the Docker daemon on the VM. This
+Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This
 
 method works better for the next step because it allows you to use your local
 
@@ -893,25 +887,14 @@ within your swarm always has that port reserved to itself, no matter what
 
 node is actually running the container.
 
-Having connectivity trouble?
+#### Having connectivity trouble?
 
-============================
+Keep in mind that to use the ingress network in the swarm, you need to have the following ports open between the swarm nodes before you enable swarm mode:
 
-Keep in mind that to use the ingress network in the swarm, you need to have
+* Port 7946 TCP/UDP for container network discovery.
+* Port 4789 UDP for the container ingress network.
 
-the following ports open between the swarm nodes before you enable swarm
-
-mode:
-
-Port 7946 TCP/UDP for container network discovery.
-
-Port 4789 UDP for the container ingress network.
-
-==============================
-
-Iterating and scaling your app
-
-==============================
+### 4.3 - Iterating and scaling your app
 
 From here you can do everything you learned about in parts 2 and 3.
 
@@ -1470,7 +1453,7 @@ persisting data, so that your app’s data survives when the container is torn
 down and redeployed.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0NzQ4MTM2NiwxODk1NjU4MzYzLC0xMD
+eyJoaXN0b3J5IjpbLTEyMzk4NTM0OSwxODk1NjU4MzYzLC0xMD
 A2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0
 MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OT
 Q5LDk0NDE1OTMwM119
