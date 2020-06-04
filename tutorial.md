@@ -833,25 +833,15 @@ Removing service getstartedlab_web
 Removing network getstartedlab_webnet
 ```
 Keep the swarm or remove it?
-At some point later, you can remove this swarm if you want to with `docker-machine ssh myvm2 "docker swarm leave" on the worker and
+At some point later, you can remove this swarm if you want to with `docker-machine ssh myvm2 "docker swarm leave"` on the workers and `docker-machine ssh myvm1 "docker swarm leave --force"` on the manager, but you will still need this swarm for part 5, so keep it around for now.
 
-docker-machine ssh myvm1 "docker swarm leave --force" on the manager, but you
+#### Unsetting `docker-machine` shell variable settings
 
-need this swarm for part 5, so keep it around for now.
-
-Unsetting docker-machine shell variable settings
-
-================================================
-
-You can unset the docker-machine environment variables in your current shell
-
-with the given command:
-
+You can unset the `docker-machine` environment variables in your current shell with the given command:
+```
 $ eval $(docker-machine env -u)
-
-This disconnects the shell from docker-machine created virtual machines, and
-
-allows you to continue working in the same shell, now using native docker
+```
+This disconnects the shell from `docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker
 
 commands (for example, on Docker for Mac or Docker for Windows). To learn
 
@@ -1367,10 +1357,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNzkzMjcxMiwtOTI5NjQwMjU1LC0xNz
-UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
-Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
-wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
-NTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5NDQxNT
-kzMDNdfQ==
+eyJoaXN0b3J5IjpbMjY2Mzk4OTg3LC05Mjk2NDAyNTUsLTE3NT
+E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
+ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
+00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
+OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
+MwM119
 -->
