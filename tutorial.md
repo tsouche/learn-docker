@@ -229,10 +229,11 @@ We are ready to build the app. Make sure you are still at the top level of your 
 ```
 $ cd code/
 /code$ ls -al
-à```
+***à revoir***
+```
 Now run the build command. This creates a Docker image, which we’re going to tag using:
-   `-t` = name the image (a friendly name)
-   `.`  = path to the Dockerfile
+- `-t` = name the image (a friendly name)
+- `.`  = path to the Dockerfile
 
 You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many more lines but we skipped most of them (represented by [...]) :  
 
@@ -262,6 +263,6 @@ You can see the `hello-world` image which we used to test that Docker was proper
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NjczNDczMiwtMTM1NzYzOTgwOSwtMj
-Q4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLT
+I0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
