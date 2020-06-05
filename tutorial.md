@@ -990,35 +990,27 @@ Creating service getstartedlab_redis
 Run `docker service ls` from the `myvm1` to verify that the three services are running as expected.
 ```
 docker@myvm1:~$ docker service ls
-ID NAME MODE REPLICAS IMAGE PORTS
-ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
-tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
-2ythn4okhrdc getstartedlab_web replicated 8/8 account/get-started:part2 *:80->80/tcp
+ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS
+ugr2oqhctk52        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379->6379/tcp
+tufou3x0sztx        getstartedlab_visualizer   replicated          1/1                 dockersamples/visualizer:stable   *:8080->8080/tcp
+2ythn4okhrdc        getstartedlab_web          replicated          8/8                 tsouche/get-started:part2         *:80->80/tcp
 
 docker@myvm1:~$ docker stack ps getstartedlab
-ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-hcvuq1nt48hp getstartedlab_redis.1 redis:latest myvm1 Running Running about a minute ago
-kb8e3d7iqj76 getstartedlab_web.1 account/get-started:part2 myvm3 Running Running 5 minutes ago
-puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 5 minutes ago
-zr4jjcvrr0l5 getstartedlab_web.2 account/get-started:part2 myvm1 Running Running 5 minutes ago
-v6a1qd49a0ka getstartedlab_web.3 account/get-started:part2 myvm2 Running Running 5 minutes ago
-x0gq7usig5y6 getstartedlab_web.4 account/get-started:part2 myvm3 Running Running 5 minutes ago
-9uxjs2ve3x1s getstartedlab_web.5 account/get-started:part2 myvm1 Running Running 5 minutes ago
-4r6a1dxxlh0e getstartedlab_web.6 account/get-started:part2 myvm2 Running Running 5 minutes ago
-pqxvp3m14loh getstartedlab_web.7 account/get-started:part2 myvm3 Running Running 5 minutes ago
-gs5ox6yvnumw getstartedlab_web.8 account/get-started:part2 myvm2 Running Running 5 minutes ago
+ID                  NAME                         IMAGE                             NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
+hcvuq1nt48hp        getstartedlab_redis.1        redis:latest                      myvm1               Running             Running about a minute ago                       
+kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
+puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 5 minutes ago                            
+zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago                            
+v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago                            
+x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
+9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago                            
+4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago                            
+pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
+gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago 
 ```
-Check the web page at one of your nodes, such as http://192.168.99.101, and
+Check the web page at one of your nodes, such as [http://192.168.99.101](http://192.168.99.101), and take a look at the results of the visitor counter, which is now live and storing information on Redis.
 
-take a look at the results of the visitor counter, which is now live and
-
-storing information on Redis.
-
-Now come back to the host, and check the visualizer at port 8080 on either
-
-node’s IP address, and notice see the redis service running along with the web
-
-and visualizer services. We can show it here with curl:
+Now come back to the host, and check the visualizer at port 8080 on either node’s IP address, and notice see the redis service running along with the web and visualizer services. We can show it here with `curl`:
 
 tuto@laptop:~$ curl http://192.168.99.101
 
@@ -1128,11 +1120,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2MDY0OTg2Miw4MjA1NzU5NTAsMTg2MT
-MxNDAzNiwtODMzNjU5MzQyLC01NjA2MDQyMTEsNjIyMTIwMzM1
-LC05Mjk2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxND
-U5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4
-MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2Mj
-AsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOTgwOSwt
-MjQ4OTk4OTQ5XX0=
+eyJoaXN0b3J5IjpbMzcxMTE3MjQwLC00NjA2NDk4NjIsODIwNT
+c1OTUwLDE4NjEzMTQwMzYsLTgzMzY1OTM0MiwtNTYwNjA0MjEx
+LDYyMjEyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NT
+kyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0Mjgw
+ODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC
+0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEz
+NTc2Mzk4MDldfQ==
 -->
