@@ -934,31 +934,19 @@ You saw in the Compose file that visualizer runs on 8080. Get the IP address of 
 
 The single copy of visualizer is running on the manager as you expect, and the 8 instances of web are spread out across the swarm. You can corroborate this visualization by running `docker stack ps <stack>`:
 
-$ docker stack ps getstartedlab
-
+tuto@laptop:~$ docker stack ps getstartedlab
 ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-
 kb8e3d7iqj76 getstartedlab_web.1 account/get-started:part2 myvm3 Running Running 59 seconds ago
-
 puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 50 seconds ago
-
 zr4jjcvrr0l5 getstartedlab_web.2 account/get-started:part2 myvm1 Running Running 58 seconds ago
-
 v6a1qd49a0ka getstartedlab_web.3 account/get-started:part2 myvm2 Running Running 59 seconds ago
-
 x0gq7usig5y6 getstartedlab_web.4 account/get-started:part2 myvm3 Running Running 59 seconds ago
-
 9uxjs2ve3x1s getstartedlab_web.5 account/get-started:part2 myvm1 Running Running 58 seconds ago
-
 4r6a1dxxlh0e getstartedlab_web.6 account/get-started:part2 myvm2 Running Running 59 seconds ago
-
 pqxvp3m14loh getstartedlab_web.7 account/get-started:part2 myvm3 Running Running 59 seconds ago
-
 gs5ox6yvnumw getstartedlab_web.8 account/get-started:part2 myvm2 Running Running 59 seconds ago
 
-As you can see, the previous containers were stopped and replaced with the
-
-new versions of the containers, corresponding to the new docker-compose file.
+As you can see, the previous containers were stopped and replaced with the new versions of the containers, corresponding to the new docker-compose file.
 
 You had to take no action: the whole process is orchestrated by docker.
 
@@ -1220,10 +1208,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA4NzQyMDQxLDYyMjEyMDMzNSwtOTI5Nj
-QwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0
-NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMT
-AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
-NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
-k0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTU2MDYwNDIxMSw2MjIxMjAzMzUsLTkyOT
+Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
+NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
+EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
+MTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OT
+g5NDksOTQ0MTU5MzAzXX0=
 -->
