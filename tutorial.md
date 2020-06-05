@@ -1011,28 +1011,19 @@ gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2      
 Check the web page at one of your nodes, such as [http://192.168.99.101](http://192.168.99.101), and take a look at the results of the visitor counter, which is now live and storing information on Redis.
 
 Now come back to the host, and check the visualizer at port 8080 on either node’s IP address, and notice see the redis service running along with the web and visualizer services. We can show it here with `curl`:
-
+```
 tuto@laptop:~$ curl http://192.168.99.101
-
 <h3>Hello World!</h3><b>Hostname:</b> 4bf84a659203<br/><b>Visits:</b> 1
-
 tuto@laptop:~$ curl http://192.168.99.101
-
 <h3>Hello World!</h3><b>Hostname:</b> 6e44c2030d1d<br/><b>Visits:</b> 2
-
 tuto@laptop:~$ curl http://192.168.99.101
-
 <h3>Hello World!</h3><b>Hostname:</b> 72e463fe35f4<br/><b>Visits:</b> 3
-
 tuto@laptop:~$ curl http://192.168.99.101
-
 <h3>Hello World!</h3><b>Hostname:</b> de35f3de665f<br/><b>Visits:</b> 4
-
 tuto@laptop:~$ curl http://192.168.99.101
-
 <h3>Hello World!</h3><b>Hostname:</b> 84fe0906e70b<br/><b>Visits:</b> 5
-
 ...
+```
 
 so go on the browser, visit the '192.168.99.101' URL and observe the result.
 
@@ -1120,11 +1111,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzcxMTE3MjQwLC00NjA2NDk4NjIsODIwNT
-c1OTUwLDE4NjEzMTQwMzYsLTgzMzY1OTM0MiwtNTYwNjA0MjEx
-LDYyMjEyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NT
-kyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0Mjgw
-ODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC
-0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEz
-NTc2Mzk4MDldfQ==
+eyJoaXN0b3J5IjpbLTkyMDYyOTY3NCwtNDYwNjQ5ODYyLDgyMD
+U3NTk1MCwxODYxMzE0MDM2LC04MzM2NTkzNDIsLTU2MDYwNDIx
+MSw2MjIxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxND
+U5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4
+MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NS
+wtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0x
+MzU3NjM5ODA5XX0=
 -->
