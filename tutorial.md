@@ -980,7 +980,9 @@ You are ready to deploy your new Redis-using stack.
 $ eval $(docker-machine env myvm1)
 $ docker-machine ssh myvm1 "mkdir ./data"
 ```
-#### Run `docker stack deploy` one more time
+### 5.3 - Redeploy the stack
+
+Run `docker stack deploy` one more time:
 ```
 $ docker stack deploy -c docker-compose-part5-2.yml getstartedlab
 Updating service getstartedlab_web (id: 2ythn4okhrdcnnj2o7ecmjbcl)
@@ -1030,7 +1032,7 @@ so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL 
 ***insertimages here***
 
 
-#### Cleanup!!!
+### 5.4 - Cleanup!!!
 
 Before leaving, tidy the place!
 This means bringing the services down and removing any container/images left.
@@ -1081,11 +1083,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTYyNjcwNTYsLTcyOTkyNTM2NywtOT
-IwNjI5Njc0LC00NjA2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQw
-MzYsLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOT
-I5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2
-NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2My
-wtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0x
-MTExNDM0NTldfQ==
+eyJoaXN0b3J5IjpbNDY4MjQzMTA2LC03Mjk5MjUzNjcsLTkyMD
+YyOTY3NCwtNDYwNjQ5ODYyLDgyMDU3NTk1MCwxODYxMzE0MDM2
+LC04MzM2NTkzNDIsLTU2MDYwNDIxMSw2MjIxMjAzMzUsLTkyOT
+Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
+NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
+EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
+MTQzNDU5XX0=
 -->
