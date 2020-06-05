@@ -926,22 +926,13 @@ Creating service getstartedlab_web
 ```
 Take a look at the visualizer:
 
+***insert a picture here***
 
 ***
 
-You saw in the Compose file that visualizer runs on 8080. Get the IP
+You saw in the Compose file that visualizer runs on 8080. Get the IP address of one of your nodes by running docker-machine ls. Go to either IP address at port 8080 and you can see the visualizer running. In our case: go to the port 8080 of `myvm1`: [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
 
-address of one of your nodes by running docker-machine ls. Go to either IP
-
-address at port 8080 and you can see the visualizer running. In our case:
-
-go to the port 8080 of myvm1: http://192.168.99.100:8080/
-
-The single copy of visualizer is running on the manager as you expect, and
-
-the 8 instances of web are spread out across the swarm. You can corroborate
-
-this visualization by running docker stack ps <stack>:
+The single copy of visualizer is running on the manager as you expect, and the 8 instances of web are spread out across the swarm. You can corroborate this visualization by running `docker stack ps <stack>`:
 
 $ docker stack ps getstartedlab
 
@@ -1229,10 +1220,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0NTA5MDU3MSw2MjIxMjAzMzUsLTkyOT
-Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
-NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
-EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
-MTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OT
-g5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbNzA4NzQyMDQxLDYyMjEyMDMzNSwtOTI5Nj
+QwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0
+NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMT
+AwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTEx
+NDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5OD
+k0OSw5NDQxNTkzMDNdfQ==
 -->
