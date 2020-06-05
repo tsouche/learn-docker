@@ -958,35 +958,16 @@ Let’s go through the same workflow once more to add a Redis database for stori
 
 Redis has an official image in the Docker library and has been granted the short image name of just redis, so no username/repo notation here. The Redis port, 6379, has been pre-configured by Redis to be exposed from the container to the host, and here in our Compose file we expose it from the host to the world, so you can actually enter the IP for any of your nodes into Redis Desktop Manager and manage this Redis instance, if you so choose.
 
-Most importantly, there are a couple of things in the redis specification
+Most importantly, there are a couple of things in the redis specification that make data persist between deployments of this stack:
+* redis always runs on the manager, so it’s always using the same filesystem.
+* redis accesses an arbitrary directory in the host’s file system as /data inside the container, which is where Redis stores data.
 
-that make data persist between deployments of this stack:
-
-- redis always runs on the manager, so it’s always using the same
-
-filesystem.
-
-- redis accesses an arbitrary directory in the host’s file system as /data
-
-inside the container, which is where Redis stores data.
-
-Together, this is creating a “source of truth” in your host’s physical
-
-filesystem for the Redis data. Without this, Redis would store its data in
-
-/data inside the container’s filesystem, which would get wiped out if that
-
-container were ever redeployed.
+Together, this is creating a *“source of truth”* in your host’s physical filesystem for the Redis data. Without this, Redis would store its data in `/data` inside the container’s filesystem, which would get wiped out if that container were ever redeployed.
 
 This source of truth has two components:
 
-- The placement constraint you put on the Redis service, ensuring that it
-
-always uses the same host.
-
-- The volume you created that lets the container access ./data (on the
-
-host) as /data (inside the Redis container). While containers come and
+* The placement constraint you put on the Redis service, ensuring that it always uses the same host.
+* The volume you created that lets the container access ./data (on the host) as /data (inside the Redis container). While containers come and
 
 go, the files stored on ./data on the specified host persists, enabling
 
@@ -1184,10 +1165,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMj
-EyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5
-NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMT
-g5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5
-NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mz
-k4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbLTQ5Mzc0MDQwMiwtODMzNjU5MzQyLC01Nj
+A2MDQyMTEsNjIyMTIwMzM1LC05Mjk2NDAyNTUsLTE3NTE0OTIw
+NDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3ODcsMT
+U0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1
+NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OT
+c0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
+
 -->
