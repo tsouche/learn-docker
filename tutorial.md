@@ -1031,58 +1031,36 @@ so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL 
 
 Before leaving, tidy the place!
 This means bringing the services down and removing any container/images left.
-
+```
 tuto@laptop:~$ docker service ls
-
 ID NAME MODE REPLICAS IMAGE PORTS
-
 ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
-
 tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
-
 2ythn4okhrdc getstartedlab_web replicated 8/8 account/get-started:part2 *:80->80/tcp
 
 tuto@laptop:~$ docker stack rm getstartedlab
-
 Removing service getstartedlab_redis
-
 Removing service getstartedlab_visualizer
-
 Removing service getstartedlab_web
-
 Removing network getstartedlab_webnet
 
 tuto@laptop:~$ docker container ls -a
-
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
 tuto@laptop:~$ docker images -a
-
 REPOSITORY TAG IMAGE ID CREATED SIZE
-
 account/get-started <none> c160e4abb8aa About an hour ago 159MB
-
 redis <none> c33c9b2541a8 2 days ago 98.2MB
-
 dockersamples/visualizer <none> 8dbf7c60cf88 2 years ago 148MB
 
-tuto@laptop:/projects/get-started/docker$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
+tuto@laptop:~$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
+```
 
-...
+Here you are: the place is clean :-)
 
-Here you are :-)
+### Conclusion of Part 5
 
-=======================
-
-Conclusion of part five
-
-=======================
-
-You learned that stacks are inter-related services all running in concert,
-
-and that -- surprise! -- you’ve been using stacks since part three of this
-
-tutorial. You learned that to add more services to your stack, you insert
+You learned that stacks are inter-related services all running in concert, and that -- surprise! -- you’ve been using stacks since Part three of this tutorial. You learned that to add more services to your stack, you insert
 
 them in your Compose file. Finally, you learned that by using a combination
 
@@ -1108,11 +1086,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4NTYwMTY4NywtNzI5OTI1MzY3LC05Mj
-A2Mjk2NzQsLTQ2MDY0OTg2Miw4MjA1NzU5NTAsMTg2MTMxNDAz
-NiwtODMzNjU5MzQyLC01NjA2MDQyMTEsNjIyMTIwMzM1LC05Mj
-k2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3
-MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC
-0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTEx
-MTE0MzQ1OV19
+eyJoaXN0b3J5IjpbLTE3NzA3Nzg0MjMsLTcyOTkyNTM2NywtOT
+IwNjI5Njc0LC00NjA2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQw
+MzYsLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOT
+I5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2
+NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2My
+wtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0x
+MTExNDM0NTldfQ==
 -->
