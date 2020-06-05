@@ -1025,9 +1025,9 @@ tuto@laptop:~$ curl http://192.168.99.101
 ...
 ```
 
-so go on the browser, visit the '192.168.99.101' URL and observe the result.
+so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL and observe the result.
 
-Cleanup!!!
+#### Cleanup!!!
 
 ==========
 
@@ -1111,11 +1111,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMDYyOTY3NCwtNDYwNjQ5ODYyLDgyMD
-U3NTk1MCwxODYxMzE0MDM2LC04MzM2NTkzNDIsLTU2MDYwNDIx
-MSw2MjIxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxND
-U5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4
-MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NS
-wtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0x
-MzU3NjM5ODA5XX0=
+eyJoaXN0b3J5IjpbLTcyOTkyNTM2NywtOTIwNjI5Njc0LC00Nj
+A2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQwMzYsLTgzMzY1OTM0
+MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOTI5NjQwMjU1LC0xNz
+UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
+Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
+wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
+NTk0ODk3NDNdfQ==
 -->
