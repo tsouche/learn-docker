@@ -930,26 +930,25 @@ Creating service getstartedlab_web
 You saw in the Compose file that visualizer runs on 8080. Get the IP address of one of your nodes by running docker-machine ls. Go to either IP address at port 8080 and you can see the visualizer running. In our case: go to the port 8080 of `myvm1`: [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
 
 The single copy of visualizer is running on the manager as you expect, and the 8 instances of web are spread out across the swarm. You can corroborate this visualization by running `docker stack ps <stack>`:
-
+```
 tuto@laptop:~$ docker stack ps getstartedlab
-ID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTS
-kb8e3d7iqj76 getstartedlab_web.1 account/get-started:part2 myvm3 Running Running 59 seconds ago
-puk3a65hf5up getstartedlab_visualizer.1 dockersamples/visualizer:stable myvm1 Running Running 50 seconds ago
-zr4jjcvrr0l5 getstartedlab_web.2 account/get-started:part2 myvm1 Running Running 58 seconds ago
-v6a1qd49a0ka getstartedlab_web.3 account/get-started:part2 myvm2 Running Running 59 seconds ago
-x0gq7usig5y6 getstartedlab_web.4 account/get-started:part2 myvm3 Running Running 59 seconds ago
-9uxjs2ve3x1s getstartedlab_web.5 account/get-started:part2 myvm1 Running Running 58 seconds ago
-4r6a1dxxlh0e getstartedlab_web.6 account/get-started:part2 myvm2 Running Running 59 seconds ago
-pqxvp3m14loh getstartedlab_web.7 account/get-started:part2 myvm3 Running Running 59 seconds ago
-gs5ox6yvnumw getstartedlab_web.8 account/get-started:part2 myvm2 Running Running 59 seconds ago
+ID                  NAME                         IMAGE                             NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
+kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
+puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 50 seconds ago                       
+zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago                       
+v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago                       
+x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
+9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago                       
+4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago                       
+pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
+gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago
+```
 
 As you can see, the previous containers were stopped and replaced with the new versions of the containers, corresponding to the new docker-compose file.
 
 If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/), you should see this:
 
 ***insert a picture here***
-
-
 
 You had to take no action: the whole process is orchestrated by docker. The visualizer is a standalone service that can run in any app that includes it in the stack. It doesn’t depend on anything else. Now let’s create a service that does have a dependency: the Redis service that provides a visitor counter.
 
@@ -1203,10 +1202,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5Njc0NDkxMCwtNTYwNjA0MjExLDYyMj
-EyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5
-NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMT
-g5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5
-NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mz
-k4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
+eyJoaXN0b3J5IjpbNDk4MzE1NTMwLC01NjA2MDQyMTEsNjIyMT
+IwMzM1LC05Mjk2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2
+MCwxNDU5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxOD
+k1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2
+ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOT
+gwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 -->
