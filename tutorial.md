@@ -893,7 +893,7 @@ In part 4 you learned what a swarm is, how nodes in swarms can be managers or wo
 
 ***
 
-## Docker get started - Part 5 - Stacks
+## Part 5 - Stacks
 
 In Part 4, you learned how to set up a **swarm**, which is a cluster of machines running Docker, and deployed an application to it, with containers running in concert on multiple machines.
 
@@ -952,7 +952,7 @@ If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/), you sho
 
 You had to take no action: the whole process is orchestrated by docker. The visualizer is a standalone service that can run in any app that includes it in the stack. It doesn’t depend on anything else. Now let’s create a service that does have a dependency: the Redis service that provides a visitor counter.
 
-#### Persist the data
+### 5.2 - Persist the data
 
 Let’s go through the same workflow once more to add a Redis database for storing app data. This is defined in the `docker-compose-part5-2.yml` file, which finally adds a Redis service.
 
@@ -1081,11 +1081,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5ODU3NTU0NywtNzI5OTI1MzY3LC05Mj
-A2Mjk2NzQsLTQ2MDY0OTg2Miw4MjA1NzU5NTAsMTg2MTMxNDAz
-NiwtODMzNjU5MzQyLC01NjA2MDQyMTEsNjIyMTIwMzM1LC05Mj
-k2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3
-MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC
-0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTEx
-MTE0MzQ1OV19
+eyJoaXN0b3J5IjpbLTIwNTYyNjcwNTYsLTcyOTkyNTM2NywtOT
+IwNjI5Njc0LC00NjA2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQw
+MzYsLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOT
+I5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2
+NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2My
+wtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0x
+MTExNDM0NTldfQ==
 -->
