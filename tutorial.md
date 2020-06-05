@@ -967,7 +967,7 @@ Together, this is creating a *“source of truth”* in your host’s physical f
 This source of truth has two components:
 
 * The placement constraint you put on the Redis service, ensuring that it always uses the same host.
-* The volume you created that lets the container access ./data (on the host) as /data (inside the Redis container). While containers come and go, the files stored on ./data on the specified host persists, enabling continuity.
+* The volume you created that lets the container access `./data` (on the host) as `/data` (inside the Redis container). While containers come and go, the files stored on `./data` on the specified host persists, enabling continuity.
 
 You are ready to deploy your new Redis-using stack.
 
@@ -1143,11 +1143,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MTMxNDAzNiwtODMzNjU5MzQyLC01Nj
-A2MDQyMTEsNjIyMTIwMzM1LC05Mjk2NDAyNTUsLTE3NTE0OTIw
-NDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3ODcsMT
-U0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1
-NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OT
-c0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
-
+eyJoaXN0b3J5IjpbODIwNTc1OTUwLDE4NjEzMTQwMzYsLTgzMz
+Y1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOTI5NjQwMjU1
+LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOT
+M2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcw
+MjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NT
+ksLTExNTk0ODk3NDMsLTEzNTc2Mzk4MDksLTI0ODk5ODk0OSw5
+NDQxNTkzMDNdfQ==
 -->
