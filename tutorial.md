@@ -1029,10 +1029,7 @@ so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL 
 
 #### Cleanup!!!
 
-==========
-
 Before leaving, tidy the place!
-
 This means bringing the services down and removing any container/images left.
 
 tuto@laptop:~$ docker service ls
@@ -1111,11 +1108,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyOTkyNTM2NywtOTIwNjI5Njc0LC00Nj
-A2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQwMzYsLTgzMzY1OTM0
-MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOTI5NjQwMjU1LC0xNz
-UxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2NzM0NCwxOTM2NTAy
-Nzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2MywtMTAwNjcwMjMxOC
-wtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0xMTExNDM0NTksLTEx
-NTk0ODk3NDNdfQ==
+eyJoaXN0b3J5IjpbMTU4NTYwMTY4NywtNzI5OTI1MzY3LC05Mj
+A2Mjk2NzQsLTQ2MDY0OTg2Miw4MjA1NzU5NTAsMTg2MTMxNDAz
+NiwtODMzNjU5MzQyLC01NjA2MDQyMTEsNjIyMTIwMzM1LC05Mj
+k2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3
+MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC
+0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTEx
+MTE0MzQ1OV19
 -->
