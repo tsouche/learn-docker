@@ -976,16 +976,11 @@ You are ready to deploy your new Redis-using stack.
 >Note: Make sure your shell is configured to talk to `myvm1`:
 >* Run docker-machine ls to list machines and make sure you are connected to `myvm1`, as indicated by an asterisk next it.
 >* If needed, re-run `docker-machine env myvm1`, then run the given command to configure the shell.
-
+```
 $ eval $(docker-machine env myvm1)
-
-Then you can create the directory on the VM:
-
 $ docker-machine ssh myvm1 "mkdir ./data"
-
-Run docker stack deploy one more time
-
-=====================================
+```
+#### Run docker stack deploy one more time
 
 $ docker stack deploy -c docker-compose-part5-2.yml getstartedlab
 
@@ -1153,7 +1148,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ5OTU1ODM4LC04MzM2NTkzNDIsLTU2MD
+eyJoaXN0b3J5IjpbMjkxMDAzMDUyLC04MzM2NTkzNDIsLTU2MD
 YwNDIxMSw2MjIxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0
 OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNT
 Q5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0
