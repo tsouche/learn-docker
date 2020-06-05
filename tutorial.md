@@ -945,20 +945,13 @@ gs5ox6yvnumw getstartedlab_web.8 account/get-started:part2 myvm2 Running Running
 
 As you can see, the previous containers were stopped and replaced with the new versions of the containers, corresponding to the new docker-compose file.
 
-If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
+If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/), you should see this:
+
 ***insert a picture here***
 
 
 
-You had to take no action: the whole process is orchestrated by docker.
-
-The visualizer is a standalone service that can run in any app that includes
-
-it in the stack. It doesn’t depend on anything else. Now let’s create a
-
-service that does have a dependency: the Redis service that provides a
-
-visitor counter.
+You had to take no action: the whole process is orchestrated by docker. The visualizer is a standalone service that can run in any app that includes it in the stack. It doesn’t depend on anything else. Now let’s create a service that does have a dependency: the Redis service that provides a visitor counter.
 
 ================
 
@@ -1210,10 +1203,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDM0Mjc5OTEsLTU2MDYwNDIxMSw2Mj
-IxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4
-OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LD
-E4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTky
-OTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3Nj
-M5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTM5Njc0NDkxMCwtNTYwNjA0MjExLDYyMj
+EyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5
+NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMT
+g5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5
+NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mz
+k4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
