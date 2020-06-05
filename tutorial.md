@@ -907,27 +907,15 @@ It’s easy to add services to our docker-compose.yml file. First, let’s add a
 
 We will use here `docker-compose-part5-1.yml`, a modified version of the previous `docker-compose-part3.yml`. The only thing new here is the peer service to web, named visualizer. Notice two new things here:
 
-- a volumes key, giving the visualizer access to the host’s socket file
+* a volumes key, giving the visualizer access to the host’s socket file for Docker, and
+* a placement key, ensuring that this service only ever runs on a swarm manager -- never a worker. That’s because this container, built from an open source project created by Docker, displays Docker services running on a swarm in a diagram.
 
-for Docker, and
+We will talk more about placement constraints and volumes in a moment.
 
-- a placement key, ensuring that this service only ever runs on a swarm
+Make sure your shell is configured to talk to `myvm1`:
 
-manager -- never a worker. That’s because this container, built from an
-
-open source project created by Docker, displays Docker services running
-
-on a swarm in a diagram.
-
-We talk more about placement constraints and volumes in a moment.
-
-Make sure your shell is configured to talk to myvm1:
-
-- Run docker-machine ls to list machines and make sure you are connected
-
-to myvm1, as indicated by an asterisk next to it.
-
-- If needed, re-run "docker-machine env myvm1", then run the following
+* Run docker-machine ls to list machines and make sure you are connected to `myvm1`, as indicated by an asterisk next to it.
+* If needed, re-run "docker-machine env myvm1", then run the following
 
 command to configure the shell:
 
@@ -1249,7 +1237,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NjkwMzY3Myw2MjIxMjAzMzUsLTkyOT
+eyJoaXN0b3J5IjpbLTY3MDgyMDQwNyw2MjIxMjAzMzUsLTkyOT
 Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
 NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
 EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
