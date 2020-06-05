@@ -915,27 +915,19 @@ We will talk more about placement constraints and volumes in a moment.
 Make sure your shell is configured to talk to `myvm1`:
 
 * Run docker-machine ls to list machines and make sure you are connected to `myvm1`, as indicated by an asterisk next to it.
-* If needed, re-run "docker-machine env myvm1", then run the following
-
-command to configure the shell:
-
-$ eval $(docker-machine env myvm1)
-
-Re-run the docker stack deploy command on the manager, and whatever services
-
+* If needed, re-run `docker-machine env myvm1`, then run the `eval $(docker-machine env myvm1)` command to configure the shell.
+* Re-run the `docker stack deploy` command on the manager, and whatever services
 need updating are updated:
-
+```
 $ docker stack deploy -c docker-compose-part5-1.yml getstartedlab
-
 Creating network getstartedlab_webnet
-
 Creating service getstartedlab_visualizer
-
 Creating service getstartedlab_web
+```
+Take a look at the visualizer:
 
-Take a look at the visualizer
 
-=============================
+***
 
 You saw in the Compose file that visualizer runs on 8080. Get the IP
 
@@ -1237,7 +1229,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MDgyMDQwNyw2MjIxMjAzMzUsLTkyOT
+eyJoaXN0b3J5IjpbMTU0NTA5MDU3MSw2MjIxMjAzMzUsLTkyOT
 Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
 NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
 EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
