@@ -1033,10 +1033,10 @@ Before leaving, tidy the place!
 This means bringing the services down and removing any container/images left.
 ```
 tuto@laptop:~$ docker service ls
-ID NAME MODE REPLICAS IMAGE PORTS
-ugr2oqhctk52 getstartedlab_redis replicated 1/1 redis:latest *:6379->6379/tcp
-tufou3x0sztx getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080->8080/tcp
-2ythn4okhrdc getstartedlab_web replicated 8/8 account/get-started:part2 *:80->80/tcp
+ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS
+ugr2oqhctk52        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379->6379/tcp
+tufou3x0sztx        getstartedlab_visualizer   replicated          1/1                 dockersamples/visualizer:stable   *:8080->8080/tcp
+2ythn4okhrdc        getstartedlab_web          replicated          8/8                 tsouche/get-started:part2         *:80->80/tcp
 
 tuto@laptop:~$ docker stack rm getstartedlab
 Removing service getstartedlab_redis
@@ -1045,14 +1045,14 @@ Removing service getstartedlab_web
 Removing network getstartedlab_webnet
 
 tuto@laptop:~$ docker container ls -a
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
 tuto@laptop:~$ docker images -a
-REPOSITORY TAG IMAGE ID CREATED SIZE
-account/get-started <none> c160e4abb8aa About an hour ago 159MB
-redis <none> c33c9b2541a8 2 days ago 98.2MB
-dockersamples/visualizer <none> 8dbf7c60cf88 2 years ago 148MB
-
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+tsouche/get-started        <none>              c160e4abb8aa        About an hour ago   159MB
+redis                      <none>              c33c9b2541a8        2 days ago          98.2MB
+dockersamples/visualizer   <none>              8dbf7c60cf88        2 years ago         148MB
+t
 tuto@laptop:~$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
 ```
 
@@ -1060,17 +1060,9 @@ Here you are: the place is clean :-)
 
 ### Conclusion of Part 5
 
-You learned that stacks are inter-related services all running in concert, and that -- surprise! -- you’ve been using stacks since Part three of this tutorial. You learned that to add more services to your stack, you insert
+You learned that stacks are inter-related services all running in concert, and that -- surprise! -- you’ve been using stacks since Part 3 of this tutorial. You learned that to add more services to your stack, you insert them in your Compose file. Finally, you learned that by using a combination of placement constraints and volumes you can create a permanent home for persisting data, so that your app’s data survives when the container is torn down and redeployed.
 
-them in your Compose file. Finally, you learned that by using a combination
-
-of placement constraints and volumes you can create a permanent home for
-
-persisting data, so that your app’s data survives when the container is torn
-
-down and redeployed.
-
-
+***
 
 ## Appendix - installation script
 
@@ -1086,7 +1078,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzA3Nzg0MjMsLTcyOTkyNTM2NywtOT
+eyJoaXN0b3J5IjpbLTIwOTExMTYyNzYsLTcyOTkyNTM2NywtOT
 IwNjI5Njc0LC00NjA2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQw
 MzYsLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOT
 I5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2
