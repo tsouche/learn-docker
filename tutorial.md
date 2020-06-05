@@ -924,11 +924,8 @@ Creating network getstartedlab_webnet
 Creating service getstartedlab_visualizer
 Creating service getstartedlab_web
 ```
-Take a look at the visualizer:
 
-***insert a picture here***
-
-***
+#### Take a look at the visualizer:
 
 You saw in the Compose file that visualizer runs on 8080. Get the IP address of one of your nodes by running docker-machine ls. Go to either IP address at port 8080 and you can see the visualizer running. In our case: go to the port 8080 of `myvm1`: [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
 
@@ -947,6 +944,11 @@ pqxvp3m14loh getstartedlab_web.7 account/get-started:part2 myvm3 Running Running
 gs5ox6yvnumw getstartedlab_web.8 account/get-started:part2 myvm2 Running Running 59 seconds ago
 
 As you can see, the previous containers were stopped and replaced with the new versions of the containers, corresponding to the new docker-compose file.
+
+If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
+***insert a picture here***
+
+
 
 You had to take no action: the whole process is orchestrated by docker.
 
@@ -1208,10 +1210,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MDYwNDIxMSw2MjIxMjAzMzUsLTkyOT
-Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
-NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
-EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
-MTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OT
-g5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbLTEwMDM0Mjc5OTEsLTU2MDYwNDIxMSw2Mj
+IxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4
+OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LD
+E4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTky
+OTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3Nj
+M5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
 -->
