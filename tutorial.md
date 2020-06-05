@@ -899,33 +899,13 @@ In Part 4, you learned how to set up a **swarm**, which is a cluster of machines
 
 Here in Part 5, you reach the top of the hierarchy of distributed applications: the **stack**. A stack is a group of interrelated services that share dependencies, and can be orchestrated and scaled together. A single stack is capable of defining and coordinating the functionality of an entire application (though very complex applications may want to use multiple stacks).
 
-Some good news is, you have technically been working with stacks since Part 3, when you created a Compose file and used docker stack deploy. But that was a
+Some good news is, you have technically been working with stacks since Part 3, when you created a Compose file and used `docker stack deploy`. But that was a single service stack running on a single host, which is not usually what takes place in production. Here, you can take what you’ve learned, make multiple services relate to each other, and run them on multiple machines.
 
-single service stack running on a single host, which is not usually what
+### 5.1 - Add a new service and redeploy
 
-takes place in production. Here, you can take what you’ve learned, make
+It’s easy to add services to our docker-compose.yml file. First, let’s add a free visualizer service that lets us look at how our swarm is scheduling containers.
 
-multiple services relate to each other, and run them on multiple machines.
-
-==============================
-
-Add a new service and redeploy
-
-==============================
-
-It’s easy to add services to our docker-compose.yml file. First, let’s add a
-
-free visualizer service that lets us look at how our swarm is scheduling
-
-containers.
-
-We will use here "docker-compose-part5-1.yml", a modified version of the
-
-previous "docker-compose-part3.yml".
-
-The only thing new here is the peer service to web, named visualizer. Notice
-
-two new things here:
+We will use here `docker-compose-part5-1.yml`, a modified version of the previous `docker-compose-part3.yml`. The only thing new here is the peer service to web, named visualizer. Notice two new things here:
 
 - a volumes key, giving the visualizer access to the host’s socket file
 
@@ -1269,7 +1249,7 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5ODQyNjI3NSw2MjIxMjAzMzUsLTkyOT
+eyJoaXN0b3J5IjpbLTc0NjkwMzY3Myw2MjIxMjAzMzUsLTkyOT
 Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
 NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
 EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
