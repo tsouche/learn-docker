@@ -952,29 +952,11 @@ If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/), you sho
 
 You had to take no action: the whole process is orchestrated by docker. The visualizer is a standalone service that can run in any app that includes it in the stack. It doesn’t depend on anything else. Now let’s create a service that does have a dependency: the Redis service that provides a visitor counter.
 
-================
+#### Persist the data
 
-Persist the data
+Let’s go through the same workflow once more to add a Redis database for storing app data. This is defined in the `docker-compose-part5-2.yml` file, which finally adds a Redis service.
 
-================
-
-Let’s go through the same workflow once more to add a Redis database for
-
-storing app data. This is defined in the docker-compose-part5-2.yml file,
-
-which finally adds a Redis service.
-
-Redis has an official image in the Docker library and has been granted the
-
-short image name of just redis, so no username/repo notation here. The Redis
-
-port, 6379, has been pre-configured by Redis to be exposed from the container
-
-to the host, and here in our Compose file we expose it from the host to the
-
-world, so you can actually enter the IP for any of your nodes into Redis
-
-Desktop Manager and manage this Redis instance, if you so choose.
+Redis has an official image in the Docker library and has been granted the short image name of just redis, so no username/repo notation here. The Redis port, 6379, has been pre-configured by Redis to be exposed from the container to the host, and here in our Compose file we expose it from the host to the world, so you can actually enter the IP for any of your nodes into Redis Desktop Manager and manage this Redis instance, if you so choose.
 
 Most importantly, there are a couple of things in the redis specification
 
@@ -1202,10 +1184,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk4MzE1NTMwLC01NjA2MDQyMTEsNjIyMT
-IwMzM1LC05Mjk2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2
-MCwxNDU5OTY3MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxOD
-k1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2
-ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OTc0MywtMTM1NzYzOT
-gwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
+eyJoaXN0b3J5IjpbLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMj
+EyMDMzNSwtOTI5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5
+NjAsMTQ1OTk2NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMT
+g5NTY1ODM2MywtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5
+NjgwNjIwLC0xMTExNDM0NTksLTExNTk0ODk3NDMsLTEzNTc2Mz
+k4MDksLTI0ODk5ODk0OSw5NDQxNTkzMDNdfQ==
 -->
