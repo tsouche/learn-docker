@@ -980,19 +980,14 @@ You are ready to deploy your new Redis-using stack.
 $ eval $(docker-machine env myvm1)
 $ docker-machine ssh myvm1 "mkdir ./data"
 ```
-#### Run docker stack deploy one more time
-
+#### Run `docker stack deploy` one more time
+```
 $ docker stack deploy -c docker-compose-part5-2.yml getstartedlab
-
 Updating service getstartedlab_web (id: 2ythn4okhrdcnnj2o7ecmjbcl)
-
 Updating service getstartedlab_visualizer (id: tufou3x0sztx69eg6kzfmzvi8)
-
 Creating service getstartedlab_redis
-
-Run docker service ls from the VM1 to verify that the three services are
-
-running as expected.
+```
+Run `docker service ls` from the `myvm1` to verify that the three services are running as expected.
 
 docker@myvm1:~$ docker service ls
 
@@ -1148,11 +1143,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkxMDAzMDUyLC04MzM2NTkzNDIsLTU2MD
-YwNDIxMSw2MjIxMjAzMzUsLTkyOTY0MDI1NSwtMTc1MTQ5MjA0
-OCwxNDU5MjA4OTYwLDE0NTk5NjczNDQsMTkzNjUwMjc4NywxNT
-Q5NDI4MDg0LDE4OTU2NTgzNjMsLTEwMDY3MDIzMTgsLTQ4NDU0
-NjA3NSwtMTkyOTY4MDYyMCwtMTExMTQzNDU5LC0xMTU5NDg5Nz
-QzLC0xMzU3NjM5ODA5LC0yNDg5OTg5NDksOTQ0MTU5MzAzXX0=
+eyJoaXN0b3J5IjpbMTg2MTMxNDAzNiwtODMzNjU5MzQyLC01Nj
+A2MDQyMTEsNjIyMTIwMzM1LC05Mjk2NDAyNTUsLTE3NTE0OTIw
+NDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3ODcsMT
+U0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC00ODQ1
+NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1OTQ4OT
+c0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OTMwM119
 
 -->
