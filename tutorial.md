@@ -895,27 +895,11 @@ In part 4 you learned what a swarm is, how nodes in swarms can be managers or wo
 
 ## Docker get started - Part 5 - Stacks
 
-In part 4, you learned how to set up a swarm, which is a cluster of machines
+In Part 4, you learned how to set up a **swarm**, which is a cluster of machines running Docker, and deployed an application to it, with containers running in concert on multiple machines.
 
-running Docker, and deployed an application to it, with containers running in
+Here in Part 5, you reach the top of the hierarchy of distributed applications: the **stack**. A stack is a group of interrelated services that share dependencies, and can be orchestrated and scaled together. A single stack is capable of defining and coordinating the functionality of an entire application (though very complex applications may want to use multiple stacks).
 
-concert on multiple machines.
-
-Here in part 5, you reach the top of the hierarchy of distributed
-
-applications: the stack. A stack is a group of interrelated services that
-
-share dependencies, and can be orchestrated and scaled together. A single
-
-stack is capable of defining and coordinating the functionality of an entire
-
-application (though very complex applications may want to use multiple
-
-stacks).
-
-Some good news is, you have technically been working with stacks since part 3,
-
-when you created a Compose file and used docker stack deploy. But that was a
+Some good news is, you have technically been working with stacks since Part 3, when you created a Compose file and used docker stack deploy. But that was a
 
 single service stack running on a single host, which is not usually what
 
@@ -1285,10 +1269,10 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIyMTIwMzM1LC05Mjk2NDAyNTUsLTE3NT
-E0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3MzQ0LDE5MzY1MDI3
-ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC0xMDA2NzAyMzE4LC
-00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTExMTE0MzQ1OSwtMTE1
-OTQ4OTc0MywtMTM1NzYzOTgwOSwtMjQ4OTk4OTQ5LDk0NDE1OT
-MwM119
+eyJoaXN0b3J5IjpbMTg5ODQyNjI3NSw2MjIxMjAzMzUsLTkyOT
+Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
+NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
+EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
+MTQzNDU5LC0xMTU5NDg5NzQzLC0xMzU3NjM5ODA5LC0yNDg5OT
+g5NDksOTQ0MTU5MzAzXX0=
 -->
