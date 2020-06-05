@@ -1027,6 +1027,9 @@ tuto@laptop:~$ curl http://192.168.99.101
 
 so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL and observe the result.
 
+***insertimages here***
+
+
 #### Cleanup!!!
 
 Before leaving, tidy the place!
@@ -1052,7 +1055,7 @@ REPOSITORY                 TAG                 IMAGE ID            CREATED      
 tsouche/get-started        <none>              c160e4abb8aa        About an hour ago   159MB
 redis                      <none>              c33c9b2541a8        2 days ago          98.2MB
 dockersamples/visualizer   <none>              8dbf7c60cf88        2 years ago         148MB
-t
+
 tuto@laptop:~$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
 ```
 
@@ -1078,11 +1081,11 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTExMTYyNzYsLTcyOTkyNTM2NywtOT
-IwNjI5Njc0LC00NjA2NDk4NjIsODIwNTc1OTUwLDE4NjEzMTQw
-MzYsLTgzMzY1OTM0MiwtNTYwNjA0MjExLDYyMjEyMDMzNSwtOT
-I5NjQwMjU1LC0xNzUxNDkyMDQ4LDE0NTkyMDg5NjAsMTQ1OTk2
-NzM0NCwxOTM2NTAyNzg3LDE1NDk0MjgwODQsMTg5NTY1ODM2My
-wtMTAwNjcwMjMxOCwtNDg0NTQ2MDc1LC0xOTI5NjgwNjIwLC0x
-MTExNDM0NTldfQ==
+eyJoaXN0b3J5IjpbLTY5ODU3NTU0NywtNzI5OTI1MzY3LC05Mj
+A2Mjk2NzQsLTQ2MDY0OTg2Miw4MjA1NzU5NTAsMTg2MTMxNDAz
+NiwtODMzNjU5MzQyLC01NjA2MDQyMTEsNjIyMTIwMzM1LC05Mj
+k2NDAyNTUsLTE3NTE0OTIwNDgsMTQ1OTIwODk2MCwxNDU5OTY3
+MzQ0LDE5MzY1MDI3ODcsMTU0OTQyODA4NCwxODk1NjU4MzYzLC
+0xMDA2NzAyMzE4LC00ODQ1NDYwNzUsLTE5Mjk2ODA2MjAsLTEx
+MTE0MzQ1OV19
 -->
