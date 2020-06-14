@@ -12,7 +12,7 @@ Here are the identified pre-requisites to run this tutorial and actually learn s
 * have a DockerHub account (with login / pwd)
 * have a GitHub account (with login / pwd)
 
-In case you need help, an installation script is shown in the appendix. The script was tested for Ubuntu 20.04. 
+In case you need help, an installation script is shown in the appendix. The script was tested for Ubuntu 20.04.
 
 ***This is it!*** Everything in the list is free (except the laptop itself) and nothing else is needed... except the desire to learn :-)
 
@@ -48,7 +48,7 @@ A container runs natively on Linux and shares the kernel of the host machine wit
 
 By contrast, a virtual machine (VM) runs a full-blown “guest” operating system with virtual access to host resources through a hypervisor. In general, VMs provide an environment with more resources than most applications need.
 
-In this tutorial, we will start with running *containers* on your machine. In order to illustrate concepts like *stacks* or *services*, we will then actually generate *several VMs* on your machine, which will simulate a *cluster of servers* on top of which you will dispatch and execute (we say *'orchestrate'*) several containers.  
+In this tutorial, we will start with running *containers* on your machine. In order to illustrate concepts like *stacks* or *services*, we will then actually generate *several VMs* on your machine, which will simulate a *cluster of servers* on top of which you will dispatch and execute (we say *'orchestrate'*) several containers.
 
 
 ### 1.2 - Prepare your Docker environment
@@ -60,7 +60,7 @@ The installation script in the Appendix will guide through the installation of t
 
 * curl
 * docker Community Edition (CE) to manage and execute containers
-* docker-machine to generate a cluster of VMs on your machine 
+* docker-machine to generate a cluster of VMs on your machine
 * docker-compose to orchestrate containers on this cluster
 
 This should be enough to run the tutorial. Let's now test that everything is fine before we really start the tutorial.
@@ -69,13 +69,14 @@ This should be enough to run the tutorial. Let's now test that everything is fin
 
 Run the command `docker --version` and ensure that you have a supported version of Docker:
 
-```
+```bash
 tuto@laptop:~$ docker --version
 Docker version 19.03.8, build afacb8b7f0
 ```
+
 Run `docker info` or `docker version` (without `--`) to view even more details about your docker installation:
 
-```
+```bash
 tuto@laptop:~$ docker version
 Client:
  Version:           19.03.8
@@ -97,24 +98,24 @@ Server:
   Experimental:     false
  containerd:
   Version:          1.3.3-0ubuntu2
-  GitCommit:        
+  GitCommit:
  runc:
   Version:          spec: 1.0.1-dev
-  GitCommit:        
+  GitCommit:
  docker-init:
   Version:          0.18.0
-  GitCommit:        
+  GitCommit:
 ```
 
 #### Test Docker installation
 
 The first steps of the installation script install docker on your machine: your can check it by running the simple Docker image, hello-world:
 
-```
+```bash
 tuto@laptop:~$ docker run hello-world
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-0e03bdcc26d7: Pull complete 
+0e03bdcc26d7: Pull complete
 Digest: sha256:6a65f928fb91fcfbc963f7aa6d57c8eeb426ad9a20c7ee045538ef34847f44f1
 Status: Downloaded newer image for hello-world:latest
 
@@ -142,7 +143,7 @@ For more examples and ideas, visit:
 
 You canlList the hello-world image that was downloaded to your machine:
 
-```
+```bash
 tuto@laptop:~$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 hello-world         latest              bf756fb1ae65        5 months ago        13.3kB
@@ -150,7 +151,7 @@ hello-world         latest              bf756fb1ae65        5 months ago        
 
 List the hello-world container (spawned by the image) which exits after displaying its message. If it were still running, you would not need the `--all` option:
 
-```
+```bash
 tuto@laptop:~$ docker container ls --all
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
 a9a177a596fd        hello-world         "/hello"            2 minutes ago       Exited (0) 2 minutes ago                       happy_kalam
@@ -212,7 +213,7 @@ Dockerfile defines what goes on in the environment inside your container. Access
 
 #### Dockerfile
 
-The files `docker-compose-part3.yml`, `app.py` and `requirements.txt` will be used now to build a Docker image and corresponding container. 
+The files `docker-compose-part3.yml`, `app.py` and `requirements.txt` will be used now to build a Docker image and corresponding container.
 We see that `pip install -r requirements.txt` installs the Flask and Redis libraries for Python, and the app prints the environment variable `NAME`, as well as the output of a call to `socket.gethostname()`. Finally, because Redis isn’t running (as we’ve only installed the Python library, and not Redis itself), we should expect that the attempt to use it here fails and produces the error message.
 
 > Note: accessing the name of the host when inside a container retrieves the container ID, which is like the process ID for a running executable.
@@ -225,7 +226,7 @@ You don’t need Python or anything in `requirements.txt` on your system, nor do
 
 We are ready to build the app. Make sure you are still at the top level of your new directory. Here’s what `ls` should show:
 
-```
+```bash
 tuto@laptop:~$ ls code
 app.py                    docker-compose-part5-1.yml  docker-compose.yml  requirements.txt
 docker-compose-part3.yml  docker-compose-part5-2.yml  Dockerfile
@@ -234,14 +235,14 @@ Now run the build command. This creates a Docker image, which we’re going to t
 - `-t` = name the image (a friendly name)
 - `.`  = path to the Dockerfile
 
-You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many more lines but we skipped most of them (represented by [...]) :  
+You will see that Docker will take few seconds to execute the command as it needs to download various elements in order to build the image. The image building process actually shows many more lines but we skipped most of them (represented by [...]) :
 
-```
+```bash
 tuto@laptop:~$ docker build -t friendlyhello ./code
 Sending build context to Docker daemon  9.728kB
 Step 1/7 : FROM python:3.6
 3.6: Pulling from library/python
-376057ac6fa1: Pull complete 
+376057ac6fa1: Pull complete
 [...]
 Removing intermediate container 22f48e5a16cc
  ---> c54174fc2d78
@@ -251,7 +252,7 @@ Successfully tagged friendlyhello:latest
 
 Where is your built image? It’s in your machine’s local Docker image registry:
 
-```
+```bash
 tuto@laptop:~$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 friendlyhello       latest              c54174fc2d78        5 minutes ago       924MB
@@ -264,7 +265,7 @@ You can see the `hello-world` image which we used to test that Docker was proper
 
 You will now run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:
 
-```
+```bash
 tuto@laptop:~$ docker run -p 4000:80 friendlyhello
  * Serving Flask app "app" (lazy loading)
  * Environment: production
@@ -282,7 +283,7 @@ Go to that second URL in a web browser to see the display content served up on a
 
 You can also use the `curl` command in a shell to view the same content... in text format:
 
-```
+```bash
 tuto@laptop:~$ curl http://localhost:4000
 <h3>Hello World!</h3><b>Hostname:</b> 8fc990912a14<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ```
@@ -292,23 +293,28 @@ Hit `CTRL+C` in your terminal to quit.
 
 Now let’s run the app in the background, in detached mode:
 
-```
+```bash
 tuto@laptop:~$ docker run -d -p 4000:80 friendlyhello
 959d6fbadbbd58032af60022cf0e02f6f49475600a46fc4628dd736a12640c4f
 ```
+
 You get the `long container ID` for your app and then are kicked back to your terminal. Your container is running in the background. You can also see the `abbreviated container ID` with `docker container ls` (and both work interchangeably when running commands):
-```
+
+```bash
 tuto@laptop:~$ docker container ls
 CONTAINER ID IMAGE         COMMAND         CREATED
 959d6fbadbbd friendlyhello "python app.py" 28 seconds ago
 ```
+
 Notice that `CONTAINER ID` matches what is displayed on [http://localhost:4000](http://localhost:4000).
 
-Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the container ID once it is done:
-```
+Now, you will use `docker container stop` to end the process, using the `CONTAINER ID` to tell which container should be stopped. Docker will need few seconds to actually stop the container, and it will output the `container ID` once it is done:
+
+```bash
 tuto@laptop:~$ docker container stop 959d6fbadbbd
 959d6fbadbbd
 ```
+
 In parallel, you can refresh the web page on [http://localhost:4000](http://localhost:4000) until the container stops, and the browser will then not be able to connect anymore:
 
 ![alt text](./images/part2-friendlyhello-not-responding.png "friendlyhello not reachable in a browser")
@@ -327,14 +333,14 @@ An account on a registry can create many repositories. The docker CLI uses Docke
 If you don’t have a Docker account, sign up for one at [https://hub.docker.com](https://hub.docker.com). Make note of your username: we assume from now on that your login is *account*.
 
 Log in to the Docker public registry on your local machine.
-```
+
+```bash
 tuto@laptop:~$ docker login
-Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [https://hub.docker.com](https://hub.docker.com) to create one.
+Login with your Docker ID to push and pull images from Docker Hub. If you [...]
 Username: account
 Password:
 WARNING! Your password will be stored unencrypted in /home/tso/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+Configure a credential helper to remove this warning. See [...]
 Login Succeeded
 ```
 
@@ -345,7 +351,8 @@ The notation for associating a local image with a repository on a registry is `u
 Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is `docker tag image username/repository:tag`.
 
 For example:
-```
+
+```bash
 tuto@laptop:~$ docker tag friendlyhello account/get-started:part2
 ```
 You may run `docker image ls` command to see your newly tagged image.
@@ -354,18 +361,23 @@ You may run `docker image ls` command to see your newly tagged image.
 #####  Publish the image
 
 Now, let's put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination:
-```
+
+```bash
 tuto@laptop:~$ docker image ls
 REPOSITORY           TAG      IMAGE ID     CREATED       SIZE
 friendlyhello        latest   d9e555c53008 3 minutes ago 195MB
 account/get-started part2    d9e555c53008 3 minutes ago 195MB
 python               2.7-slim 1c7128a655f6 5 days ago    183MB
 ```
+
 The command to actually upload your tagged image to the repository is `docker push username/repository:tag`, so let's run it now:
-```
+
+```bash
 tuto@laptop:~$ docker push account/get-started:part2
 ```
+
 Once complete, the results of this upload are publicly available. If you log in to Docker Hub, you see the new image there, with its pull command.
+
 
 #####  Pull and run the image from the remote repository
 
@@ -373,7 +385,7 @@ From now on, you can use docker run and run your app on any machine with this co
 
 So in our case `docker run -p 4000:80 account/get-started:part2`. If the image isn’t available locally on the machine, Docker pulls it from the repository:
 
-```
+```bash
 tuto@laptop:~$ docker run -p 4000:80 account/get-started:part2
 Unable to find image 'account/get-started:part2' locally
 part2: Pulling from account/get-started
@@ -386,8 +398,9 @@ ee7d8f576a14: Already exists
 fbccdcced46e: Already exists
 Digest: sha256:0601c866aab2adcc6498200efd0f754037e909e5fd42069adeff72d1e2439068
 Status: Downloaded newer image for account/get-started:part2
- * Running on [http://0.0.0.0:80/](http://0.0.0.0:80/) (Press CTRL+C to quit)
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
 ```
+
 No matter where docker run executes, it pulls your image, along with Python and all the dependencies from requirements.txt, and runs your code. It all travels together in a neat little package, and you don’t need to install anything on the host machine for Docker to run it.
 
 
@@ -434,38 +447,46 @@ A `docker-compose.yml` file is a YAML file that defines how Docker containers sh
 ### 3.2 - Run your new load-balanced app
 
 Before we can use the docker stack deploy command we first run:
-```
+
+```bash
 tuto@laptop:~$ docker swarm init
 ```
-> Note: We get into the meaning of that command in part 4. If you don’t run docker swarm init you get an error that “this node is not a swarm manager.”
+
+> Note: We get into the meaning of that command in part 4. If you don’t run docker swarm init you get an error that *“this node is not a swarm manager”*.
 
 Now let’s run it. You need to give your app a name. Here, it is set to `getstartedlab`:
-```
+
+```bash
 tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 Creating network getstartedlab_webnet
 Creating service getstartedlab_web
 ```
-Our single service stack is running 5 container instances of our deployed image on one host. Let’s investigate.
-Get the `service ID` for the one service in our application:
-```
+
+Our single service stack is running 5 container instances of our deployed image on one host. Let’s investigate. Get the `service ID` for the one service in our application:
+
+```bash
 tuto@laptop:~$ docker service ls
 ID             NAME                MODE         REPLICAS    IMAGE                         PORTS
 xoagyod5294j   getstartedlab_web   replicated   5/5         account/get-started:part2   *:4000->80/tcp
 ```
+
 Look for output for the web service, prepended with your app name. If you named it the same as shown in this example, the name is getstartedlab_web. The `service ID` is listed as well, along with the number of replicas, image name, and exposed ports.
 
 A single container running in a service is called a task. Tasks are given unique IDs that numerically increment, up to the number of replicas you defined in docker-compose.yml. List the tasks for your service:
-```
+
+```bash
 tuto@laptop:~$ docker service ps getstartedlab_web
 ID              NAME                   IMAGE                         NODE      DESIRED STATE    ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
-r8z7k5gw4mdg        getstartedlab_web.1   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
-mruh44c14hii        getstartedlab_web.2   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
-rketr3b5523p        getstartedlab_web.3   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
-sgw7n6mo152h        getstartedlab_web.4   account/get-started:part2   laptop              Running             Running 2 minutes ago                       
+r8z7k5gw4mdg        getstartedlab_web.1   account/get-started:part2   laptop              Running             Running 2 minutes ago
+mruh44c14hii        getstartedlab_web.2   account/get-started:part2   laptop              Running             Running 2 minutes ago
+rketr3b5523p        getstartedlab_web.3   account/get-started:part2   laptop              Running             Running 2 minutes ago
+sgw7n6mo152h        getstartedlab_web.4   account/get-started:part2   laptop              Running             Running 2 minutes ago
 n984sajq0gu7        getstartedlab_web.5   account/get-started:part2   laptop              Running             Running 2 minutes ago
 ```
+
 Tasks also show up if you just list all the containers on your system, though that is not filtered by service:
-```
+
+```bash
 tuto@laptop:~$ docker container ls -a
 df119c85f902        account/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.4.sgw7n6mo152hdoskfyu7f0xu3
 3717956b14e9        account/get-started:part2   "python app.py"     3 minutes ago       Up 2 minutes                  80/tcp                 getstartedlab_web.1.r8z7k5gw4mdggf2hhlj58c53s
@@ -484,18 +505,21 @@ The service stack is instructed from the docker-compose file to keep at any mome
 * list again the containers (showing only 4 active containers)
 * list again the containers after few seconds (showing again 5 active containers)
 
-```
+```bash
 tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          5/5                 account/get-started:part2   *:4000->80/tcp
+```
 
-```
 We see in the containers list above that the container `3717956b14e9` is running one of the five instance: we will kill it, and observe how the swarm reacts.
-```
+
+```bash
 tuto@laptop:~$ docker container stop 3717956b14e9
 ```
+
 Now list again the service, and you will notice that the service is running only on 4 containers (as indicated on the `REPLICAS` column, showing 4/5).
-```
+
+```bash
 tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          4/5                 account/get-started:part2   *:4000->80/tcp
@@ -507,8 +531,10 @@ d04e320efdb3        account/get-started:part2   "python app.py"     7 minutes ag
 4c3229476930        account/get-started:part2   "python app.py"     7 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.3.rketr3b5523p9zan30mvxe8q9
 14e380d75bf0        account/get-started:part2   "python app.py"     8 minutes ago       Up 7 minutes        80/tcp                 getstartedlab_web.2.mruh44c14hiiwpgdilasj7hfp
 ```
+
 As you can see, there are still only 4 instance left running, while we asked for 5. Wait few seconds and list the service and containers again: as you can see, docker restarted a new container (`ID 23b1b1a90fe6`) to meet again the target of 5 concurrent containers for the service stack. The `REPLICAS` column now indicate 5/5 again:
-```
+
+```bash
 tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          5/5                 account/get-started:part2   *:4000->80/tcp
@@ -526,11 +552,14 @@ d04e320efdb3        account/get-started:part2   "python app.py"     8 minutes ag
 ### 3.4 - Scale the app
 
 You can scale the app by changing the replicas value (e.g. from 5 to 8) in the YAML file `docker-compose-part3.yml`, saving the change, and re-running the `docker stack deploy` command:
-```
+
+```bash
 tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 ```
+
 Docker performs an in-place update, no need to tear the stack down first or kill any containers. Now, re-run `docker container ls -q` to see the deployed instances reconfigured. If you scaled up the replicas, more tasks, and hence, more containers, are started.
-```
+
+```bash
 tuto@laptop:~$ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
 xoagyod5294j        getstartedlab_web   replicated          8/8                 account/get-started:part2   *:4000->80/tcp
@@ -550,7 +579,8 @@ d04e320efdb3        account/get-started:part2   "python app.py"     10 minutes a
 ### 3.5 - Take the app down
 
 The instruction to take the service stack down is `docker stack rm` followed with the name of the service:
-```
+
+```bash
 tuto@laptop:~$ docker stack rm getstartedlab
 Removing service getstartedlab_web
 Removing network getstartedlab_webnet
@@ -559,7 +589,8 @@ Removing network getstartedlab_webnet
 ### 3.6 - Take the swarm down
 
 The instruction to take the service stack down is `docker swarm leave` with the option `--force` to take it down even if there could connections active.
-```
+
+```bash
 tuto@laptop:~$ docker swarm leave --force
 Node left the swarm.
 ```
@@ -607,7 +638,8 @@ In this tutorial, we use VMs to quickly create a three-machine cluster and turn 
 You need a hypervisor that can create virtual machines (VMs), so install Oracle VirtualBox for your machine’s OS.
 
 Now, let's create three VMs using docker-machine with the VirtualBox driver:
-```
+
+```bash
 tuto@laptop:~$ docker-machine create --driver virtualbox myvm1
 Running pre-create checks...
 (myvm1) Default Boot2Docker ISO is out-of-date, downloading the latest release...
@@ -615,37 +647,28 @@ Running pre-create checks...
 (myvm1) Downloading /home/thierry/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v18.06.1-ce/boot2docker.iso...
 (myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
 Creating machine...
-(myvm1) Copying /home/thierry/.docker/machine/cache/boot2docker.iso to /home/thierry/.docker/machine/machines/myvm1/boot2docker.iso...
-(myvm1) Creating VirtualBox VM...
-(myvm1) Creating SSH key...
-(myvm1) Starting the VM...
-(myvm1) Check network to re-create if needed...
-(myvm1) Waiting for an IP...
-Waiting for machine to be running, this may take a few minutes...
-Detecting operating system of created instance...
-Waiting for SSH to be available...
-Detecting the provisioner...
-Provisioning with boot2docker...
-Copying certs to the local machine directory...
-Copying certs to the remote machine...
-Setting Docker configuration on the remote daemon...
+[...]
 Checking connection to Docker...
 Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1
 ```
+
 Now, do the same for the two additional VMs:
-```
+
+```bash
 tuto@laptop:~$ docker-machine create --driver virtualbox myvm2
 tuto@laptop:~$ docker-machine create --driver virtualbox myvm3
 ```
+
 You now have three VMs created, named `myvm1`, `myvm2` and `myvm3`.
 
-Use the `docker-machine ls` command to list the machines and get their IP addresses.
-```
+Use the `docker-machine ls` command to list the machines and get their IP addresses:
+
+```bash
 tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
-myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
-myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
+myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
+myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5
 myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5
 ```
 
@@ -654,11 +677,14 @@ myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.
 The first machine acts as the manager, which executes management commands and authenticates workers to join the swarm, and the second and third are workers. You can send commands to your VMs using `docker-machine ssh`. Instruct `myvm1` to become a swarm manager with `docker swarm init` and look for output like `docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>"`.
 
 More elegantly, we will actually spawn a new terminal tab for each VM, use `docker-machine` to connect (via SSH) into the VM, and - from within each VM - either initialize the swarm (for `myvm1`) or join the swarm (`myvm2` and `myvm3`):
-```
+
+```bash
 tuto@laptop:~$ gnome-terminal --tab --tab --tab
 ```
+
 In the second tab, we will log into VM1 and initialize the swam:
-```
+
+```bash
 tuto@laptop:~$ docker-machine ssh myvm1
 docker@myvm1:~$ docker swarm init --advertise-addr 192.168.99.100
 Swarm initialized: current node (jo9p4yihnnvu2wu4r1vx09gmc) is now a manager.
@@ -668,41 +694,46 @@ To add a worker to this swarm, run the following command:
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
+
 We keep preciously these connection instruction: the other nodes will not be able to join the swarm if they don't know the token.
 
 #### Add nodes to the swarm
 
 So, we continue logging into the next VM and joining it to the swarm. To do so, we use the docker command `docker swarm join --token <token> <myvm ip>:<port>` and we will use the token which is included in the response to docker swarm init (above).
 
-copy this command, and run it from `myvm2` and `myvm3` via `docker swarm join --token <token> <ip>:2377`
+Copy this command, and run it from `myvm2` and `myvm3` via `docker swarm join --token <token> <ip>:2377`:
 
-In this case:
-```
+```bash
 tuto@laptop:~$ docker-machine ssh myvm2
 docker@myvm2:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
 ```
+
 and:
-```
+
+```bash
 tuto@laptop:~$ docker-machine ssh myvm3
 docker@myvm3:~$ docker swarm join --token SWMTKN-1-45tzwsnjei5f5c3k9l9i8y7zbxje750f5accagd82oqriq8z8s-abtnq3asuu168095qf326i5n8 192.168.99.100:2377
 This node joined a swarm as a worker.
 ```
+
 ***Congratulations***, you have now created your first swarm on a cluster of 3 VMs!
 
 Run `docker node ls` on the manager to view the nodes in this swarm:
-```
+
+```bash
 docker@myvm1:~$ docker node ls
 ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
 jo9p4yihnnvu2wu4r1vx09gmc *   myvm1               Ready               Active              Leader              19.03.5
 fkfmmeirve311smrdd1s2dld4     myvm2               Ready               Active                                  19.03.5
 0lajp4xuakprqorap8ezgdu3s     myvm3               Ready               Active                                  19.03.5
 ```
+
 As you can see, all three VMs appear in the list, and `myvm1` is indicated as the 'leader' of the swarm.
 
 #### Leaving a swarm
 
-If you want to start over, you can run `docker swarm leave` from each node. However, we can continue using the swarm '*as is*' for some more time. 
+If you want to start over, you can run `docker swarm leave` from each node. However, we can continue using the swarm '*as is*' for some more time.
 
 
 ### 4.2 - Deploy your app on the swarm cluster
@@ -715,7 +746,7 @@ So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to 
 
 Another option is to run `docker-machine env <machine>` to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local copy of the `docker-compose.yml` file (on your laptop) to deploy the app “*remotely*” without having to copy it inside the VM1.
 
-```
+```bash
 tuto@laptop:~$ docker-machine env myvm1
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
@@ -724,17 +755,21 @@ export DOCKER_MACHINE_NAME="myvm1"
 # Run this command to configure your shell:
 # eval $(docker-machine env myvm1)
 ```
+
 So, we just have to follow the instructions above:
-```
+
+```bash
 tuto@laptop:~$ eval $(docker-machine env myvm1)
 ```
+
 Run `docker-machine ls` to verify that `myvm1` is now the active machine, as indicated by the asterisk next to it:
-```
+
+```bash
 tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
-myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5   
-myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5   
-myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5   
+myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
+myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5
+myvm3   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.5
 ```
 
 #### Deploy the app on the swarm manager
@@ -745,30 +780,32 @@ You are connected to `myvm1` by means of the docker-machine shell configuration,
 
 Just like before, run the following command to deploy the app on `myvm1`:
 
-```
+```bash
 tuto@laptop:~$ docker stack deploy -c code/docker-compose-part3.yml getstartedlab
 Creating network getstartedlab_webnet
 Creating service getstartedlab_web
 ```
+
 And that’s it, the app is deployed on a swarm cluster!
 
 > Note: If your image is stored on a private registry instead of Docker Hub, you need to be logged in using docker login <your-registry> and then you need to add the --with-registry-auth flag to the above Command. For example:
 > ```$ docker login registry.example.com```
 > ```$ docker stack deploy --with-registry-auth -c docker-compose-part3.yml getstartedlab```
->This passes the login token from your local client to the swarm nodes where the service is deployed, using the encrypted WAL logs. With this information, the nodes are able to log into the registry and pull the image.
+> This passes the login token from your local client to the swarm nodes where the service is deployed, using the encrypted WAL logs. With this information, the nodes are able to log into the registry and pull the image.
 
-Now you can use the same docker commands you used in part 3. Only this time Notice that the services (and associated containers) have been distributed between both myvm1 and myvm2.
-```
+Now you can use the same docker commands you used in part 3. Only this time Notice that the services (and associated containers) have been distributed between both `myvm1` and `myvm2`.
+
+```bash
 tuto@laptop:~$ docker stack ps getstartedlab
 ID                  NAME                  IMAGE                       NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
-xr369odnin3x        getstartedlab_web.1   tsouche/get-started:part2   myvm2               Running             Running about a minute ago                       
-i0cy5sv9y4l0        getstartedlab_web.2   tsouche/get-started:part2   myvm3               Running             Running about a minute ago                       
-sqnb23j0n6xr        getstartedlab_web.3   tsouche/get-started:part2   myvm2               Running             Running about a minute ago                       
-hnt4hndfqxd2        getstartedlab_web.4   tsouche/get-started:part2   myvm3               Running             Running about a minute ago                       
-l41yrxn5vavl        getstartedlab_web.5   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                       
-wkzok2n1kjb1        getstartedlab_web.6   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                            
-g3igrtiezmhe        getstartedlab_web.7   tsouche/get-started:part2   myvm1               Running             Running about a minute ago                            
-r8xs2ytlwtvz        getstartedlab_web.8   tsouche/get-started:part2   myvm3               Running             Running about a minute ago  
+xr369odnin3x        getstartedlab_web.1   tsouche/get-started:part2   myvm2               Running             Running about a minute ago
+i0cy5sv9y4l0        getstartedlab_web.2   tsouche/get-started:part2   myvm3               Running             Running about a minute ago
+sqnb23j0n6xr        getstartedlab_web.3   tsouche/get-started:part2   myvm2               Running             Running about a minute ago
+hnt4hndfqxd2        getstartedlab_web.4   tsouche/get-started:part2   myvm3               Running             Running about a minute ago
+l41yrxn5vavl        getstartedlab_web.5   tsouche/get-started:part2   myvm1               Running             Running about a minute ago
+wkzok2n1kjb1        getstartedlab_web.6   tsouche/get-started:part2   myvm1               Running             Running about a minute ago
+g3igrtiezmhe        getstartedlab_web.7   tsouche/get-started:part2   myvm1               Running             Running about a minute ago
+r8xs2ytlwtvz        getstartedlab_web.8   tsouche/get-started:part2   myvm3               Running             Running about a minute ago
 ```
 #### Connecting to VMs with docker-machine env and docker-machine ssh
 
@@ -777,7 +814,8 @@ To set your shell to talk to a different machine like myvm2, simply re-run docke
 Alternatively, you can wrap Docker commands in the form of `docker-machine ssh <machine> "<command>"`, which logs directly into the VM but doesn’t give you immediate access to files on your local host.
 
 You can use `docker-machine` to *secure copy* (scp) files across machines:
-```
+
+```bash
 tuto@laptop:~$ docker-machine scp <file> <machine>:~
 ```
 
@@ -786,7 +824,8 @@ tuto@laptop:~$ docker-machine scp <file> <machine>:~
 You can access your app from the IP address of either VM. Typically, you can enter [http://192.168.99.100:4000/](http://192.168.99.100:4000/) or [http://192.168.99.101:4000/](http://192.168.99.101:4000/) or [http://192.168.99.102:4000/](http://192.168.99.102:4000/) in the browser and see the *same* app running.
 
 The network you created is shared between them and load-balancing. Run `docker-machine ls` to get your VMs’ IP addresses and visit either of them on a browser, hitting refresh. In order to show the result, we use `curl`:
-```
+
+```bash
 tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 160f2964ebb1<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 tuto@laptop:~$ curl http://192.168.99.100:4000
@@ -803,7 +842,8 @@ tuto@laptop:~$ curl http://192.168.99.100:4000
 <h3>Hello World!</h3><b>Hostname:</b> 1cd9df25ec42<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 ...
 ```
-There are eight possible container IDs all cycling by randomly, demonstrating the load-balancing.
+
+There are eight possible `container ID` all cycling by randomly, demonstrating the load-balancing.
 The reason all 3 IP addresses work is that nodes in a swarm participate in an ingress routing mesh. This ensures that a service deployed at a certain port within your swarm always has that port reserved to itself, no matter what node is actually running the container.
 
 #### Having connectivity trouble?
@@ -827,32 +867,41 @@ You can join any machine, physical or virtual, to this swarm, using the same doc
 ### 4.4 - Cleanup and reboot Stacks and swarms
 
 You can tear down the stack with docker stack rm. For example:
-```
+
+```bash
 tuto@laptop:~$ docker stack rm getstartedlab
 Removing service getstartedlab_web
 Removing network getstartedlab_webnet
 ```
+
 Keep the swarm or remove it?
 At some point later, you can remove this swarm if you want to with `docker-machine ssh myvm2 "docker swarm leave"` on the workers and `docker-machine ssh myvm1 "docker swarm leave --force"` on the manager, but you will still need this swarm for part 5, so keep it around for now.
 
 #### Unsetting `docker-machine` shell variable settings
+
 You can unset the `docker-machine` environment variables in your current shell with the given command:
-```
+
+```bash
 tuto@laptop:~$ eval $(docker-machine env -u)
 ```
-This disconnects the shell from docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker commands. 
+
+This disconnects the shell from docker-machine created virtual machines, and allows you to continue working in the same shell, now using native docker commands.
 
 #### Restarting Docker machines
+
 If you shut down your local host, Docker machines stops running. You can check the status of machines by running `docker-machine ls`.
-```
+
+```bash
 tuto@laptop:~$ docker-machine ls
 NAME    ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 myvm1   -        virtualbox   Stopped                 Unknown
 myvm2   -        virtualbox   Stopped                 Unknown
 myvm3   -        virtualbox   Stopped                 Unknown
 ```
+
 To restart a machine that’s stopped, run `docker-machine start <machine-name>`. For example:
-```
+
+```bash
 tuto@laptop:~$ docker-machine start myvm1
 Starting "myvm1"...
 (myvm1) Check network to re-create if needed...
@@ -861,6 +910,7 @@ Machine "myvm1" was started.
 Waiting for SSH to be available...
 Detecting the provisioner...
 ```
+
 Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
 
 ### Conclusion of Part 4
@@ -868,6 +918,7 @@ Started machines may have new IP addresses. You may need to re-run the `docker-m
 In part 4 you learned what a swarm is, how nodes in swarms can be managers or workers, created a swarm, and deployed an application on it. You saw that the core Docker commands didn’t change from part 3, they just had to be targeted to run on a swarm master. You also saw the power of Docker’s networking in action, which kept load-balancing requests across containers, even though they were running on different machines. Finally, you learned how to iterate and scale your app on a cluster.
 
 ### Part 4 Cheat Sheet
+
 |   |   |
 | --- | ---:|
 | `docker-machine create --driver virtualbox myvm1` | Create a VM |
@@ -918,7 +969,7 @@ Make sure your shell is configured to talk to `myvm1`:
 * If needed, re-run `docker-machine env myvm1`, then run the `eval $(docker-machine env myvm1)` command to configure the shell.
 * Re-run the `docker stack deploy` command on the manager, and whatever services
 need updating are updated:
-```
+```bash
 $ docker stack deploy -c docker-compose-part5-1.yml getstartedlab
 Creating network getstartedlab_webnet
 Creating service getstartedlab_visualizer
@@ -930,17 +981,18 @@ Creating service getstartedlab_web
 You saw in the Compose file that visualizer runs on 8080. Get the IP address of one of your nodes by running docker-machine ls. Go to either IP address at port 8080 and you can see the visualizer running. In our case: go to the port 8080 of `myvm1`: [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
 
 The single copy of visualizer is running on the manager as you expect, and the 8 instances of web are spread out across the swarm. You can corroborate this visualization by running `docker stack ps <stack>`:
-```
+
+```bash
 tuto@laptop:~$ docker stack ps getstartedlab
 ID                  NAME                         IMAGE                             NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
-kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
-puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 50 seconds ago                       
-zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago                       
-v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago                       
-x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
-9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago                       
-4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago                       
-pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago                       
+kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago
+puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 50 seconds ago
+zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago
+v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago
+x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago
+9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 58 seconds ago
+4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago
+pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 59 seconds ago
 gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2         myvm2               Running             Running 59 seconds ago
 ```
 
@@ -951,6 +1003,7 @@ If you go to [http://192.168.99.100:8080/](http://192.168.99.100:8080/), you sho
 ***insert a picture here***
 
 You had to take no action: the whole process is orchestrated by docker. The visualizer is a standalone service that can run in any app that includes it in the stack. It doesn’t depend on anything else. Now let’s create a service that does have a dependency: the Redis service that provides a visitor counter.
+
 
 ### 5.2 - Persist the data
 
@@ -973,24 +1026,29 @@ You are ready to deploy your new Redis-using stack.
 
 #### Create a `./data` directory on the manager
 
->Note: Make sure your shell is configured to talk to `myvm1`:
->* Run docker-machine ls to list machines and make sure you are connected to `myvm1`, as indicated by an asterisk next it.
->* If needed, re-run `docker-machine env myvm1`, then run the given command to configure the shell.
-```
+> Note: Make sure your shell is configured to talk to `myvm1`:
+> * Run docker-machine ls to list machines and make sure you are connected to `myvm1`, as indicated by an asterisk next it.
+> * If needed, re-run `docker-machine env myvm1`, then run the given command to configure the shell.
+> ```bash
 $ eval $(docker-machine env myvm1)
 $ docker-machine ssh myvm1 "mkdir ./data"
 ```
+
+
 ### 5.3 - Redeploy the stack
 
 Run `docker stack deploy` one more time:
-```
+
+```bash
 $ docker stack deploy -c docker-compose-part5-2.yml getstartedlab
 Updating service getstartedlab_web (id: 2ythn4okhrdcnnj2o7ecmjbcl)
 Updating service getstartedlab_visualizer (id: tufou3x0sztx69eg6kzfmzvi8)
 Creating service getstartedlab_redis
 ```
+
 Run `docker service ls` from the `myvm1` to verify that the three services are running as expected.
-```
+
+```bash
 docker@myvm1:~$ docker service ls
 ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS
 ugr2oqhctk52        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379->6379/tcp
@@ -999,21 +1057,23 @@ tufou3x0sztx        getstartedlab_visualizer   replicated          1/1          
 
 docker@myvm1:~$ docker stack ps getstartedlab
 ID                  NAME                         IMAGE                             NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
-hcvuq1nt48hp        getstartedlab_redis.1        redis:latest                      myvm1               Running             Running about a minute ago                       
-kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
-puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 5 minutes ago                            
-zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago                            
-v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago                            
-x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
-9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago                            
-4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago                            
-pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago                            
-gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago 
+hcvuq1nt48hp        getstartedlab_redis.1        redis:latest                      myvm1               Running             Running about a minute ago
+kb8e3d7iqj76        getstartedlab_web.1          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago
+puk3a65hf5up        getstartedlab_visualizer.1   dockersamples/visualizer:stable   myvm1               Running             Running 5 minutes ago
+zr4jjcvrr0l5        getstartedlab_web.2          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago
+v6a1qd49a0ka        getstartedlab_web.3          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago
+x0gq7usig5y6        getstartedlab_web.4          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago
+9uxjs2ve3x1s        getstartedlab_web.5          tsouche/get-started:part2         myvm1               Running             Running 5 minutes ago
+4r6a1dxxlh0e        getstartedlab_web.6          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago
+pqxvp3m14loh        getstartedlab_web.7          tsouche/get-started:part2         myvm3               Running             Running 5 minutes ago
+gs5ox6yvnumw        getstartedlab_web.8          tsouche/get-started:part2         myvm2               Running             Running 5 minutes ago
 ```
+
 Check the web page at one of your nodes, such as [http://192.168.99.101](http://192.168.99.101), and take a look at the results of the visitor counter, which is now live and storing information on Redis.
 
 Now come back to the host, and check the visualizer at port 8080 on either node’s IP address, and notice see the redis service running along with the web and visualizer services. We can show it here with `curl`:
-```
+
+```bash
 tuto@laptop:~$ curl http://192.168.99.101
 <h3>Hello World!</h3><b>Hostname:</b> 4bf84a659203<br/><b>Visits:</b> 1
 tuto@laptop:~$ curl http://192.168.99.101
@@ -1036,7 +1096,8 @@ so go now on the browser, at [http://192.168.99.101](http://192.168.99.101) URL 
 
 Before leaving, tidy the place!
 This means bringing the services down and removing any container/images left.
-```
+
+```bash
 tuto@laptop:~$ docker service ls
 ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS
 ugr2oqhctk52        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379->6379/tcp
@@ -1063,6 +1124,7 @@ tuto@laptop:~$ docker image rm c160e4abb8aa c33c9b2541a8 8dbf7c60cf88
 
 Here you are: the place is clean :-)
 
+
 ### Conclusion of Part 5
 
 You learned that stacks are inter-related services all running in concert, and that -- surprise! -- you’ve been using stacks since Part 3 of this tutorial. You learned that to add more services to your stack, you insert them in your Compose file. Finally, you learned that by using a combination of placement constraints and volumes you can create a permanent home for persisting data, so that your app’s data survives when the container is torn down and redeployed.
@@ -1082,8 +1144,8 @@ zepjezapohf
 ## Appendix - conventions
 
 In this tutorial, we assume that you are logged on a linux server or laptop, and we will use the following conventions:
-* *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with `account`.  
-* *machine*: 
+* *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with `account`.
+* *machine*:
 * *shell prompt*: when you are logged on your machine, we represent it with the prompt `tuto@laptop:~`. When you are logged into one of the cluster's VM (here `myvm1`), we represent it with the prompt `docker@myvm1:~`
 
 
