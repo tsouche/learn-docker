@@ -1,7 +1,6 @@
 from flask import Flask
 from redis import Redis, RedisError
 import os
-import socket
 
 # Connect to Redis
 redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
@@ -11,18 +10,22 @@ app = Flask(__name__)
 @app.route("/version")
 def version():
     return "<b>Version 1</b> - <i>bonne année</i>"
-    
+
 @app.route("/")
 def hello():
+    #capture the variables
+    name=os.getenv("NAME", "world")
+    host=os.getenv("HOSTNAME")
     try:
         visits = redis.incr("counter")
     except RedisError:
         visits = "<i>cannot connect to Redis, counter disabled</i>"
-
-    html = "<h3>Hello {name}!</h3>" \
-           "<b>Hostname:</b> {hostname}<br/>" \
-           "<b>Visits:</b> {visits}"
-    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+    # build the html response
+    html = "<h3>Hello {name}!</h3><br/>" \
+           "<b>Visits:</b> {visits}<br/>"
+           "<b>Hostname:</b> {hostname}" \
+           "<br/>".format(name=name, hostname=host, visits=visits)
+    return html
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)

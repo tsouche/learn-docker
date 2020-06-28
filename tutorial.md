@@ -211,12 +211,84 @@ These portable images are defined by something called a **Dockerfile**.
 Dockerfile defines what goes on in the environment inside your container. Access to resources like networking interfaces and disk drives is virtualized inside this environment, which is isolated from the rest of your system, so you need to map ports to the outside world, and be specific about what files you want to “copy in” to that environment. However, after doing that, you can expect that the build of your app defined in this Dockerfile behaves exactly the same wherever it runs.
 
 
+#### Source files
+
+The source files required to build our Docker image and Docker container are all located in the `./code/` directory: the python script `app.py`, the corresponding dependencies declaration `requireements.txt` and the `Dockerfile`.
+
+File: `./code/app.py`
+
+```python
+from flask import Flask
+from redis import Redis, RedisError
+import os
+
+# Connect to Redis
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+app = Flask(__name__)
+
+@app.route("/version")
+def version():
+    return "<b>Version 1</b> - <i>bonne année</i>"
+
+@app.route("/")
+def hello():
+    #capture the variables
+    name=os.getenv("NAME", "world")
+    host=os.getenv("HOSTNAME")
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
+    # build the html response
+    html = "<h3>Hello {name}!</h3><br/>" \
+           "<b>Visits:</b> {visits}<br/>"
+           "<b>Hostname:</b> {hostname}" \
+           "<br/>".format(name=name, hostname=host, visits=visits)
+    return html
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
+```
+
+File: `./code/requirements.txt`
+
+```javascript
+Flask
+Redis
+```
+
+File: `./code/Dockerfile`
+
+```bash
+# Use an official Python runtime as a parent image
+FROM python:3.6
+# Set the working directory to /app
+WORKDIR /app
+# Copy the current directory contents into the container at /app
+ADD . /app
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# Make port 80 available to the world outside this container
+EXPOSE 80
+# Define environment variable
+ENV NAME World
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+
+
+
 #### Dockerfile
 
 The files `docker-compose-part3.yml`, `app.py` and `requirements.txt` will be used now to build a Docker image and corresponding container.
-We see that `pip install -r requirements.txt` installs the Flask and Redis libraries for Python, and the app prints the environment variable `NAME`, as well as the output of a call to `socket.gethostname()`. Finally, because Redis isn’t running (as we’ve only installed the Python library, and not Redis itself), we should expect that the attempt to use it here fails and produces the error message.
 
-> Note: accessing the name of the host when inside a container retrieves the container ID, which is like the process ID for a running executable.
+Looking into the files, you can see that:
+* `pip install -r requirements.txt` will install the `Flask` and `Redis` libraries for Python;
+* the app will print the environment variable `NAME` (which is set in the `Dockerfile`, prior to launching the python app)
+* the app will print its host name (via a call to `os.getenv("HOSTNAME")`): the app will collect the name of the host while running inside a container, so it will retrieve the `containerID`, which is like the process ID for a running executable;
+* Finally, because Redis isn’t running (as we’ve only installed the Redis Python driver, and not the Redis database itself), we should expect that the attempt to read will fail and produces the error message: hence the `try`/`except`.
+
 
 ***That’s it!***
 You don’t need Python or anything in `requirements.txt` on your system, nor does building or running this image install them on your system. It doesn’t seem like you’ve really set up an environment with Python and Flask, but you have.
@@ -1129,17 +1201,10 @@ Here you are: the place is clean :-)
 
 You learned that stacks are inter-related services all running in concert, and that -- surprise! -- you’ve been using stacks since Part 3 of this tutorial. You learned that to add more services to your stack, you insert them in your Compose file. Finally, you learned that by using a combination of placement constraints and volumes you can create a permanent home for persisting data, so that your app’s data survives when the container is torn down and redeployed.
 
-***
-## Table of content
-
-
-
-***
 
 ## Appendix - installation script
 
 
-zepjezapohf
 
 ## Appendix - conventions
 
@@ -1147,14 +1212,3 @@ In this tutorial, we assume that you are logged on a linux server or laptop, and
 * *user*: the examples are given with a user called `tuto`. You will need however to use your personal account on GitHub and Docker Hub. In the examples, we substituted your `login` with `account`.
 * *machine*:
 * *shell prompt*: when you are logged on your machine, we represent it with the prompt `tuto@laptop:~`. When you are logged into one of the cluster's VM (here `myvm1`), we represent it with the prompt `docker@myvm1:~`
-
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3OTY3NjA0LC03Mjk5MjUzNjcsLTkyMD
-YyOTY3NCwtNDYwNjQ5ODYyLDgyMDU3NTk1MCwxODYxMzE0MDM2
-LC04MzM2NTkzNDIsLTU2MDYwNDIxMSw2MjIxMjAzMzUsLTkyOT
-Y0MDI1NSwtMTc1MTQ5MjA0OCwxNDU5MjA4OTYwLDE0NTk5Njcz
-NDQsMTkzNjUwMjc4NywxNTQ5NDI4MDg0LDE4OTU2NTgzNjMsLT
-EwMDY3MDIzMTgsLTQ4NDU0NjA3NSwtMTkyOTY4MDYyMCwtMTEx
-MTQzNDU5XX0=
--->
