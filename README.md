@@ -21,4 +21,5 @@ The various steps of the tutorial:
 ... and once you have reached this point, you may be interested in getting into *real* production topics with Docker, and you will then need to pursue with much more serious tutorials, on real infrastructure.
 
 So, if you know nothing about Docker and you want to learn about it, be my guest, run through this tutorial (and post feedbacks so that it is further improved :smile:).
+Also, if you are itnerested to run through a very similar tutorial on Kubernetes, please feel free to have a look at my other tutorial called **"learn-kubernetes"**.
 
